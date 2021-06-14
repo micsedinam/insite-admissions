@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -72,11 +73,16 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        {{-- <li><a href="">Dashboard</a></li>
-                        <li><a href="">New Application</a></li>
-                        <li><a href="">My Applications</a></li> --}}
-                    </ul>
+                    @guest
+                        
+                    @else
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item px-2"><a class="text-secondary nounderline" href="{{url('user/home')}}">Dashboard</a></li>
+                            <li class="nav-item px-2"><a class="text-secondary text-decoration-none" href="{{url('user/payment')}}">New Application</a></li>
+                            <li class="nav-item px-2"><a class="text-secondary text-decoration-none" href="{{url('user/show')}}">My Applications</a></li>
+                        </ul>
+                    @endguest
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -121,34 +127,34 @@
             @yield('content')
         </main>
     </div>
-
+    
     {{-- <script>
         $('#flash-overlay-modal').modal();
         setTimeout("$('.alert').delay(3000).slideUp(400)",400);
     </script> --}}
 
     <script>
-        setTimeout(() => {
-            console.log("ready");
-            $(document).ready(function() {
-                // DataTable initialisation
-                $('#example').DataTable(
-                    {
-                        "dom": '<"dt-buttons"Bf><"clear">lirtp',
-                        "paging": true,
-                        "autoWidth": true,
-                        "buttons": [
-                            'colvis',
-                            'copyHtml5',
-                            'csvHtml5',
-                            'excelHtml5',
-                            'pdfHtml5',
-                            'print'
-                        ]
-                    }
-                );
-            });
-        }, 2000);
+        // setTimeout(() => {
+        //     console.log("ready");
+        //     $(document).ready(function() {
+        //         // DataTable initialisation
+        //         $('#dataTable').DataTable(
+        //             {
+        //                 "dom": '<"dt-buttons"Bf><"clear">lirtp',
+        //                 "paging": true,
+        //                 "autoWidth": true,
+        //                 "buttons": [
+        //                     'colvis',
+        //                     'copyHtml5',
+        //                     'csvHtml5',
+        //                     'excelHtml5',
+        //                     'pdfHtml5',
+        //                     'print'
+        //                 ]
+        //             }
+        //         );
+        //     });
+        // }, 2000);
         /* $(document).ready(function() {
             // DataTable initialisation
             $('#example').DataTable(

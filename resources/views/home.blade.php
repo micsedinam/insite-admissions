@@ -6,9 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
-                    You are normal user.
+                    <p>Hello {{Auth::user()->name}} <br> Welcome to your dashboard.</p>
                 </div>
             </div>
         </div>

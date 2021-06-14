@@ -17,8 +17,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/admin', function () {
-    return view('layouts.admin');
+Route::get('/user', function () {
+    return view('layouts.user');
 });
 
 // Route::get('/payment', function () {
