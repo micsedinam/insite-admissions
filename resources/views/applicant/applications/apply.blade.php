@@ -14,7 +14,7 @@
                     {{-- <button class="btn btn-outline-secondary">
                         Back to Dashboard
                     </button> --}}
-                    <form id="frm-apply" action="{{route('form.submit')}}" method="POST" enctype="multipart/form-data">
+                    <form id="frm-apply" action="{{route('form.store')}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 

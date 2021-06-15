@@ -11,7 +11,7 @@
             <div class="wizard-container">
 
                 <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                    <form id="frm-apply-update" action="{{route('form.update')}}/{{$forms->form_id}}" method="POST" enctype="multipart/form-data">
+                    <form id="frm-apply-update" action="{{url('update/'.$forms->form_id)}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @method('PATCH')
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
@@ -128,7 +128,7 @@
                                         <div class="input-group">
                                             <div class="form-group">
                                                 <label class="control-label" for="country">Country</label>
-                                                <select class="selectpicker countrypicker form-control" data-live-search="true" data-flag="true" name="country" id="country" ></select>
+                                                <input type="text" class="form-control" name="country" id="country" value="{{ $forms->country }}">
                                             </div>
                                         </div>
                                     </div>

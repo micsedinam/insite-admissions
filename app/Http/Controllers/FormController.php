@@ -149,7 +149,7 @@ class FormController extends Controller
             ->select('departments.dept_name', 'programmes.prog_name')
             ->first();
 
-        dd($updates);
+        //dd($updates);
 
         return view('applicant.applications.edit', compact('updates', 'department', 'programme', 'forms'));
     }

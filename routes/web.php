@@ -13,12 +13,12 @@
 
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('auth.login');
 });
 
 
-Route::get('/user', function () {
-    return view('layouts.user');
+Route::get('/auth', function () {
+    return view('layouts.auth');
 });
 
 // Route::get('/payment', function () {
