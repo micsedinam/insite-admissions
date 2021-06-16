@@ -19,8 +19,8 @@
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 
                         <div class="wizard-header text-center">
-                            <h3 class="wizard-title">INSITE MEDIA COLLEGE APPLICATION FORM</h3>
-                            <p class="category">You are required to fill out all fields in this form.</p>
+                            <h3 class="wizard-title bold">INSITE MEDIA COLLEGE APPLICATION FORM</h3>
+                            <p class="category text-red">You are required to fill out all fields in this form.</p>
                         </div>
 
                         <div class="wizard-navigation">
