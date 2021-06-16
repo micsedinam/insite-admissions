@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdmissionPayments;
 use App\Models\Department;
 use App\Models\Form;
 use App\Models\Programme;
+use App\Models\ReviewForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +18,15 @@ class FormController extends Controller
 
         $department = Department::all();
         $programme = Programme::all();
+        // $payments = AdmissionPayments::select('user_id')->get();
 
+        // dd($payments);
+        // if (condition) {
+        //     # code...
+        // } else {
+        //     # code...
+        // }
+        
         return view('applicant.applications.apply', compact('department', 'programme')); 
     }  
 
