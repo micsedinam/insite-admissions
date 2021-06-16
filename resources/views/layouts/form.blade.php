@@ -10,8 +10,8 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <meta name="keywords" content="wizard, bootstrap wizard, creative tim, long forms, 3 step wizard, sign up wizard, beautiful wizard, long forms wizard, wizard with validation, paper design, paper wizard bootstrap, bootstrap paper wizard">
-    <meta name="description" content="Paper Bootstrap Wizard is a fully responsive wizard that is inspired by our famous Paper Kit  and comes with 3 useful examples and 5 colors.">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
 	<!-- CSS Files -->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
@@ -41,8 +41,8 @@
 
 	<body>
 		<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	{{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
 	<!-- End Google Tag Manager (noscript) -->
 	<div class="image-container set-full-height" style="background-image: url('../img/awards.jpg')">
 	    @include('sweet::alert')

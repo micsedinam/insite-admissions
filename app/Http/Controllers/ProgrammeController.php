@@ -19,8 +19,9 @@ class ProgrammeController extends Controller
     public function Store(Request $request)
     {
         $this->validate($request, [
-            'prog_name' => 'required|min:5',
-            ]
+            'prog_name'=>'required|min:5|unique:programmes'],
+            ['prog_name.required'=>'You need to enter a programme name.',
+                'prog_name.unique'=>"This entry already exists!"]
         );
 
         if ($request->ajax()) {
@@ -56,8 +57,9 @@ class ProgrammeController extends Controller
     public function updateProg(Request $request)
     {
         $this->validate($request,[
-            'prog_name.required'=>'You need to enter a programme name',
-            ]
+            'prog_name'=>'required|min:5|unique:programmes'],
+            ['prog_name.required'=>'You need to enter a programme name.',
+                'prog_name.unique'=>"This entry already exists!"]
         );
         if ($request->ajax()) {
             return response(Programme::updateOrCreate(['id'=>$request->prog_id], $request->all()));

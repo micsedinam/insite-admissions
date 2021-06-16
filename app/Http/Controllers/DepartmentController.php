@@ -16,8 +16,9 @@ class DepartmentController extends Controller
     public function Store(Request $request)
     {
         $this->validate($request, [
-            'dept_name' => 'required|min:5',
-            ]
+            'dept_name' => 'required|min:5|unique:departments'],
+            ['dept_name.required'=>'You need to enter a programme name.',
+                'dept_name.unique'=>"This entry already exists!"]
         );
 
         if ($request->ajax()) {
@@ -49,8 +50,9 @@ class DepartmentController extends Controller
     public function updateDept(Request $request)
     {
         $this->validate($request,[
-            'dept_name.required'=>'You need to enter a department name',
-            ]
+            'dept_name' => 'required|min:5|unique:departments'],
+            ['dept_name.required'=>'You need to enter a programme name.',
+                'dept_name.unique'=>"This entry already exists!"]
         );
         if ($request->ajax()) {
             return response(Department::updateOrCreate(['id'=>$request->dept_id], $request->all()));
