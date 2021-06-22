@@ -129,7 +129,7 @@ class FormController extends Controller
             alert()->error($request['firstname'].' '.$request['lastname'].' not saved.')->persistent("Close this");
         }
     
-        return view('user/home');
+        return view('home');
     }
 
     public function showApplicantForm()
