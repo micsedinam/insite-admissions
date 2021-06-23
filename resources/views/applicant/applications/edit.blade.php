@@ -11,9 +11,9 @@
             <div class="wizard-container">
 
                 <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                    <form id="frm-apply-update" action="{{url('update/'.$forms->form_id)}}" method="POST" enctype="multipart/form-data">
+                    <form id="frm-apply-update" action="{{url('user/update/'.$forms->form_id)}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        @method('PATCH')
+                        {{-- @method('PATCH') --}}
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 
                         <div class="wizard-header text-center">
@@ -117,10 +117,12 @@
                                         <div class="input-group">
                                             <div class="form-group">
                                                 <label class="control-label" for="gender">Gender: </label>
-                                                <input type="radio" class="choice" name="gender" id="gender" value="Male">
-                                                <span>Male</span>
-                                                <input type="radio" class="choice" name="gender" id="gender" value="Female">
-                                                <span>Female</span>
+                                                <select class="form-control" name="gender" id="gender" >
+                                                    <option value="{{$forms->gender}}">You selected: {{$forms->gender}}</option>
+                                                    <option value="">Select Option</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -177,10 +179,12 @@
                                     <div class="col-sm-5">
                                         <div class="form-group">
                                             <label class="control-label" for="physical_challenge">Any Physical Challenge?: </label>
-                                            <input type="radio" class="choice" name="physical_challenge" id="physical_challenge" value="Yes">
-                                            <span>Yes</span>
-                                            <input type="radio" class="choice" name="physical_challenge" id="physical_challenge" value="No">
-                                            <span>No</span>
+                                            <select class="form-control" name="physical_challenge" id="physical_challenge" >
+                                                <option value="{{$forms->physical_challenge}}">You selected: {{$forms->physical_challenge}}</option>
+                                                <option value="">Select Option</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -237,8 +241,8 @@
                                             <select class="form-control" name="hostel" id="hostel" >
                                                 <option value="{{$forms->hostel}}">You selected: {{$forms->hostel}}</option>
                                                 <option value="">Select Option</option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -385,7 +389,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
-                                <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finish' />
+                                <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Update' />
                             </div>
 
                             <div class="pull-left">

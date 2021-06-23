@@ -52,7 +52,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'is_admin'], function () {
     Route::get('/form', 'FormController@view')->name('form');
     Route::post('/forms', 'FormController@create')->name('form.store');
     Route::get('/applicant/{id}', 'FormController@edit')->name('form.edit');
-    Route::patch('update/{id}', 'FormController@update')->name('form.update');
+    Route::post('update/{id}', 'FormController@update')->name('form.update');
     Route::get('show', 'FormController@showApplicantForm')->name('application.show');
     Route::get('/showProgrammes', ['as' => 'showProgrammes', 'uses' => 'FormController@showProgramme']);
     

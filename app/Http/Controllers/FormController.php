@@ -164,23 +164,23 @@ class FormController extends Controller
         return view('applicant.applications.edit', compact('updates', 'department', 'programme', 'forms'));
     }
 
-    public function update(Request $request, Form $form) { 
+    public function update(Request $request, $id) { 
 
         //dd($request->all());
 
-            //proceed to validate uploads and save form content
+        //proceed to validate uploads and save form content
 
-            /* $request->validate(
-                [
-                'passport_photo' => 'required|mimes:jpg,png,jpeg|max:5048',
-                'certificate_upload' => 'required|mimes:pdf|max:20480'
-                ]
-            ); */
+        $request->validate(
+            [
+            'passport_photo' => 'required|mimes:jpg,png,jpeg|max:5048',
+            'certificate_upload' => 'required|mimes:pdf|max:20480'
+            ]
+        );
 
         // saving the image
         $updatedImageName = time() .'-'. $request->firstname . '-' . $request->lastname . '-'. 'Passport' . '.' . $request->passport_photo->extension();
 
-        //dd($newImageName);
+        //dd($updatedImageName);
         $request->passport_photo->move(public_path('image_uploads'), $updatedImageName);
             
             // saving the document
@@ -191,18 +191,19 @@ class FormController extends Controller
 
             $request->certificate_upload->move(public_path('document_uploads'), $updatedFileName);
 
-            //dd($newFileName);
+            //dd($updatedFileName);
         }
             
             
 
         //dd($request->all());
 
-        $form = Form::findOrFail($form);
+        $form = Form::findOrFail($id);
 
         
         $form->user_id = Auth::id();
         $form->firstname = $request['firstname'];
+        $form->lastname = $request['lastname'];
         $form->othername = $request['othername'];
         $form->dob = $request['dob'];
         $form->phone = $request['phone'];
@@ -242,12 +243,12 @@ class FormController extends Controller
 
         //dd($request->all());
 
-        if ($form->update($request->all())) {
+        if ($form->update()) {
             alert()->success($request['firstname'].' '.$request['lastname'].' successfully updated.', 'Awesome')->persistent("Close this");
         } else {
             alert()->error($request['firstname'].' '.$request['lastname'].' not saved.')->persistent("Close this");
         }
     
-        return view('/dashboard', compact('form'));
+        return view('/home', compact('form'));
     }
 }
