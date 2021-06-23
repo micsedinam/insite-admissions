@@ -26,7 +26,7 @@
                                         <p class="card-text">
                                             
                                         </p>
-                                        <a href="{{ url('user/applicant/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block">View</a>
+                                        <a href="{{ url('user/applicant/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block">View & Edit</a>
                                     </div>
                                 </div>
                             </div>

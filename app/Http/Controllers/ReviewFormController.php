@@ -24,7 +24,8 @@ class ReviewFormController extends Controller
             ->join('programmes', 'forms.prog_id', '=', 'programmes.id')
             ->where('forms.form_complete', '=', 'Yes')
             ->select('forms.*', 'departments.dept_name', 'programmes.prog_name', 'users.name')
-            ->get();
+            ->latest()
+            ->paginate(8);
 
         // $review = DB::table('review_forms')
         //     ->join('users', 'review_forms.user_id', '=', 'users.id')
@@ -139,6 +140,7 @@ class ReviewFormController extends Controller
         $status = DB::table('review_forms')
             ->join('forms', 'review_forms.form_id', '=', 'forms.form_id')
             ->select('review_forms.*', 'forms.firstname', 'forms.lastname', 'forms.othername')
+            ->latest()
             ->get();
 
         //dd($status);

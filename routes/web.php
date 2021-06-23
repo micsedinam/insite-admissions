@@ -40,7 +40,7 @@ Auth::routes();
 //Normal User routes
 Route::get('/verify', 'VerifyTransactionController@verify')->name('verify');
 
-Route::prefix('user')->group(function () {
+Route::group(['prefix' => 'user', 'middleware' => 'is_admin'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/payment', function () {
