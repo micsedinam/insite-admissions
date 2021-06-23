@@ -17,8 +17,8 @@
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 
                         <div class="wizard-header text-center">
-                            <h3 class="wizard-title">Create your profile</h3>
-                            <p class="category">This information will let us know more about you.</p>
+                            <h3 class="wizard-title bold">INSITE MEDIA COLLEGE APPLICATION FORM</h3>
+                            {{-- <p class="category">This information will let us know more about you.</p> --}}
                         </div>
 
                         <div class="wizard-navigation">
@@ -381,6 +381,28 @@
                                         <div class="form-group">
                                             <label class="control-label" for="two_referee_address">2nd Referee Address</label>
                                             <input class="form-control" type="text" name="two_referee_address" id="two_referee_address" value="{{$forms->two_referee_address}}"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="control-label" for="two_referee_address">Undertaking and Completeness Check</label>
+                                            <h3>HONOUR PLEDGE</h3>
+                                            <ol>
+                                                <li>I pledge to strive for excellence in the pursuit of wisdom, to acknowledge the school’s foundation on a faith in God while respecting the faith traditions of all individuals,and to be of service to others in accordance with the ideals set forth by the school.</li>
+                                                <li>I pledge to abide by all rules and regulations of the school and accept that any money paid to the school <u class="font-weight-bold">IS NOT</u> refundable.</li>
+                                                <li>I accept that the school is not responsible for my private engagements of students outside the confines of the school and should anything happen as a result of my private engagements, the school is not liable.</li>
+                                                <li>I pledge to cultivate good social relationships; treating others as I would have myself treated, refrain from lies, lesbianism, gaysm, immoral and illegal activities contrary to the rules of engagement set forth by the institution.</li>
+                                                <li>I pledge to study all the courses mounted by the school which I will be registered for, and will sit for all examinations prescribed by the school. If I fail to abide by this, the school should take any action it deems fit.</li>
+                                            </ol>
+                                            <h3>DECLARATION</h3>
+                                            <p>I hereby declare that the above information provided by me, is to the best of my knowledge,correct and complete. I certify that I have read all application instructions and that the information and supporting documents I have provided are true and complete. I understand that incomplete information will delay the application process and I accept that the incomplete information will render my application invalid.</p>
+                                            <small class="mb-2">NB: Select "YES" this box if you are truly done filling the form.</small>
+                                            <select class="form-control" name="form_complete" id="form_complete" required>
+                                                <option value="{{ $forms->form_complete }}">You selected: {{ $forms->form_complete }}</option>
+                                                <option value="">Select Option</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

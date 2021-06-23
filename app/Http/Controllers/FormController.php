@@ -238,6 +238,7 @@ class FormController extends Controller
         $form->two_referee_email = $request['two_referee_email'];
         $form->two_referee_occupation = $request['two_referee_occupation'];
         $form->two_referee_address = $request['two_referee_address'];
+        $form->form_complete = $request['form_complete'];
         $form->passport_photo = $updatedImageName;
         $form->certificate_upload = $updatedFileName;
 
