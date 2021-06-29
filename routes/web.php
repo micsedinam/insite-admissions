@@ -40,11 +40,11 @@ Auth::routes();
 //Normal User routes
 Route::get('/verify', 'VerifyTransactionController@verify')->name('verify');
 
-Route::group(['prefix' => 'user', 'middleware' => 'is_admin'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/home', 'HomeController@index')->name('user.home');
 
     Route::get('/payment', function () {
-        return view('applicant.home');
+        return view('applicant.pay');
     })->name('payment');
     Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
     Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
