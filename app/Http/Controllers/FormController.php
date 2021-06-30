@@ -59,8 +59,8 @@ class FormController extends Controller
 
             $request->validate(
                 [
-                'passport_photo' => 'required|mimes:jpg,png,jpeg|max:5048',
-                'certificate_upload' => 'required|mimes:pdf|max:20480'
+                'passport_photo' => 'required|mimes:jpg,png,jpeg|max:1999',
+                'certificate_upload' => 'required|mimes:pdf|max:1999'
                 ]
             );
 
@@ -172,8 +172,8 @@ class FormController extends Controller
 
         $request->validate(
             [
-            'passport_photo' => 'required|mimes:jpg,png,jpeg|max:5048',
-            'certificate_upload' => 'required|mimes:pdf|max:20480'
+            'passport_photo' => 'required|mimes:jpg,png,jpeg|max:1999',
+            'certificate_upload' => 'required|mimes:pdf,jpg,png,jpeg|max:1999'
             ]
         );
 

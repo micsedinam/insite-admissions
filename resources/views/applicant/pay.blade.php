@@ -11,8 +11,8 @@
                   <div class="">
                     <div class="">
                       <img class="col-md-8 offset-md-2 mb-2" src="{{asset('img/insite-logo-black-text.png')}}" alt="IMC Logo">
-                      <h2 class="col-md-12 text-info">
-                        BUY ADMISSION FORM & PAY ADMISSION FEES
+                      <h2 class="col-md-8 offset-md-2 text-info">
+                        BUY ADMISSION FORM
                       </h2>
                     </div>
                       
@@ -56,7 +56,7 @@
         firstname: document.getElementById("first-name").value,
         lastname: document.getElementById("last-name").value,
         phone: document.getElementById("phone").value,
-        amount: 450 * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+        amount: 100 * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
         currency: 'GHS', // Use GHS for Ghana Cedis or USD for US Dollars
         ref: 'IMC'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         // label: "Optional string that replaces customer email"

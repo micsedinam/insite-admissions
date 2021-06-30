@@ -20,7 +20,7 @@
 
                         <div class="wizard-header text-center">
                             <h3 class="wizard-title bold">INSITE MEDIA COLLEGE APPLICATION FORM</h3>
-                            <p class="category text-red">You are required to fill out all fields in this form.</p>
+                            <p class="category" style="color: #ffffff"><strong>You are required to fill out all fields in this form.</strong></p>
                         </div>
 
                         <div class="wizard-navigation">
@@ -88,7 +88,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label" for="othername">Other Names</label>
-                                            <input class="form-control" type="text" id="othername" name="othername" required/>
+                                            <input class="form-control" type="text" id="othername" name="othername"/>
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="control-label" for="challenge">If yes, kindly describe</label>
-                                            <input class="form-control" type="text" id="challenge" name="challenge" required/>
+                                            <input class="form-control" type="text" id="challenge" name="challenge"/>
                                         </div>
                                     </div>
                                 </div>
@@ -269,7 +269,7 @@
                                             <select class="form-control" name="lecture_period" id="lecture_period" required>
                                                 <option value="">Select Period</option>
                                                 <option value="Weekday">Weekday</option>
-                                                <option value="Weekend">Weekend</option>
+                                                {{-- <option value="Weekend">Weekend</option> --}}
                                             </select>
                                         </div>
                                     </div>
@@ -306,7 +306,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label class="control-label" for="certificate_upload">Upload Certificate</label>
+                                            <label class="control-label" for="certificate_upload">Upload Certificate <small>(Allowed file types: pdf,jpg,png,jpeg) Max file size: 1.8MB</small></label>
                                             <input type="file" class="form-control" name="certificate_upload" id="certificate_upload" required>
                                         </div>
                                     </div>
@@ -390,7 +390,7 @@
                                             </ol>
                                             <h3>DECLARATION</h3>
                                             <p>I hereby declare that the above information provided by me, is to the best of my knowledge,correct and complete. I certify that I have read all application instructions and that the information and supporting documents I have provided are true and complete. I understand that incomplete information will delay the application process and I accept that the incomplete information will render my application invalid.</p>
-                                            <small class="mb-2">NB: Select "YES" this box if you are truly done filling the form.</small>
+                                            <small class="mb-2">NB: Select "YES" if you are truly done filling the form.</small>
                                             <select class="form-control" name="form_complete" id="form_complete" required>
                                                 <option value="">Select Option</option>
                                                 <option value="Yes">Yes</option>
@@ -404,7 +404,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
-                                <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finish' />
+                                <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Submit' />
                             </div>
 
                             <div class="pull-left">

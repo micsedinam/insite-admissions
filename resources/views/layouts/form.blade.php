@@ -51,7 +51,8 @@
 
         <div class="footer">
             <div class="container text-center">
-                Made with <i class="fa fa-heart heart"></i> by <a href="http://titconsult.tech">Trend IT Consult | Theme: Creative Tim</a>
+                {{-- Made with <i class="fa fa-heart heart"></i> by <a href="http://titconsult.tech">Trend IT Consult | Theme: Creative Tim</a> --}}
+				<strong>A Dream Fulfilled!</strong>
             </div>
         </div>
 	</div>
