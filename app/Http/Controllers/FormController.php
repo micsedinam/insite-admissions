@@ -55,73 +55,83 @@ class FormController extends Controller
         // if (Auth::id() === $id) {
         //     return response()->json(['Error'=>'You have already filled this form']);
         // } else {
-            //proceed to validate uploads and save form content
+        //proceed to validate uploads and save form content
 
-            $request->validate(
-                [
-                'passport_photo' => 'required|mimes:jpg,png,jpeg|max:1999',
-                'certificate_upload' => 'required|mimes:pdf|max:1999'
-                ]
-            );
+        $request->validate(
+            [
+            'passport_photo' => 'required|mimes:jpg,png,jpeg|max:1999',
+            'certificate_upload' => 'required|mimes:pdf,jpg,png,jpeg|max:1999'
+            ]
+        );
 
+        if ($request->hasFile('passport_photo')) {
             // saving the image
             $newImageName = time() .'-'. $request->firstname . '-' . $request->lastname . '-'. 'Passport' . '.' . $request->passport_photo->extension();
 
             //dd($newImageName);
 
             $request->passport_photo->move(public_path('image_uploads'), $newImageName);
-            
+        }
+
+        if ($request->hasFile('certificate_upload')) {
             // saving the document
             $newFileName = time() .'-'. $request->firstname . '-' . $request->lastname . '-'. 'Certificate' . '.' . $request->certificate_upload->extension();
 
+            //dd($newFileName);
+
             $request->certificate_upload->move(public_path('document_uploads'), $newFileName);
+        }
+        
+        
 
-            //dd($request->all());
+        //dd($request->all());
 
-            $form = Form::create(
-                [
-                'user_id' => Auth::id(),
-                'firstname' => $request['firstname'],
-                'othername' => $request['othername'],
-                'lastname' => $request['lastname'],
-                'dob' => $request['dob'],
-                'phone' => $request['phone'],
-                'email' => $request['email'],
-                'post_address' => $request['post_address'],
-                'gender' => $request['gender'],
-                'country' => $request['country'],
-                'nationality' => $request['nationality'],
-                'marital_status' => $request['marital_status'],
-                'children' => $request['children'],
-                'residence' => $request['residence'],
-                'physical_challenge' => $request['physical_challenge'],
-                'challenge' => $request['challenge'],
-                'dept_id' => $request['dept_id'],
-                'prog_id' => $request['prog_id'],
-                'duration' => $request['duration'],
-                'prog_choice' => $request['prog_choice'],
-                'hostel' => $request['hostel'],
-                'instruction_language' => $request['instruction_language'],
-                'lecture_period' => $request['lecture_period'],
-                'school_attended' => $request['school_attended'],
-                'year_started' => $request['year_started'],
-                'year_completed' => $request['year_completed'],
-                'certificate_name' => $request['certificate_name'],
-                'one_referee_name' => $request['one_referee_name'],
-                'one_referee_phone' => $request['one_referee_phone'],
-                'one_referee_email' => $request['one_referee_email'],
-                'one_referee_occupation' => $request['one_referee_occupation'],
-                'one_referee_address' => $request['one_referee_address'],
-                'two_referee_name' => $request['two_referee_name'],
-                'two_referee_phone' => $request['two_referee_phone'],
-                'two_referee_email' => $request['two_referee_email'],
-                'two_referee_occupation' => $request['two_referee_occupation'],
-                'two_referee_address' => $request['two_referee_address'],
-                'form_complete' => $request['form_complete'],
-                'passport_photo' => $newImageName,
-                'certificate_upload' => $newFileName,
-                ]
-            );
+        $form = Form::create(
+            [
+            'user_id' => Auth::id(),
+            'firstname' => $request['firstname'],
+            'othername' => $request['othername'],
+            'lastname' => $request['lastname'],
+            'dob' => $request['dob'],
+            'phone' => $request['phone'],
+            'email' => $request['email'],
+            'post_address' => $request['post_address'],
+            'gender' => $request['gender'],
+            'country' => $request['country'],
+            'nationality' => $request['nationality'],
+            'marital_status' => $request['marital_status'],
+            'children' => $request['children'],
+            'residence' => $request['residence'],
+            'physical_challenge' => $request['physical_challenge'],
+            'challenge' => $request['challenge'],
+            'dept_id' => $request['dept_id'],
+            'prog_id' => $request['prog_id'],
+            'duration' => $request['duration'],
+            'prog_choice' => $request['prog_choice'],
+            'hostel' => $request['hostel'],
+            'instruction_language' => $request['instruction_language'],
+            'lecture_period' => $request['lecture_period'],
+            'school_attended' => $request['school_attended'],
+            'year_started' => $request['year_started'],
+            'year_completed' => $request['year_completed'],
+            'certificate_name' => $request['certificate_name'],
+            'one_referee_name' => $request['one_referee_name'],
+            'one_referee_phone' => $request['one_referee_phone'],
+            'one_referee_email' => $request['one_referee_email'],
+            'one_referee_occupation' => $request['one_referee_occupation'],
+            'one_referee_address' => $request['one_referee_address'],
+            'two_referee_name' => $request['two_referee_name'],
+            'two_referee_phone' => $request['two_referee_phone'],
+            'two_referee_email' => $request['two_referee_email'],
+            'two_referee_occupation' => $request['two_referee_occupation'],
+            'two_referee_address' => $request['two_referee_address'],
+            'form_complete' => $request['form_complete'],
+            'passport_photo' => $newImageName,
+            'certificate_upload' => $newFileName,
+            ]
+        );
+
+        //dd($form);
 
         if ($form->save()) {
             alert()->success($request['firstname'].' '.$request['lastname'].' successfully saved.', 'Awesome')->persistent("Close this");
@@ -129,7 +139,7 @@ class FormController extends Controller
             alert()->error($request['firstname'].' '.$request['lastname'].' not saved.')->persistent("Close this");
         }
     
-        return view('home');
+        return view('applicant.home');
     }
 
     public function showApplicantForm()
@@ -166,8 +176,6 @@ class FormController extends Controller
 
     public function update(Request $request, $id) { 
 
-        //dd($request->all());
-
         //proceed to validate uploads and save form content
 
         $request->validate(
@@ -177,30 +185,28 @@ class FormController extends Controller
             ]
         );
 
-        // saving the image
-        $updatedImageName = time() .'-'. $request->firstname . '-' . $request->lastname . '-'. 'Passport' . '.' . $request->passport_photo->extension();
+        dd($request->all());
 
-        //dd($updatedImageName);
-        $request->passport_photo->move(public_path('image_uploads'), $updatedImageName);
-            
+        if ($request->hasFile('passport_photo')) {
+            // saving the image
+            $updatedImageName = time() .'-'. $request->firstname . '-' . $request->lastname . '-'. 'Passport' . '.' . $request->passport_photo->extension();
+
+            //dd($updatedImageName);
+            $request->passport_photo->move(public_path('image_uploads'), $updatedImageName);
+        }
+        
+        if ($request->hasFile('certificate_upload')) {
             // saving the document
-        if ($request->certificate_upload == "") {
-            //dd($request->all());
-        } else {
             $updatedFileName = time() .'-'. $request->firstname . '-' . $request->lastname . '-'. 'Certificate' . '.' . $request->certificate_upload->extension();
 
-            $request->certificate_upload->move(public_path('document_uploads'), $updatedFileName);
-
             //dd($updatedFileName);
-        }
+            $request->certificate_upload->move(public_path('document_uploads'), $updatedFileName);
+        }    
             
-            
-
-        //dd($request->all());
+        dd($request->all());
 
         $form = Form::findOrFail($id);
 
-        
         $form->user_id = Auth::id();
         $form->firstname = $request['firstname'];
         $form->lastname = $request['lastname'];
@@ -239,10 +245,15 @@ class FormController extends Controller
         $form->two_referee_occupation = $request['two_referee_occupation'];
         $form->two_referee_address = $request['two_referee_address'];
         $form->form_complete = $request['form_complete'];
-        $form->passport_photo = $updatedImageName;
-        $form->certificate_upload = $updatedFileName;
+        if ($request->hasFile('passport_photo')) {
+            $form->passport_photo = $updatedImageName;
+        }
+        if ($request->hasFile('certificate_upload')) {
+            $form->certificate_upload = $updatedFileName;
+        }
+        
 
-        //dd($request->all());
+        dd($form);
 
         if ($form->update()) {
             alert()->success($request['firstname'].' '.$request['lastname'].' successfully updated.', 'Awesome')->persistent("Close this");
@@ -250,6 +261,6 @@ class FormController extends Controller
             alert()->error($request['firstname'].' '.$request['lastname'].' not saved.')->persistent("Close this");
         }
     
-        return view('/home', compact('form'));
+        return view('applicant.home', compact('form'));
     }
 }

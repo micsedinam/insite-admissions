@@ -69,7 +69,7 @@
                                     <div class="col-sm-5 col-sm-offset-1">
                                         <div class="picture-container">
                                             <div class="picture form-group">
-                                                <img src="../assets/img/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                <img src=".../assets/img/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title=""/>
                                                 <input type="file" id="passport_photo" name="passport_photo" required>
                                             </div>
                                             <h6>Upload Passport Picture</h6>
@@ -404,7 +404,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
-                                <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Submit' />
+                                <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Submit' />
                             </div>
 
                             <div class="pull-left">

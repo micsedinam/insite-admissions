@@ -67,40 +67,40 @@
                                     <div class="col-sm-5 col-sm-offset-1">
                                         <div class="picture-container">
                                             <div class="picture form-group">
-                                                <img src="{{asset('image_uploads/'.$forms->passport_photo)}}" class="picture-src" id="wizardPicturePreview" title="" />
-                                                <input type="file" id="passport_photo" name="passport_photo" required>
+                                                <img src="{{asset('image_uploads/'.$forms->passport_photo)}}" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                <input type="file" id="passport_photo" name="passport_photo" value="{{$forms->passport_photo}}">
                                             </div>
                                             <h6>Upload Passport Picture</h6>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>First Name <small>(required)</small></label>
-                                            <input class="form-control" type="text" id="firstname" name="firstname" value="{{ $forms->firstname }}"/>
+                                            <label>First Name</label>
+                                            <input class="form-control" type="text" id="firstname" name="firstname" value="{{$forms->firstname}}"/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Last Name <small>(required)</small></label>
-                                            <input class="form-control" type="text" id="lastname" name="lastname" value=" {{ $forms->lastname }}"/>
+                                            <label>Last Name</label>
+                                            <input class="form-control" type="text" id="lastname" name="lastname" value=" {{$forms->lastname}}"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label" for="othername">Other Names</label>
-                                            <input class="form-control" type="text" id="othername" name="othername" value="{{ $forms->othername }}"/>
+                                            <input class="form-control" type="text" id="othername" name="othername" value="{{$forms->othername}}"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="phone">Phone Number <small>(required)</small></label>
-                                            <input class="form-control" type="number" id="phone" name="phone" value="{{ $forms->phone}}"/>
+                                            <label class="control-label" for="phone">Phone Number</label>
+                                            <input class="form-control" type="number" id="phone" name="phone" value="{{$forms->phone}}"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Email <small>(required)</small></label>
-                                            <input name="email" type="email" class="form-control" id="email" value="{{ $forms->email}}">
+                                            <label>Email</label>
+                                            <input name="email" type="email" class="form-control" id="email" value="{{$forms->email}}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                         <div class="input-group">
                                             <div class="form-group">
                                                 <label class="control-label" for="dob">Date of Birth</label>
-                                                <input class="form-control" type="date" id="dob" name="dob" value="{{ $forms->dob}}"/>
+                                                <input class="form-control" type="date" id="dob" name="dob" value="{{$forms->dob}}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                                         <div class="input-group">
                                             <div class="form-group">
                                                 <label class="control-label" for="country">Country</label>
-                                                <input type="text" class="form-control" name="country" id="country" value="{{ $forms->country }}">
+                                                <input type="text" class="form-control" name="country" id="country" value="{{$forms->country}}">
                                             </div>
                                         </div>
                                     </div>
@@ -274,7 +274,6 @@
                                                 <option value="{{$forms->lecture_period}}">You selected: {{$forms->lecture_period}}</option>
                                                 <option value="">Select Period</option>
                                                 <option value="Weekday">Weekday</option>
-                                                <option value="Weekend">Weekend</option>
                                             </select>
                                         </div>
                                     </div>
@@ -312,7 +311,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="control-label" for="certificate_upload">Upload Certificate</label>
-                                            <input type="file" class="form-control" name="certificate_upload" id="certificate_upload" value="{{$forms->certificate_upload}}" />
+                                            <input type="file" class="form-control" name="certificate_upload" id="certificate_upload" value="{{ $forms->certificate_upload }}" />
                                             <a href="{{asset('document_uploads/'.$forms->certificate_upload)}}" style="color: white" target="_blank">Find your uploaded here</a>
                                         </div>
                                     </div>
@@ -326,7 +325,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label" for="one_referee_name">1st Referee Name</label>
-                                            <input class="form-control" type="text" name="one_referee_name" id="one_referee_name" value="{{$forms->one_referee_name}}"/>
+                                            <input class="form-control" type="text" name="one_referee_name" id="one_referee_name" value="{{ $forms->one_referee_name }}"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -411,7 +410,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
-                                <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Update' />
+                                <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Update' />
                             </div>
 
                             <div class="pull-left">

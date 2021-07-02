@@ -56,9 +56,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('show', 'FormController@showApplicantForm')->name('application.show');
     Route::get('/showProgrammes', ['as' => 'showProgrammes', 'uses' => 'FormController@showProgramme']);
     
-
-    
-
 });
 
 
