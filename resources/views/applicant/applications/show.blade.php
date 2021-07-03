@@ -29,7 +29,12 @@
                                         <p class="card-text">
                                             
                                         </p>
-                                        <a href="{{ url('user/applicant/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block">View & Edit</a>
+                                        @if ($item->form_complete == "Yes")
+                                            <p style="font-size: 15px; font-weight: 600;" class="text-center btn btn-outline-info">Contact Admin for Application Status</p>
+                                        @else
+                                            <a href="{{ url('user/applicant/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block">View & Edit</a>
+                                        @endif
+                                        
                                     </div>
                                 </div>
                             </div>
