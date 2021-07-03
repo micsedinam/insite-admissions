@@ -38,10 +38,10 @@ Route::get('/auth', function () {
 Auth::routes();
 
 //Normal User routes
-Route::get('/verify', 'VerifyTransactionController@verify')->name('verify');
+Route::get('/verify', 'VerifyTransactionController@verify')->name('verify')->middleware('auth');
 
-Route::group(['prefix' => 'user'], function () {
-    Route::get('/home', 'HomeController@index')->name('user.home');
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
+    Route::get('home', 'HomeController@index')->name('user.home');
 
     Route::get('/payment', function () {
         return view('applicant.pay');
