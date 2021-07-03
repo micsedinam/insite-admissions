@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="alert alert-danger" role="alert">
-                Be sure to re-upload <strong>passport photo</strong> and <strong>certificate</strong> anytime you edit your applications. Else your updates won't go through.
+                Be sure to select <strong>department</strong> and <strong>programme</strong> anytime you edit your applications. Else your updates won't go through.
             </div>
             <div class="card">
                 <div class="card-header">My Applications</div>

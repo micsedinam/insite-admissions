@@ -204,7 +204,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label" for="dept_id">Department <small>(Click here to select)</small></label>
-                                            <select class="form-control" name="dept_id" id="department_id_append_update" >
+                                            <select class="form-control" name="dept_id" id="department_id_append_update" required>
                                                 {{-- <option value="{{ $updates->dept_name }}">You selected {{ $updates->dept_name }}</option> --}}
                                                 <option value="">Select Department</option>
                                                 @foreach ($department as $d)
@@ -216,7 +216,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label" for="prog_id">Programme <small>(Click here to select)</small></label>
-                                            <select class="form-control" name="prog_id" id="programme_id_append_update" >
+                                            <select class="form-control" name="prog_id" id="programme_id_append_update" required>
                                                 <option value="">Select Department First</option>
                                             </select>
                                         </div>
@@ -229,7 +229,7 @@
                                             <select class="form-control" name="duration" id="duration" >
                                                 <option value="{{$forms->duration}}">You selected: {{$forms->duration}}</option>
                                                 <option value="">Select Duration</option>
-                                                <option value="Diploma">2 year Diploma</option>
+                                                <option value="Diploma">2 years Diploma</option>
                                                 <option value="Certificate">1 year Certificate</option>
                                                 <option value="Proficiency">Proficiency</option>
                                             </select>

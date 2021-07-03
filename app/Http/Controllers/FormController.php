@@ -176,16 +176,17 @@ class FormController extends Controller
 
     public function update(Request $request, $id) { 
 
+        //dd($request->all());
         //proceed to validate uploads and save form content
 
         $request->validate(
             [
-            'passport_photo' => 'required|mimes:jpg,png,jpeg|max:1999',
-            'certificate_upload' => 'required|mimes:pdf,jpg,png,jpeg|max:1999'
+            'passport_photo' => 'mimes:jpg,png,jpeg|max:1999',
+            'certificate_upload' => 'mimes:pdf,jpg,png,jpeg|max:1999'
             ]
         );
 
-        dd($request->all());
+        //dd($request->all());
 
         if ($request->hasFile('passport_photo')) {
             // saving the image
@@ -203,7 +204,7 @@ class FormController extends Controller
             $request->certificate_upload->move(public_path('document_uploads'), $updatedFileName);
         }    
             
-        dd($request->all());
+        //dd($request->all());
 
         $form = Form::findOrFail($id);
 
@@ -253,7 +254,7 @@ class FormController extends Controller
         }
         
 
-        dd($form);
+        //dd($form);
 
         if ($form->update()) {
             alert()->success($request['firstname'].' '.$request['lastname'].' successfully updated.', 'Awesome')->persistent("Close this");
