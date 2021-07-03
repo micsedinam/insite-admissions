@@ -30,7 +30,7 @@
                                             
                                         </p>
                                         @if ($item->form_complete == "Yes")
-                                            <p style="font-size: 15px; font-weight: 600;" class="text-center btn btn-outline-info">Contact Admin for Application Status</p>
+                                            <p style="font-size: 15px;" class="text-center alert alert-info">Contact Admin for Application Status</p>
                                         @else
                                             <a href="{{ url('user/applicant/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block">View & Edit</a>
                                         @endif
