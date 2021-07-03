@@ -11,6 +11,9 @@
                 <div class="card-body">
                     <div class="col-md-10 offset-md-1">
                         <div class="row align-items-center">
+                            {{-- <div class="col-md-12 alert alert-info text-center">
+                                Current Status: {{ $review->status }}
+                            </div> --}}
                             <img class="col-md-4 h-25 w-25" src="{{asset('image_uploads/'.$forms->passport_photo)}}" alt="Passport Photo of {{$forms->lastname}}">
                             <div class="col-md-8">
                                 <h3 class="text-info"><strong>{{$forms->firstname." ".$forms->lastname." ".$forms->othername}}</strong></h3>

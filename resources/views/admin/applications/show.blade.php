@@ -20,7 +20,7 @@
                                             {{$item->firstname. ' ' .$item->lastname}}
                                         </a>
                                     </h5>
-                                    {{-- <label class="badge bg-info" for="status">Current Status: </label> --}}
+                                    {{-- <label class="badge bg-info" for="status">Current Status: {{$review[0]->status}} </label> --}}
                                     <p class="text-muted font-weight-light" style="font-size: 10px" >Submitted by: {{$item->name}}</p>
                                     <a href="{{ url('admin/applications/view/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block" style="font-size: 15px">Review Application</a>
                                 </div>

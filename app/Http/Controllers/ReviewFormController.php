@@ -27,14 +27,14 @@ class ReviewFormController extends Controller
             ->latest()
             ->paginate(8);
 
-        // $review = DB::table('review_forms')
-        //     ->join('users', 'review_forms.user_id', '=', 'users.id')
-        //     ->select('users.name')
-        //     ->get();
+        $review = DB::table('review_forms')
+            ->join('forms', 'review_forms.form_id', '=', 'forms.form_id')
+            ->select('review_forms.status')
+            ->get();
 
-        //dd($show);
+        //dd($review);
 
-        return view('admin.applications.show', compact('show'));
+        return view('admin.applications.show', compact('show', 'review'));
     }
 
     /**
@@ -54,10 +54,16 @@ class ReviewFormController extends Controller
             ->select('departments.dept_name', 'programmes.prog_name')
             ->first();
 
+        $review = DB::table('review_forms')
+            ->join('forms', 'review_forms.form_id', '=', 'forms.form_id')
+            ->select('review_forms.status')
+            ->get();
+
+        //dd($review);
 
         //dd($updates);
 
-        return view('admin.applications.review', compact('forms', 'department', 'programme', 'view'));
+        return view('admin.applications.review', compact('forms', 'department', 'programme', 'view', 'review'));
     }
 
     /**
