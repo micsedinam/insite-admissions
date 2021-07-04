@@ -185,7 +185,7 @@
                     </div>
 
                     <div class="col-md-8 offset-md-2">
-                        <form id="frm-create-status" action="{{route('admin.applications.store')}}" method="post">
+                        <form id="frm-create-status" action="{{ url('admin/applications/status/'.$forms->form_id) }}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <input type="hidden" name="form_id" value="{{ $forms->form_id }}">
@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-primary mt-4">Change Status</button>
+                                        <button type="submit" class="btn btn-outline-primary mt-4">Review Status</button>
                                     </div>
                                 </div>
                             </div>

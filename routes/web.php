@@ -81,10 +81,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 
     Route::get('/applications', 'ReviewFormController@index')->name('admin.applications.show');
     Route::get('/applications/view/{id}', 'ReviewFormController@create')->name('admin.applications.view');
-    Route::post('/applications/status', 'ReviewFormController@store')->name('admin.applications.store');
+    Route::post('/applications/status/{id}', 'ReviewFormController@status')->name('admin.applications.store');
     Route::get('/status/change', 'ReviewFormController@applicationStatus')->name('status.change');
-    Route::get('/status/edit', 'ReviewFormController@edit')->name('status.edit');
-    Route::post('/status/update', 'ReviewFormController@update')->name('status.update');
+    Route::get('/status/edit/{id}', 'ReviewFormController@edit')->name('status.edit');
+    Route::post('/status/update/{id}', 'ReviewFormController@update')->name('status.update');
 
 });
 
@@ -92,11 +92,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-Route::get('/test', 'testController@index')->name('test');
-Route::post('/create', 'testController@create')->name('create');
+// Route::get('/test', 'testController@index')->name('test');
+// Route::post('/create', 'testController@create')->name('create');
 
 

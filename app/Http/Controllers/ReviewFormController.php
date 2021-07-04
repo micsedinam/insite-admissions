@@ -23,18 +23,20 @@ class ReviewFormController extends Controller
             ->join('departments', 'forms.dept_id', '=', 'departments.id')
             ->join('programmes', 'forms.prog_id', '=', 'programmes.id')
             ->where('forms.form_complete', '=', 'Yes')
+            ->where('forms.review_status', '=', null)
             ->select('forms.*', 'departments.dept_name', 'programmes.prog_name', 'users.name')
             ->latest()
             ->paginate(8);
 
-        $review = DB::table('review_forms')
-            ->join('forms', 'review_forms.form_id', '=', 'forms.form_id')
-            ->select('review_forms.status')
-            ->get();
+        // $review = DB::table('review_forms')
+        //     ->join('forms', 'review_forms.form_id', '=', 'forms.form_id')
+        //     ->select('review_forms.*', 'forms.*')
+        //     ->paginate(8);
 
         //dd($review);
+        //dd($show);
 
-        return view('admin.applications.show', compact('show', 'review'));
+        return view('admin.applications.show', compact('show'));
     }
 
     /**
@@ -72,14 +74,23 @@ class ReviewFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function status(Request $request, $id)
     {
+
+        //dd($request->all());
+
         $this->validate($request, [
             'status' => 'required',
             'form_id' => 'required|unique:review_forms'],
             ['status.required'=>'You need to choose an option.',
                 'form_id.unique'=>"This entry already exists! Check 'Status Update tab' to make a change."]
         );
+
+        //dd($request->all());
+
+        $form_status = Form::findOrFail($id);
+        $form_status->review_status = $request['status'];
+        $form_status->save();
 
         if ($request->ajax()) {
             return response()->json(ReviewForm::create($request->all()));
@@ -105,11 +116,15 @@ class ReviewFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        if ($request->ajax()) {
+        $review = ReviewForm::findOrFail($id);
+
+        /* if ($request->ajax()) {
             return response(ReviewForm::find($request->id));
-        }
+        } */
+
+        return view('admin.applications.status-edit', compact('review'));
     }
 
     /**
@@ -119,15 +134,38 @@ class ReviewFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        //dd($request->all());
         $this->validate($request,[
             'status.required'=>'You need to select an option',
             ]
         );
-        if ($request->ajax()) {
-            return response(ReviewForm::updateOrCreate(['id'=>$request->status_id], $request->all()));
+
+        //dd($request->all());
+
+        $form_status = Form::findOrFail($request['form_id']);
+        $form_status->review_status = $request['status'];
+
+        if ($form_status->update()) {
+            //dd($request->all());
+            $review = ReviewForm::findOrFail($id);
+            $review->user_id = $request['user_id'];
+            $review->form_id = $request['form_id'];
+            $review->status = $request['status'];
+            $review->update();
+            
+            alert()->success($request['status'].' successfully saved.', 'Awesome')->persistent("Close this");
+        } else {
+            alert()->error($request['status'].' not saved.')->persistent("Close this");
         }
+    
+        return view('admin.applications.status-edit', compact('review'));
+        
+
+        /* if ($request->ajax()) {
+            return response(ReviewForm::updateOrCreate(['id'=>$request->status_id], $request->all()));
+        } */
     }
 
     /**
@@ -149,8 +187,10 @@ class ReviewFormController extends Controller
             ->latest()
             ->get();
 
+        $forms = DB::table('forms')->get();
+
         //dd($status);
 
-        return view('admin.applications.status', compact('status'));
+        return view('admin.applications.status', compact('status', 'forms'));
     }
 }

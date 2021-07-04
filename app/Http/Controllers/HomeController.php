@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Form;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -33,7 +35,22 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
-        return view('admin.adminHome');
+        $total_applications = DB::table('forms')
+            ->where('forms.form_complete', '=', 'Yes')
+            ->count();
+
+        $total_reviewed = DB::table('forms')
+            ->where('forms.form_complete', '=', 'Yes')
+            ->where('forms.review_status', '!=', null)
+            ->count();
+
+        $total_yet_reviewed = DB::table('forms')
+            ->where('forms.form_complete', '=', 'Yes')
+            ->where('forms.review_status', '=', null)
+            ->count();
+
+        //dd($total_yet_reviewed);
+        return view('admin.adminHome', compact('total_applications', 'total_reviewed', 'total_yet_reviewed'));
     }
     
 }

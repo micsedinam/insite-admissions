@@ -25,7 +25,7 @@
                                     <td>{{$item->status}}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary edit-status" value="{{$item->id}}"><i class="fa fa-edit" title="Edit" data-toggle="modal" data-target="#showStatus"></i></button>
+                                            <button class="btn btn-primary edit-status" value="{{$item->id}}"><a href="{{ url('admin/status/edit/'.$item->id) }}"><i class="fa fa-edit text-white" title="Edit" data-toggle="modal" data-target="#showStatus"></i></a></button>
                                             {{--<button class="btn btn-danger del-activity" value="{{$a->activity_id}}"><i class="fa fa-window-close" title="Delete"></i></button>--}}
                                         </div>
                                     </td>
@@ -40,7 +40,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="showStatus" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="showStatus" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -50,7 +50,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frm-update-status" action="">
+                <form id="frm-update-status" action="{{ url('admin/status/update/'.$forms->form_id) }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <input type="hidden" id="form_id_edit" name="form_id" value="">
@@ -59,6 +59,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="status">Application Status</label>
+                                {{$item->form_id}}
                                 <select id="status_name_edit" name="status" class="form-control" id="status">
                                     <option value="">Select Option</option>
                                     <option value="Pending">Pending</option>
@@ -77,9 +78,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
-<script type="application/javascript">
+{{-- <script type="application/javascript">
     $(document).on('click', '.edit-status', function (e) {
         $('#showStatus').modal('show');
         var id = $(this).val();
@@ -93,7 +94,8 @@
     $('.btn-update-status').on('click', function (e) {
         e.preventDefault();
         var data = $('#frm-update-status').serialize();
-        $.post("{{route('status.update')}}", data, function (data) {
+        var url = $(this).attr('action');
+        $.post(url, data, function (data) {
             //showKSAInfo(data.name);
             $('#showStatus').modal('hide');
             swal('SUCCESS',
@@ -116,5 +118,5 @@
             });
         });
     });
-</script>
+</script> --}}
 @endsection
