@@ -16,7 +16,7 @@
                       </h2>
                     </div>
                       
-                      <form id="paymentForm" method="POST" action="{{route('create')}}">
+                      <form id="paymentForm" method="POST" action="{{route('payment')}}">
                           <div class="form-group">
                           <label class="" for="first-name">First Name</label>
                           <input class="form-control" type="text" id="first-name" />
