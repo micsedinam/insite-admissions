@@ -51,12 +51,13 @@
     function payWithPaystack(e) {
     e.preventDefault();
     let handler = PaystackPop.setup({
-        key: 'pk_test_10a9a9834d71beefa55ad22603d90ccf143abb1f', // Replace with your public key
+        key: 'pk_live_94fa6f698b2f040da1fa3196fb2483977685634b', // Replace with your public key
+        //key: 'pk_test_10a9a9834d71beefa55ad22603d90ccf143abb1f', // Replace with your public key
         email: document.getElementById("email-address").value,
         firstname: document.getElementById("first-name").value,
         lastname: document.getElementById("last-name").value,
         phone: document.getElementById("phone").value,
-        amount: 100 * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+        amount: 1 * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
         currency: 'GHS', // Use GHS for Ghana Cedis or USD for US Dollars
         ref: 'IMC'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         // label: "Optional string that replaces customer email"

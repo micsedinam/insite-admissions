@@ -18,6 +18,8 @@ class VerifyTransactionController extends Controller
             header("Location:javacript://history.go(-1)");
         }
 
+        //dd($ref);
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -31,7 +33,8 @@ class VerifyTransactionController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
 
-            "Authorization: Bearer sk_test_1e6a5e71a0b1c34ba58b836b0cb098025244d943",
+            "Authorization: Bearer sk_live_678b65baa6d321ca6f6af8bd7fa69fb9211f6526",
+            //"Authorization: Bearer sk_test_1e6a5e71a0b1c34ba58b836b0cb098025244d943",
             "Cache-Control: no-cache",
 
             ),
@@ -54,6 +57,8 @@ class VerifyTransactionController extends Controller
             $result = json_decode($response);
 
         }
+
+        //dd($result);
 
         if ($result->data->status == "success") {
             $status = $result->data->status;
@@ -88,5 +93,25 @@ class VerifyTransactionController extends Controller
         } else {
             header('404');
         } 
+    }
+
+    public function verifyReference(Request $request)
+    {
+        $reference = AdmissionPayments::where(['reference' => $request['reference']])
+            ->first();
+            //dd($reference);
+        if ($reference === null) {
+            $message = "Reference number does not exist!. Start a 'New Application'";
+
+            alert()->error($message, 'Whoops!')->persistent();
+
+            return redirect()->back();
+        }
+
+        if ($reference['reference'] = $request['reference'] && $reference['status'] == 'success') {
+
+            return redirect('user/form');
+
+        }
     }
 }

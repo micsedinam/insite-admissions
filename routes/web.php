@@ -55,6 +55,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('update/{id}', 'FormController@update')->name('form.update');
     Route::get('show', 'FormController@showApplicantForm')->name('application.show');
     Route::get('/showProgrammes', ['as' => 'showProgrammes', 'uses' => 'FormController@showProgramme']);
+
+    Route::post('/accessForm', 'VerifyTransactionController@verifyReference')->name('access.form');
     
 });
 

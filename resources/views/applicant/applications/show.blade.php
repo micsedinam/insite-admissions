@@ -35,7 +35,10 @@
                                             <p style="font-size: 12px;" class="text-center alert alert-danger">Your Application is: <strong>{{$item->review_status}}</strong></p>
                                         @endif
                                     @elseif($item->form_complete == "Yes")
-                                        <p style="font-size: 12px;" class="text-center alert alert-info">Your Application Status will be displayed, when review is done.</p>
+                                        <p style="font-size: 12px;" class="text-center alert alert-info">
+                                            Your Application Status will be displayed, when review is done. <br>
+                                            <strong>NB: Please pay your processing fee of GHC 350 via 0540441833 with your name as reference (Eg. Kwame Minkah) before your form can be processed.</strong>
+                                        </p>
                                     @else
                                         <a href="{{ url('user/applicant/'.$item->form_id) }}" class="btn btn-sm btn-primary btn-block">View & Edit</a>
                                     @endif

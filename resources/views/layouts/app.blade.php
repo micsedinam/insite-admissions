@@ -77,9 +77,21 @@
                         
                     @else
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item px-2"><a class="text-secondary nounderline" href="{{url('user/home')}}">Dashboard</a></li>
-                            <li class="nav-item px-2"><a class="text-secondary text-decoration-none" href="{{url('user/payment')}}">New Application</a></li>
-                            <li class="nav-item px-2"><a class="text-secondary text-decoration-none" href="{{url('user/show')}}">My Applications</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary nounderline" href="{{url('user/home')}}">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary text-decoration-none" href="{{url('user/payment')}}">New Application</a>
+                            </li>
+                            {{-- <li class="nav-item px-2"><a class="text-secondary text-decoration-none" href="{{url('user/show')}}">My Applications</a></li> --}}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false">My Applications</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#accessFormModal">Access Form</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="{{url('user/show')}}">My Applications</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     @endguest
                     
@@ -125,6 +137,38 @@
             @include('flash-message')
 
             @yield('content')
+
+            <!-- Modal -->
+            <div class="modal fade" id="accessFormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Verify Payment Reference</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <form action="{{route('access.form')}}" method="post">
+                                @csrf
+    
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="" for="reference">Payment Reference <small>(You can find it in your email)</small></label>
+                                        <input class="form-control" type="text" id="reference" name="reference" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="col-md-8 offset-md-2 btn btn-primary">Access Form</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+                </div>
+            </div>
         </main>
     </div>
     

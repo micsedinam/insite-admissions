@@ -257,9 +257,9 @@ class FormController extends Controller
         //dd($form);
 
         if ($form->update()) {
-            alert()->success($request['firstname'].' '.$request['lastname'].' successfully updated.', 'Awesome')->persistent("Close this");
+            alert()->success($request['firstname'].' '.$request['lastname'].' is successfully updated.', 'Awesome')->persistent("Close this");
         } else {
-            alert()->error($request['firstname'].' '.$request['lastname'].' not saved.')->persistent("Close this");
+            alert()->error($request['firstname'].' '.$request['lastname'].' is not saved.')->persistent("Close this");
         }
     
         return view('applicant.home', compact('form'));
