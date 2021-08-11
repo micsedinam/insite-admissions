@@ -80,10 +80,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/showProgrammes', 'ProgrammeController@showProgrammeInformation')->name('programme.list');
     Route::get('/programme/edit', 'ProgrammeController@editProg')->name('programme.edit');
     Route::post('/programme/update', 'ProgrammeController@updateProg')->name('programme.update');
+    
+    Route::get('/reviewed/applications', 'ReviewFormController@reviewed')->name('admin.applications.reviewed');
+    Route::get('/reviewed/application/{id}', 'ReviewFormController@showReviewed')->name('admin.applications.show.reviewed');
 
     Route::get('/applications', 'ReviewFormController@index')->name('admin.applications.show');
     Route::get('/applications/view/{id}', 'ReviewFormController@create')->name('admin.applications.view');
     Route::post('/applications/status/{id}', 'ReviewFormController@status')->name('admin.applications.store');
+
     Route::get('/status/change', 'ReviewFormController@applicationStatus')->name('status.change');
     Route::get('/status/edit/{id}', 'ReviewFormController@edit')->name('status.edit');
     Route::post('/status/update/{id}', 'ReviewFormController@update')->name('status.update');

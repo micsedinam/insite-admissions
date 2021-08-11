@@ -193,4 +193,34 @@ class ReviewFormController extends Controller
 
         return view('admin.applications.status', compact('status', 'forms'));
     }
+
+    public function reviewed()
+    {
+        $reviewed = DB::table('forms')
+            ->join('users', 'forms.user_id', '=', 'users.id')
+            ->join('departments', 'forms.dept_id', '=', 'departments.id')
+            ->join('programmes', 'forms.prog_id', '=', 'programmes.id')
+            ->where('forms.form_complete', '=', 'Yes')
+            ->where('forms.review_status', '!=', null)
+            ->select('forms.*', 'departments.dept_name', 'programmes.prog_name', 'users.name')
+            ->latest()
+            ->paginate(8);
+
+        return view('admin.applications.reviewed', compact('reviewed'));
+    }
+
+    public function showReviewed($id)
+    {
+        $forms = Form::findOrFail($id);
+
+        /* $department = Department::all();
+        $programme = Programme::all(); */
+        $view = DB::table('forms')
+            ->join('departments', 'forms.dept_id', '=', 'departments.id')
+            ->join('programmes', 'forms.prog_id', '=', 'programmes.id')
+            ->select('departments.dept_name', 'programmes.prog_name')
+            ->first();
+
+        return view('admin.applications.show_reviewed', compact('forms', 'view'));
+    }
 }

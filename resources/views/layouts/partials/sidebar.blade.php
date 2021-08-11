@@ -38,6 +38,7 @@
                 <h6 class="collapse-header">Admission Details:</h6>
                 <a class="collapse-item" href="{{url('admin/applications')}}">Review Applications</a>
                 <a class="collapse-item" href="{{url('admin/status/change')}}">Status Update</a>
+                <a class="collapse-item" href="{{url('admin/reviewed/applications')}}">Reviewed Applications</a>
             </div>
         </div>
     </li>
