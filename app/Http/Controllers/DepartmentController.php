@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     {
         $this->validate($request, [
             'dept_name' => 'required|min:5|unique:departments'],
-            ['dept_name.required'=>'You need to enter a programme name.',
+            ['dept_name.required'=>'You need to enter a department name.',
                 'dept_name.unique'=>"This entry already exists!"]
         );
 

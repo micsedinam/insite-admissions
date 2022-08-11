@@ -25,9 +25,11 @@ Route::get('/auth', function () {
 //     return view('payment');
 // });
 
-// Route::get('/serial', function () {
-//     return view('applicant.serial');
-// })->name('serial');
+Route::get('/serial', function () {
+    return view('applicant.serial');
+})->name('serial');
+
+Route::post('/create', 'testController@create')->name('create');
 
 // Route::get('/paystack', function () {
 //     return view('paystack-js');
@@ -91,6 +93,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/status/change', 'ReviewFormController@applicationStatus')->name('status.change');
     Route::get('/status/edit/{id}', 'ReviewFormController@edit')->name('status.edit');
     Route::post('/status/update/{id}', 'ReviewFormController@update')->name('status.update');
+
+    Route::get('/generate/code', 'FeePaymentController@index')->name('code.index');
+    Route::post('/addCode', 'FeePaymentController@store')->name('code.store');
+    Route::get('/showCode', 'FeePaymentController@showCodeInformation')->name('code.list');
+    //Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
+    //Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
+
+});
+
+//Continuing Student
+Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
+    Route::get('/home', 'HomeController@studentHome')->name('student.home');
+
+    Route::get('/profile', 'ProfileController@index')->name('student.profile');
+    Route::get('/programmes', 'ProfileController@showProgramme')->name('student.programme');
+    Route::post('/profile/update', 'ProfileController@store')->name('student.profile.update');
+
+    Route::post('/access/course/registration', 'FeePaymentController@verifyFeeCode')->name('access.courses');
 
 });
 

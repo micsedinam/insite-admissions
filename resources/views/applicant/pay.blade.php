@@ -5,8 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                {{-- <div class="card-header">Buy Admission Form & Pay Admission Fees</div> --}}
-
                 <div class="card-body">
                   <div class="">
                     <div class="">
@@ -15,7 +13,6 @@
                         BUY ADMISSION FORM
                       </h2>
                     </div>
-                      
                       <form id="paymentForm" method="POST" action="{{route('payment')}}">
                           <div class="form-group">
                           <label class="" for="first-name">First Name</label>

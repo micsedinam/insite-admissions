@@ -52,5 +52,15 @@ class HomeController extends Controller
         //dd($total_yet_reviewed);
         return view('admin.adminHome', compact('total_applications', 'total_reviewed', 'total_yet_reviewed'));
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function studentHome()
+    {
+        return view('student.home');
+    }
     
 }

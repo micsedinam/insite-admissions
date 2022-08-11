@@ -38,9 +38,9 @@ class testController extends Controller
     protected function create(Request $request)
     {
         function Pin(
-            $length=10
+            $length=6
         ) {
-            $pin = mt_rand(1000000000, 9999999999);
+            $pin = mt_rand(100000, 999999);
             $count = mb_strlen($pin);
             $result = $pin;
     
@@ -65,6 +65,8 @@ class testController extends Controller
         $pin = Pin();
         $serial = Serial();
         $message = 'Pin: '.$pin.' Serial Number: '.$serial;
+
+        dd($pin);
         
         //dd($request->all());
 

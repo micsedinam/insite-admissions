@@ -80,6 +80,22 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
+        Fee Management
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/generate/code')}}">
+            <i class="fas fa-fw fa-money-bill"></i>
+            <span>Generate Fee Code</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         Admin Management
     </div>
 

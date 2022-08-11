@@ -55,6 +55,7 @@ class CreateFormsTable extends Migration
             $table->string('two_referee_occupation');
             $table->string('two_referee_address');
             $table->string('form_complete');
+            $table->string('review_status')->nullable();
             $table->timestamps();
         });
 

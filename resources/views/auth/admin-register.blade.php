@@ -57,7 +57,8 @@
                             <select name="is_admin" id="is_admin" class="form-control @error('password') is-invalid @enderror" required autocomplete="is_admin">
                                 <option value="">Select Option</option>
                                 <option value="1">Admin</option>
-                                <option value="0">User</option>
+                                <option value="2">Continuing Student</option>
+                                <option value="0">Applicant</option>
                             </select>
 
                             @error('is_admin')
