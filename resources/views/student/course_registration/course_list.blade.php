@@ -64,9 +64,9 @@
                             </tbody>
                         </table>
                     </div>
-                    @if(request("export")!=1)
+                    {{-- @if(request("export")!=1)
                         <a class='btn btn-info' href='{{url("student/export/courses?export=1")}}'>Export PDF</a>
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>

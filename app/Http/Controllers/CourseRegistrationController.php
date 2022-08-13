@@ -82,11 +82,12 @@ class CourseRegistrationController extends Controller
         
    
         if($request->get("export")==1){
-           $pdf = Pdf::loadView('student.course_registration.course_list', compact('get_courses', 'total_credit_hours', 'details'))->setOption(['defaultFont' => 'sans-serif']);
+           $pdf = Pdf::loadView('student.course_registration.export', compact('get_courses', 'total_credit_hours', 'details'));
            
-           return $pdf->download('courses.pdf');
+           return $pdf->download(Auth::user()->name.'semester_courses.pdf');
         }
-        return redirect()->back();
+        //return redirect()->back();
+        return view('student.course_registration.export', compact('get_courses', 'total_credit_hours', 'details'));
     }
 
 
