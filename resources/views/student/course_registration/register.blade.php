@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         {{-- <button data-dismiss="modal" class="btn btn-default" type="button">Close</button> --}}
-                        <button class="btn btn-block btn-success col-md-6 offset-md-3" type="submit">Register Courses</button>
+                        <button class="btn btn-block btn-success col-md-6 offset-md-3" type="submit">View Course List</button>
                     </form>
                 </div>
             </div>

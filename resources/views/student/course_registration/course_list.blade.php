@@ -32,30 +32,30 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8">
-                            <h5 class="text-dark">Name: {{$details->name}} </h5>
+                            <h5 class="text-dark"><strong>Name:</strong> {{$details->name}} </h5>
                         </div>
                         <div class="col-md-4">
-                            <h5 class="text-dark">Index Number: {{$details->index_number}}</h5>
+                            <h5 class="text-dark"><strong>Index Number:</strong> {{$details->index_number}}</h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <h5 class="text-dark">Academic Year: 2022/2023 </h5>
+                            <h5 class="text-dark"><strong>Academic Year:</strong> 2022/2023 </h5>
                         </div>
                         <div class="col-md-4">
-                            <h5 class="text-dark">Level: {{$details->level}} </h5>
+                            <h5 class="text-dark"><strong>Level:</strong> {{$details->level}} </h5>
                         </div>
                         <div class="col-md-4">
-                            <h5 class="text-dark">Semester: First</h5>
+                            <h5 class="text-dark"><strong>Semester:</strong> First</h5>
                         </div>
                     </div>
-                    <h5 class="text-dark">Department: {{$details->dept_name}}</h5>
+                    <h5 class="text-dark mb-4"><strong>Department:</strong> {{$details->dept_name}}</h5>
                     <div class="table-responsive">
                         <table class="table table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <th>Course Code</th>
                                 <th>Course Title</th>
-                                <th>Credit Hours</th>
+                                <th width:150px>Credit Hours</th>
                             </thead>
                             <tbody>
                                 @foreach ($get_courses as $course)

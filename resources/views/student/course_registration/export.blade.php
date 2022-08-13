@@ -22,13 +22,23 @@
                 <div class="col-md-10 mb-4">
                     <div class="card border-bottom-warning">
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="text-center">
+                                        <img class="mb-2" src="{{asset('img/insite-logo-black-text.png')}}" alt="IMC Logo">
+                                        {{-- <h2 class="text-primary">INSITE MEDIA COLLEGE</h2> --}}
+                                        <h3 class="text-primary">ACADEMIC AFFAIRS</h3>
+                                        <h6><i class="fa fa-archive"></i> P.O BOX MS 298, MILE 7 - ACCRA | <i class="fa fa-phone-square"></i> +233(0)540441833 / +233(0)302408701</h6>
+                                        <h6 class="text-dark"><i class="fa fa-envelope"></i> insitemediacollege@gmail.com</h6>
+                                        <h6 class="text-dark"><i class="fa fa-globe"></i> insitemediacollege.edu.gh</h6>
+                                    </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <img class="mb-2" src="{{asset('image_uploads/'.$details->profile_photo)}}" width="200px" height="200px" alt="IMC Logo">
+                                </div>
+                            </div>
+
                             <div class="text-center">
-                                <img class="mb-2" src="/img/insite-logo-black-text.png" alt="IMC Logo">
-                                {{-- <h2 class="text-primary">INSITE MEDIA COLLEGE</h2> --}}
-                                <h3 class="text-primary">ACADEMIC AFFAIRS</h3>
-                                <h6><i class="fa fa-archive"></i> P.O BOX MS 298, MILE 7 - ACCRA | <i class="fa fa-phone-square"></i> +233(0)540441833 / +233(0)302408701</h6>
-                                <h6 class="text-dark"><i class="fa fa-envelope"></i> insitemediacollege@gmail.com</h6>
-                                <h6 class="text-dark"><i class="fa fa-globe"></i> insitemediacollege.edu.gh</h6>
                                 <div class="col-md-2 offset-md-8">
                                     <h4 style="background-color: rgb(0, 123, 255); height: 30px; width: 200px; align: center; color: #fff;">DIPLOMA</h4>
                                 </div>
@@ -36,24 +46,24 @@
                             
                             <div class="row">
                                 <div class="col-md-8">
-                                    <h5 class="text-dark">Name: {{$details->name}} </h5>
+                                    <h5 class="text-dark"><strong>Name:</strong> {{$details->name}} </h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5 class="text-dark">Index Number: {{$details->index_number}}</h5>
+                                    <h5 class="text-dark"><strong>Index Number:</strong> {{$details->index_number}}</h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h5 class="text-dark">Academic Year: 2022/2023 </h5>
+                                    <h5 class="text-dark"><strong>Academic Year:</strong> 2022/2023 </h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5 class="text-dark">Level: {{$details->level}} </h5>
+                                    <h5 class="text-dark"><strong>Level:</strong> {{$details->level}} </h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5 class="text-dark">Semester: First</h5>
+                                    <h5 class="text-dark"><strong>Semester:</strong> First</h5>
                                 </div>
                             </div>
-                            <h5 class="text-dark">Department: {{$details->dept_name}}</h5>
+                            <h5 class="text-dark"><strong>Department:</strong> {{$details->dept_name}}</h5>
                             <div class="table-responsive">
                                 <table class="table table-bordered" cellspacing="0" width="100%">
                                     <thead>
