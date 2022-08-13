@@ -9,17 +9,25 @@
         <div class="col-md-10 offset-md-1 mb-4">
             <div class="card border-bottom-warning">
                 <div class="card-body">
-                    <div class="text-center">
-                        <img class="mb-2" src="{{asset('img/insite-logo-black-text.png')}}" alt="">
-                        {{-- <h2 class="text-primary">INSITE MEDIA COLLEGE</h2> --}}
-                        <h3 class="text-primary">ACADEMIC AFFAIRS</h3>
-                        <h6><i class="fa fa-archive"></i> P.O BOX MS 298, MILE 7 - ACCRA | <i class="fa fa-phone-square"></i> +233(0)540441833 / +233(0)302408701</h6>
-                        <h6 class="text-dark"><i class="fa fa-envelope"></i> insitemediacollege@gmail.com</h6>
-                        <h6 class="text-dark"><i class="fa fa-globe"></i> insitemediacollege.edu.gh</h6>
-                        <div class="col-md-2 offset-md-8">
-                            <h4 style="background-color: rgb(0, 123, 255); height: 30px; width: 200px; align: center; color: #fff;">DIPLOMA</h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="text-center">
+                                <img class="mb-2" src="{{asset('img/insite-logo-black-text.png')}}" alt="IMC Logo">
+                                {{-- <h2 class="text-primary">INSITE MEDIA COLLEGE</h2> --}}
+                                <h3 class="text-primary">ACADEMIC AFFAIRS</h3>
+                                <h6><i class="fa fa-archive"></i> P.O BOX MS 298, MILE 7 - ACCRA | <i class="fa fa-phone-square"></i> +233(0)540441833 / +233(0)302408701</h6>
+                                <h6 class="text-dark"><i class="fa fa-envelope"></i> insitemediacollege@gmail.com</h6>
+                                <h6 class="text-dark"><i class="fa fa-globe"></i> insitemediacollege.edu.gh</h6>
+                                <div class="col-md-2 offset-md-8">
+                                    <h4 style="background-color: rgb(0, 123, 255); height: 30px; width: 200px; align: center; color: #fff;">DIPLOMA</h4>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="col-md-4">
+                            <img class="mb-2" src="{{asset('image_uploads/'.$details->profile_photo)}}" width="200px" height="200px" alt="IMC Logo">
                         </div>
                     </div>
+                    
                     
                     <div class="row">
                         <div class="col-md-8">
