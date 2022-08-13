@@ -18,9 +18,6 @@
                                 <h6><i class="fa fa-archive"></i> P.O BOX MS 298, MILE 7 - ACCRA | <i class="fa fa-phone-square"></i> +233(0)540441833 / +233(0)302408701</h6>
                                 <h6 class="text-dark"><i class="fa fa-envelope"></i> insitemediacollege@gmail.com</h6>
                                 <h6 class="text-dark"><i class="fa fa-globe"></i> insitemediacollege.edu.gh</h6>
-                                <div class="col-md-2 offset-md-8">
-                                    <h4 style="background-color: rgb(0, 123, 255); height: 30px; width: 200px; align: center; color: #fff;">DIPLOMA</h4>
-                                </div>
                             </div> 
                         </div>
                         <div class="col-md-4">
@@ -28,7 +25,11 @@
                         </div>
                     </div>
                     
-                    
+                    <div class="text-center">
+                        <div class="col-md-2 offset-md-8">
+                            <h4 style="background-color: rgb(0, 123, 255); height: 30px; width: 200px; align: center; color: #fff;">DIPLOMA</h4>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-8">
                             <h5 class="text-dark">Name: {{$details->name}} </h5>
