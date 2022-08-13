@@ -24,7 +24,7 @@
                         <input type="hidden" name="is_admin" value="0">
 
                         <div class="form-group">
-                            <label for="name" class="col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-form-label text-md-right">{{ __('Fullname') }}</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                             @error('name')
@@ -37,6 +37,21 @@
                         <div class="form-group">
                             <label for="email" class="col-form-label text-md-right">{{ __('Email Address') }}</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="is_admin" class="col-form-label text-md-right">{{ __('Student Type') }}</label>
+                            <select name="is_admin" id="is_admin" class="form-control @error('is_admin') is-invalid @enderror" name="is_admin" value="{{ old('is_admin') }}" required autocomplete="is_admin">
+                                <option value="">Choose</option>
+                                <option value="0">New Applicant</option>
+                                <option value="2">Continuing Student</option>
+                            </select>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">

@@ -18,7 +18,7 @@
                     <p style="color:green" id="success"></p>
 
                     <div class="col-md-4 offset-md-4 mb-4">
-                        <img class="mb-2" height="200px" width="200px" src="{{asset('image_uploads/1619061051-Michael-Tenu-Passport.jpg')}}" alt="">
+                        <img class="mb-2" height="200px" width="200px" src="{{asset('img/profile-photo.jpeg')}}" alt="">
                         <input type="file" name="profile_photo" id="profile_photo">
                     </div>
 

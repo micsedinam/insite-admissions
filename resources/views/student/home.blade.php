@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-12 mb-4">
+        {{-- <div class="col-md-12 mb-4">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card border-left-primary shadow h-100 py-2">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-8">
             <div class="card border-bottom-warning">
                 <div class="card-body text-center">
