@@ -74,6 +74,21 @@
             <span>Programmes</span>
         </a>
     </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Course Management
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/courses')}}">
+            <i class="fas fa-fw fa-archive"></i>
+            <span>Courses</span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

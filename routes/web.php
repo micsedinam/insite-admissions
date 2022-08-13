@@ -76,6 +76,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/showDepartments', 'DepartmentController@showDepartmentInformation')->name('department.list');
     Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
     Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
+    
+    Route::get('/courses', 'CoursesController@index')->name('courses.index');
+    Route::post('/addCourses', 'CoursesController@import')->name('courses.import');
+    Route::get('/showCourses', 'CoursesController@showCourseInformation')->name('courses.list');
+    Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
+    Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
 
     Route::get('/programme', 'ProgrammeController@index')->name('programme.index');
     Route::post('/addProgramme', 'ProgrammeController@store')->name('programme.store');
@@ -111,6 +117,9 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::post('/profile/update', 'ProfileController@store')->name('student.profile.update');
 
     Route::post('/access/course/registration', 'FeePaymentController@verifyFeeCode')->name('access.courses');
+
+    Route::get('/register/courses', 'CourseRegistrationController@index')->name('register.courses');
+    Route::post('/register/course', 'CourseRegistrationController@')->name('register.my.courses');
 
 });
 

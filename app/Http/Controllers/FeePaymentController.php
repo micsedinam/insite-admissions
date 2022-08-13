@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FeePayment;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class FeePaymentController extends Controller
@@ -89,18 +90,37 @@ class FeePaymentController extends Controller
         $feecode= FeePayment::where(['code' => $request['code']])
             ->first();
             //dd($feecode);
+        
         if ($feecode === null) {
-            $message = "Fee verification number does not exist!'";
+            $message = "Fee verification number does not exist! Kindly contact the Administrator.";
 
             alert()->error($message, 'Whoops!')->persistent();
 
             return redirect()->back();
         }
 
-        if ($reference['reference'] = $request['reference'] && $reference['status'] == 'success') {
+        $index_number = Profile::where(['index_number' => $feecode['index_number']])->first();
+        //dd($index_number)
 
-            return redirect('user/form');
+        if ($index_number == null) {
+            $message = "Wrong Information'";
 
+            alert()->error($message, 'Whoops!')->persistent();
+
+            return redirect()->back();
         }
+
+        if ($feecode['code'] = $request['code'] && $feecode['index_number'] == $index_number['index_number']) {
+
+            return redirect('student/register/courses');
+
+        } 
+        // else {
+        //     $message = "Index number doesn't match!'";
+
+        //     alert()->error($message, 'Whoops!')->persistent();
+
+        //     return redirect()->back();
+        // }
     }
 }

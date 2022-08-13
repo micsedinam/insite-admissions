@@ -107,7 +107,7 @@
                     @include('sweet::alert')
                     @include('flash-message')
 
-                    @include('student.course_registration.register')
+                    @include('student.course_registration.verify')
                     @yield('content')
 
                 </div>
