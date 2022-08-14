@@ -46,7 +46,7 @@
                             <h5 class="text-dark"><strong>Level:</strong> {{$details->level}} </h5>
                         </div>
                         <div class="col-md-4">
-                            @if ( $semester == 1)
+                            @if ( $details->semester == 1)
                                 <h5 class="text-dark"><strong>Semester:</strong> First</h5>
                             @else
                                 <h5 class="text-dark"><strong>Semester:</strong> Second</h5>
@@ -60,7 +60,7 @@
                             <input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
                             <input type="hidden" name="index_number" id="index_number" value="{{$details->index_number}}">
                             <input type="hidden" name="level" id="level" value="{{$details->level}}">
-                            <input type="hidden" name="semester" id="semester" value="{{$semester}}">
+                            <input type="hidden" name="semester" id="semester" value="{{$details->semester}}">
                             <label class="text-danger" for="checkbox">Please check all boxes to be able to register courses.</label>
                             <table class="table table-bordered" cellspacing="0" width="100%">
                                 <thead>

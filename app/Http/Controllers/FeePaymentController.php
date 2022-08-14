@@ -112,7 +112,7 @@ class FeePaymentController extends Controller
 
         if ($feecode['code'] = $request['code'] && $feecode['index_number'] == $index_number['index_number']) {
 
-            return redirect('student/register/courses');
+            return redirect('student/view/course/list');
 
         } 
         // else {

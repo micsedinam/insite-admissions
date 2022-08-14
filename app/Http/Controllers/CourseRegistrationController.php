@@ -21,10 +21,10 @@ class CourseRegistrationController extends Controller
     public function getCourses(Request $request)
     {
         //dd($request->all());
-        $semester = $request['semester'];
+        //$semester = $request['semester'];
         //dd($entries);
 
-        $dept = Profile::where('user_id', $request['user_id'])->select('dept_id')->get()->toArray();
+        $profile = Profile::where('user_id', Auth::id())->select('dept_id', 'semester')->first();
         //$level = Profile::where('user_id', $request['user_id'])->select('level')->get()->toArray();
 
         //dd($dept[0]['dept_id']);
@@ -33,8 +33,8 @@ class CourseRegistrationController extends Controller
         $details = DB::table('profiles')
                     ->join('users', 'users.id', '=', 'profiles.user_id')
                     ->join('departments', 'departments.id', '=', 'profiles.dept_id')
-                    ->where('profiles.user_id', $request['user_id'])
-                    ->select('name', 'dept_name', 'profile_photo', 'index_number', 'level')
+                    ->where('profiles.user_id', Auth::id())
+                    ->select('name', 'dept_name', 'profile_photo', 'index_number', 'level', 'semester')
                     ->first();
 
         //dd($details);
@@ -43,9 +43,9 @@ class CourseRegistrationController extends Controller
                     ->join('profiles', 'profiles.level', '=', 'courses.level')
                     ->join('users', 'users.id', '=', 'profiles.user_id')
                     ->join('departments', 'departments.id', '=', 'profiles.dept_id')
-                    ->where('profiles.user_id', $request['user_id'])
-                    ->where('courses.dept_id', $dept[0]['dept_id'])
-                    ->where('courses.semester', $semester)
+                    ->where('profiles.user_id', Auth::id())
+                    ->where('courses.dept_id', $profile->dept_id)
+                    ->where('courses.semester', $profile->semester)
                     ->select('courses.course_code', 'courses.course_title', 'courses.credit_hours')
                     ->get();
 
@@ -53,20 +53,20 @@ class CourseRegistrationController extends Controller
 
         $total_credit_hours = DB::table('courses')
                         ->join('profiles', 'profiles.level', '=', 'courses.level')
-                        ->where('profiles.user_id', $request['user_id'])
-                        ->where('courses.dept_id', $dept[0]['dept_id'])
-                        ->where('courses.semester', $semester)
+                        ->where('profiles.user_id', Auth::id())
+                        ->where('courses.dept_id', $profile->dept_id)
+                        ->where('courses.semester', $profile->semester)
                         ->select('credit_hours')
                         ->sum('credit_hours');
         
 
         //dd($total_credit_hours);
-        return view('student.course_registration.course_list', compact('get_courses', 'total_credit_hours', 'details', 'semester'));
+        return view('student.course_registration.course_list', compact('get_courses', 'total_credit_hours', 'details'));
     }
 
     public function Export(Request $request){
 
-        $dept = Profile::where('user_id', Auth::id())->select('dept_id')->get()->toArray();
+        $profile = Profile::where('user_id', Auth::id())->select('dept_id', 'semester')->first();
 
         $details = DB::table('profiles')
                     ->join('users', 'users.id', '=', 'profiles.user_id')
@@ -80,13 +80,13 @@ class CourseRegistrationController extends Controller
                     ->join('users', 'users.id', '=', 'profiles.user_id')
                     ->join('departments', 'departments.id', '=', 'profiles.dept_id')
                     ->where('profiles.user_id', Auth::id())
-                    ->where('courses.dept_id', $dept[0]['dept_id'])
+                    ->where('courses.dept_id', $profile->dept_id)
                     ->get();
 
         $total_credit_hours = DB::table('courses')
                         ->join('profiles', 'profiles.level', '=', 'courses.level')
                         ->where('profiles.user_id', Auth::id())
-                        ->where('courses.dept_id', $dept[0]['dept_id'])
+                        ->where('courses.dept_id', $profile->dept_id)
                         ->select('credit_hours')
                         ->sum('credit_hours');
         
