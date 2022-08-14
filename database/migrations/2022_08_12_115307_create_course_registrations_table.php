@@ -16,6 +16,8 @@ class CreateCourseRegistrationsTable extends Migration
         Schema::create('course_registrations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('index_number');
+            $table->string('course_code');
             $table->string('level');
             $table->string('semester');
             $table->timestamps();

@@ -46,32 +46,48 @@
                             <h5 class="text-dark"><strong>Level:</strong> {{$details->level}} </h5>
                         </div>
                         <div class="col-md-4">
-                            <h5 class="text-dark"><strong>Semester:</strong> First</h5>
+                            @if ( $semester == 1)
+                                <h5 class="text-dark"><strong>Semester:</strong> First</h5>
+                            @else
+                                <h5 class="text-dark"><strong>Semester:</strong> Second</h5>
+                            @endif
                         </div>
                     </div>
                     <h5 class="text-dark mb-4"><strong>Department:</strong> {{$details->dept_name}}</h5>
                     <div class="table-responsive">
-                        <table class="table table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                                <th>Course Code</th>
-                                <th>Course Title</th>
-                                <th width:150px>Credit Hours</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($get_courses as $course)
+                        <form id="frm-reg-courses" action="{{route('register.courses')}}" method="post">
+                            {{@csrf_field()}}
+                            <input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
+                            <input type="hidden" name="index_number" id="index_number" value="{{$details->index_number}}">
+                            <input type="hidden" name="level" id="level" value="{{$details->level}}">
+                            <input type="hidden" name="semester" id="semester" value="{{$semester}}">
+                            <label class="text-danger" for="checkbox">Please check all boxes to be able to register courses.</label>
+                            <table class="table table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <th></th>
+                                    <th>Course Code</th>
+                                    <th>Course Title</th>
+                                    <th>Credit Hours</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($get_courses as $course)
+                                        <tr>
+                                            <td><input type="checkbox" name="course_code[]" id="{{ $loop->iteration }}" value="{{ $course->course_code }}" required></td>
+                                            <td>{{ $course->course_code }}</td>
+                                            <td>{{ $course->course_title }}</td>
+                                            <td>{{ $course->credit_hours }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td>{{ $course->course_code }}</td>
-                                        <td>{{ $course->course_title }}</td>
-                                        <td>{{ $course->credit_hours }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>Total Credit Hours:</strong></td>
+                                        <td><strong>{{$total_credit_hours}}</strong></td>
                                     </tr>
-                                @endforeach
-                                <tr>
-                                    <td></td>
-                                    <td><strong>Total Credit Hours:</strong></td>
-                                    <td><strong>{{$total_credit_hours}}</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-block btn-success col-md-6 offset-md-3" type="submit">Register Courses</button>
+                        </form>
                     </div>
                     {{-- @if(request("export")!=1)
                         <a class='btn btn-info' href='{{url("student/export/courses?export=1")}}'>Export PDF</a>
@@ -80,4 +96,86 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script type="application/javascript">
+        //showProgrammes();
+
+        $('#frm-reg-courses').on('submit', function (e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            var url = $(this).attr('action');
+            $.post(url, data,function (data) {
+                //showProgrammes(data.id);
+                console.log(data);
+                swal('SUCCESS',
+                    'Your courses have been registered.',
+                    'success');
+                $('#frm-reg-courses').trigger('reset');
+                window.location.href = "/student/home";
+            }).fail(function (data,status,error) {
+                console.log(data);
+                var response = $.parseJSON(data.responseText)
+                var possible_keys = Object.keys(response.errors);
+                possible_keys.forEach((key)=>{
+                    $.each(response.errors[key], function(key, value){
+                        swal({
+                            title: "Ooops!",
+                            text: value,
+                            icon: "error",
+                            color: "#FEFAE3",
+                            button: "OK",
+                        });
+                    });
+                });
+            });
+        });
+
+        // function showProgrammes()
+        // {
+        //     var data = $('#show-pro').serialize();
+        //     console.log(data);
+        //     $.get("{{route('programme.list')}}", data, function (data) {
+        //         $('#add-prog').empty().append(data);
+        //     });
+        // }
+
+        // $(document).on('click', '.edit-prog', function (e) {
+        //     $('#').modal('show');
+        //     var id = $(this).val();
+        //     $.get("{{route('programme.edit')}}", {id:id}, function (data) {
+        //         console.log(data)
+        //         $('#prog_id_edit').val(data.id);
+        //         $('#dept_id_edit').val(data.dept_id);
+        //         $('#prog_name_edit').val(data.prog_name);
+        //     });
+        // });
+
+        /* $('.btn-update-prog').on('click', function (e) {
+            e.preventDefault();
+            var data = $('#frm-update-prog').serialize();
+            $.post("{{route('programme.update')}}", data, function (data) {
+                showProgrammes(data.prog_name);
+                $('#show-prog').modal('hide');
+                swal('SUCCESS',
+                    'Programme updated successfully',
+                    'success');
+            }).fail(function (data,status,error) {
+                console.log(data);
+                var response = $.parseJSON(data.responseText)
+                var possible_keys = Object.keys(response.errors);
+                possible_keys.forEach((key)=>{
+                    $.each(response.errors[key], function(key, value){
+                        swal({
+                            title: "Ooops!",
+                            text: value,
+                            icon: "error",
+                            color: "#FEFAE3",
+                            button: "OK",
+                        });
+                    });
+                });
+            });
+        }); */
+    </script>
 @endsection

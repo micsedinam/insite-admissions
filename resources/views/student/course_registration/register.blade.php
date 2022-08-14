@@ -9,11 +9,11 @@
         <div class="col-md-10">
             <div class="card border-bottom-primary">
                 <div class="card-body">
-                    <form  id="frm-register-courses"  class="form-horizontal" action="{{ route('register.my.courses') }}" method="POST">
+                    <form  id="frm-register-courses"  class="form-horizontal" action="{{ route('course.list') }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" id="" name="user_id" value="{{Auth::id()}}">
                         <div class="row">
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="level">Level</label>
                                     <select class="form-control" name="level" id="">
@@ -22,8 +22,8 @@
                                         <option value="200">200</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div> --}}
+                            <div class="col-md-6 offset-md-3">
                                 <div class="form-group">
                                     <label for="semester">Semester</label>
                                     <select class="form-control" name="semester" id="">

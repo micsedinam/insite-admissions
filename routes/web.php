@@ -119,8 +119,9 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::post('/access/course/registration', 'FeePaymentController@verifyFeeCode')->name('access.courses');
 
     Route::get('/register/courses', 'CourseRegistrationController@index')->name('register.courses');
-    Route::post('/register/course', 'CourseRegistrationController@getCourses')->name('register.my.courses');
+    Route::post('/view/course/list', 'CourseRegistrationController@getCourses')->name('course.list');
     Route::get('/export/courses', 'CourseRegistrationController@Export')->name('export.courses');
+    Route::post('/register/courses', 'CourseRegistrationController@Store')->name('register.courses');
 
 });
 
