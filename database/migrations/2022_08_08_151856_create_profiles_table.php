@@ -19,11 +19,12 @@ class CreateProfilesTable extends Migration
             $table->string('level');
             $table->integer('user_id')->unsigned();
             $table->integer('dept_id')->unsigned();
-            $table->integer('prog_id')->unsigned();
+            //$table->integer('prog_id')->unsigned();
+            $table->string('semester');
             $table->string('profile_photo');
             $table->timestamps();
             $table->foreign('dept_id')->references('id')->on('departments');
-            $table->foreign('prog_id')->references('id')->on('programmes');
+            //$table->foreign('prog_id')->references('id')->on('programmes');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

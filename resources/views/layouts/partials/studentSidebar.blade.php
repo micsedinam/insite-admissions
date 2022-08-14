@@ -30,6 +30,7 @@
     <li class="nav-item">
         <a class="nav-link register-course" href="#">
             <i class="fas fa-fw fa-archive"></i>
+            
             <span>Register Courses</span>
         </a>
     </li>

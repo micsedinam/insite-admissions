@@ -22,7 +22,16 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id', Auth::id())->first();
         //dd($profile);
 
-        return view('student.profile', compact('dept', 'profile'));
+        return view('student.profile.profile', compact('dept'));
+    }
+
+    public function editProfile()
+    {
+        $dept = Department::all();
+
+        $profile = Profile::where('user_id', Auth::id())->first();
+
+        return view('student.profile.edit_profile', compact('profile', 'dept'));
     }
 
     public function showProgramme(Request $request)
@@ -73,7 +82,8 @@ class ProfileController extends Controller
             [
                 'level' => $request['level'],
                 'dept_id' => $request['dept_id'],
-                'prog_id' => $request['prog_id'],
+                //'prog_id' => $request['prog_id'],
+                'semester' => $request['semester'],
                 'index_number' => $request['index_number'],
                 'profile_photo' => $profilephoto,
             ]
@@ -87,7 +97,7 @@ class ProfileController extends Controller
             alert()->error('Something went wrong')->persistent("Close this");
         }
     
-        return redirect()->back();
+        return view('student.profile.edit_profile');
 
     }
 

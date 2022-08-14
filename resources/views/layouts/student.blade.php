@@ -75,10 +75,21 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{route('student.profile')}}">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
+                                
+                                @php $profile = App\Models\Profile::where('user_id', Auth::id())->first(); @endphp
+                                    
+                                @if ($profile == NULL)
+                                    <a class="dropdown-item" href="{{route("student.profile")}}">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                @else
+                                    <a class="dropdown-item" href="{{route("student.edit.profile")}}">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Edit Profile
+                                    </a>
+                                @endif 
+                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

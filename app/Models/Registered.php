@@ -4,17 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Registered extends Model
 {
-    protected $table = 'profiles';
+    protected $table = 'registereds';
     protected $fillable = [
-        'index_number',
-        'level',
-        'dept_id',
-        //'prog_id',
-        'semester',
-        'profile_photo',
         'user_id',
+        'level',
+        'semester',
     ];
     protected $primaryKey = 'id';
     public $timestamps = true;

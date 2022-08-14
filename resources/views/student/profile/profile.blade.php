@@ -14,34 +14,23 @@
             <div class="card-body">
                 <form id="frm-update-profile" action="{{route('student.profile.update')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <p id="message"></p>
-                    <p style="color:green" id="success"></p>
+                    {{-- <p id="message"></p>
+                    <p style="color:green" id="success"></p> --}}
 
                     <div class="col-md-4 offset-md-4 mb-4">
                         <img class="mb-2" height="200px" width="200px" src="{{asset('img/profile-photo.jpeg')}}" alt="">
-                        <input type="file" name="profile_photo" id="profile_photo">
+                        <input type="file" name="profile_photo" id="profile_photo" required>
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-md-6">
                             <label class="control-label" for="index_number">Index Number</label>
-                            <input class="form-control" type="text" name="index_number" id="index_number">
+                            <input class="form-control" type="text" name="index_number" id="index_number" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="control-label" for="level">Level</label>
-                            <select class="form-control" type="text" name="level" id="level">
-                                <option value="">Select Level</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="control-label" for="dept_id">Department <small>(Click here to select)</small></label>
-                                <select class="form-control" name="dept_id" id="department_id_append">
+                                <select class="form-control" name="dept_id" id="department_id_append" required>
                                     <option value="">Select Department</option>
                                     @foreach ($dept as $d)
                                         <option value="{{ $d->id }}"> {{ $d->dept_name }} </option>
@@ -49,17 +38,37 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="control-label" for="level">Level</label>
+                            <select class="form-control" type="text" name="level" id="level" required>
+                                <option value="">Select Level</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                            </select>
+                        </div>
+                        {{-- <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="control-label" for="prog_id">Programme <small>(Click here to select)</small></label>
                                 <select class="form-control" name="prog_id" id="programme_id_append">
                                     <option value="">Select Department First</option>
                                 </select>
                             </div>
+                        </div> --}}
+                        <div class="col-md-6">
+                            <label class="control-label" for="semester">Semester</label>
+                            <select class="form-control" type="text" name="semester" id="semester" required>
+                                <option value="">Select Semester</option>
+                                <option value="1">First</option>
+                                <option value="2">Second</option>
+                            </select>
                         </div>
                     </div>
-                    
-                    <button type="submit" class="btn btn-outline-secondary btn-block">Update</button>
+                    <div class="col-md-6 offset-md-3">
+                        <button type="submit" class="btn btn-secondary btn-block">Create Profile</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -113,6 +113,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::get('/home', 'HomeController@studentHome')->name('student.home');
 
     Route::get('/profile', 'ProfileController@index')->name('student.profile');
+    Route::get('/edit/profile', 'ProfileController@editProfile')->name('student.edit.profile');
     Route::get('/programmes', 'ProfileController@showProgramme')->name('student.programme');
     Route::post('/profile/update', 'ProfileController@store')->name('student.profile.update');
 
@@ -122,6 +123,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::post('/view/course/list', 'CourseRegistrationController@getCourses')->name('course.list');
     Route::get('/export/courses', 'CourseRegistrationController@Export')->name('export.courses');
     Route::post('/register/courses', 'CourseRegistrationController@Store')->name('register.courses');
+    Route::get('/registered', 'CourseRegistrationController@Registered')->name('registered');
 
 });
 
