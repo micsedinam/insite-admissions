@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="antialiased">
+<body class="antialiased" onload="window.print()">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mb-4">
@@ -88,9 +88,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="col-md-4 offset-md-4">
-                                <img class="col-md-4 mb-2" src="{{asset('img/school-stamp.jpg')}}" alt="IMC Logo">
-                            </div>
+                        </div>
+                        <div class="">
+                            <img class="col-md-4 offset-md-4" src="{{asset('img/school-stamped.png')}}" alt="IMC Logo">
                         </div>
                     </div>
                 </div>
