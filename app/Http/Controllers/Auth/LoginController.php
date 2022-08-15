@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'users/home';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -58,7 +58,7 @@ class LoginController extends Controller
                 return redirect()->route('student.home');
 
             }else{
-                
+
                 return redirect()->route('user.home');
             }
         }else{
