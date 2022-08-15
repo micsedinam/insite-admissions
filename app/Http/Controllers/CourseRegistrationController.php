@@ -141,18 +141,18 @@ class CourseRegistrationController extends Controller
         }
     }
 
-    public function Registered()
-    {
-        $registered = DB::table('registereds')
-            ->join('profiles', 'profiles.level', '=', 'registereds.level')
-            ->where('registereds.user_id', Auth::id())
-            ->select('registereds.semester', 'profiles.level', 'registereds.user_id')
-            ->first();
+    // public function Registered()
+    // {
+    //     $registered = DB::table('registereds')
+    //         ->join('profiles', 'profiles.level', '=', 'registereds.level')
+    //         ->where('registereds.user_id', Auth::id())
+    //         ->select('registereds.semester', 'profiles.level', 'registereds.user_id')
+    //         ->first();
             
-        $sem = $registered->semester;
-        $lvl = $registered->level;
-        $usr = $registered->user_id;
-        dd($sem, $lvl, $usr);
-        return view('layouts.student', compact('sem', 'lvl', 'usr'));
-    }
+    //     $sem = $registered->semester;
+    //     $lvl = $registered->level;
+    //     $usr = $registered->user_id;
+    //     dd($sem, $lvl, $usr);
+    //     return view('layouts.student', compact('sem', 'lvl', 'usr'));
+    // }
 }

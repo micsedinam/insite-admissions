@@ -112,7 +112,7 @@
                     'Your courses have been registered.',
                     'success');
                 $('#frm-reg-courses').trigger('reset');
-                window.location.href = "/student/home";
+                window.location.href = "/student/export/courses";
             }).fail(function (data,status,error) {
                 console.log(data);
                 var response = $.parseJSON(data.responseText)
