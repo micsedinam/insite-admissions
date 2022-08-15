@@ -65,18 +65,22 @@
 
                         {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
 
+                        @php $profile = App\Models\Profile::where('user_id', Auth::id())->first(); @endphp
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
-                                <img class="img-profile rounded-circle" src="{{asset('sbadmin-assets/img/undraw_profile.svg')}}">
+                                @if ($profile == null)
+                                    <img class="img-profile rounded-circle" src="{{asset('sbadmin-assets/img/undraw_profile.svg')}}">
+                                @else
+                                    <img class="img-profile rounded-circle" src="{{asset('image_uploads/'.$profile->profile_photo)}}">
+                                @endif
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                
-                                @php $profile = App\Models\Profile::where('user_id', Auth::id())->first(); @endphp
                                     
                                 @if ($profile == NULL)
                                     <a class="dropdown-item" href="{{route("student.profile")}}">
@@ -116,7 +120,7 @@
                     @yield('header')
 
                     @include('sweet::alert')
-                    @include('flash-message')
+                    {{-- @include('flash-message') --}}
 
                     @include('student.course_registration.verify')
                     @yield('content')

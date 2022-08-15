@@ -8,6 +8,15 @@
 {{-- @include('admin.programmes.edit') --}}
 <div class="row justify-content-center">
     <div class="col-md-10">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card">
             <div class="bg-warning text-white card-header">Update Profile</div>
 
@@ -84,22 +93,22 @@
     <script type="application/javascript">
         //showProgrammes();
 
-        $("#frm-update-profile #department_id_append").on('change',function(e){
-            var dept_id = $(this).val();
-            var programme = $('#programme_id_append')
-            $(programme).empty();
-            $(programme).append("<option value=''>Select Value</option>");
-            $.get("{{route('student.programme')}}",{dept_id:dept_id}, function(data){
-                $.each(data,function (i,programmes) {
-                    $(programme).append($("<option/>",{
-                        value : programmes.id,
-                        text  : programmes.prog_name
-                    }))
-                })
-            })
-        })
+        // $("#frm-update-profile #department_id_append").on('change',function(e){
+        //     var dept_id = $(this).val();
+        //     var programme = $('#programme_id_append')
+        //     $(programme).empty();
+        //     $(programme).append("<option value=''>Select Value</option>");
+        //     $.get("{{route('student.programme')}}",{dept_id:dept_id}, function(data){
+        //         $.each(data,function (i,programmes) {
+        //             $(programme).append($("<option/>",{
+        //                 value : programmes.id,
+        //                 text  : programmes.prog_name
+        //             }))
+        //         })
+        //     })
+        // })
 
-        // $('#frm-update-profile').on('submit', function (e) {
+        // $('#frm-update').on('submit', function (e) {
         //     e.preventDefault();
         //     var data = $(this).serialize();
         //     var url = $(this).attr('action');
@@ -110,6 +119,7 @@
         //             'Profile saved successfully',
         //             'success');
         //         $('#frm-update-profile').trigger('reset');
+        //         window.location.href = "/student/edit/profile";
         //     }).fail(function (data,status,error) {
         //         console.log(data);
         //         var response = $.parseJSON(data.responseText)

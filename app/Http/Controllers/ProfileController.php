@@ -62,10 +62,15 @@ class ProfileController extends Controller
         //dd($request->all());
 
         //dd($request->profile_photo);
-        $this->validate($request, 
+        $request->validate( 
             [
-                'profile_photo' => 'required|mimes:jpg,png,jpeg|max:1999'
-            ]
+                'index_number' => 'required|unique:profiles',
+                'profile_photo' => 'required|mimes:jpg,png,jpeg|max:2048'
+            ],
+            // ['index_number.required'=>'You need to enter an index number.',
+            //     'profile_photo.required'=>'You need to upload a photo.',
+            //     'index_number.unique'=>'This index number already exists!',
+            // ]
         );
 
         if ($request->hasFile('profile_photo')) {
@@ -92,13 +97,31 @@ class ProfileController extends Controller
         //$data->save();
 
         if ($data->save()) {
-            alert()->success(Auth::user()->name .' your profile has been updated.', 'Awesome')->persistent("Close this");
+            alert()->success(Auth::user()->name .' your profile has been updated.', 'Awesome')->persistent("Close this"); 
         } else {
             alert()->error('Something went wrong')->persistent("Close this");
         }
-    
-        return redirect('student/edit/profile');
 
+        return redirect('student/edit/profile');
+    
+        /* if ($request->ajax()) {
+
+            Profile::updateOrCreate(
+                ['user_id' => Auth::id()],
+                [
+                    'level' => $request['level'],
+                    'dept_id' => $request['dept_id'],
+                    //'prog_id' => $request['prog_id'],
+                    'semester' => $request['semester'],
+                    'index_number' => $request['index_number'],
+                    'profile_photo' => $profilephoto,
+                ]
+            );
+            
+            return response()->json(['success' => "Saved Successfully"], 201);
+        } else {
+            return response()->json(['error' => 'Something went wrong!'], 422);
+        } */
     }
 
     /**
