@@ -72,7 +72,7 @@ class CourseRegistrationController extends Controller
                     ->join('users', 'users.id', '=', 'profiles.user_id')
                     ->join('departments', 'departments.id', '=', 'profiles.dept_id')
                     ->where('profiles.user_id', Auth::id())
-                    ->select('name', 'dept_name', 'profile_photo', 'index_number', 'level')
+                    ->select('name', 'dept_name', 'profile_photo', 'index_number', 'level', 'semester')
                     ->first();
 
         $get_courses = DB::table('courses')

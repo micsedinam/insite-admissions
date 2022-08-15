@@ -39,7 +39,7 @@
                 <span>Register Courses</span>    
             </a>
         @elseif($registered->semester == $profile->semester && $registered->level == $profile->level && $registered->user_id == $profile->user_id)
-            <a class="nav-link register-course" href="{{route('export.courses')}}">
+            <a class="nav-link" href="{{route('export.courses')}}">
                 <i class="fas fa-fw fa-archive"></i>
                 <span>My Courses</span>    
             </a>
