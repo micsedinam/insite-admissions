@@ -25,9 +25,9 @@ class IsAdmin
         if(auth()->check() && auth()->user()->is_admin == 1) {
             return $next($request);
         }elseif (auth()->check() && auth()->user()->is_admin == 2) {
-            return $next($request);
+            return redirect('student/home');
+        }else{
+            return redirect('user/home')->with('error', "You don't have access.");
         }
-
-        return redirect('user/home')->with('error', "You don't have admin access.");
     }
 }

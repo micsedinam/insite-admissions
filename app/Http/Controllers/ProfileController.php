@@ -97,7 +97,7 @@ class ProfileController extends Controller
             alert()->error('Something went wrong')->persistent("Close this");
         }
     
-        return view('student.profile.edit_profile');
+        return redirect('student/edit/profile');
 
     }
 
