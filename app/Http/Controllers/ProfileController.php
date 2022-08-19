@@ -25,15 +25,6 @@ class ProfileController extends Controller
         return view('student.profile.profile', compact('dept'));
     }
 
-    public function editProfile()
-    {
-        $dept = Department::all();
-
-        $profile = Profile::where('user_id', Auth::id())->first();
-
-        return view('student.profile.edit_profile', compact('profile', 'dept'));
-    }
-
     public function showProgramme(Request $request)
     {
         if ($request->ajax()) {
@@ -141,9 +132,14 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $dept = Department::all();
+
+        $profile = Profile::where('user_id', Auth::id())->first();
+        //dd($profile);
+
+        return view('student.profile.edit_profile', compact('profile', 'dept'));
     }
 
     /**
@@ -153,9 +149,67 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        //dd($request->all());
+
+        //dd($request->dept_id);
+        //dd($request->profile_photo);
+        $request->validate( 
+            [
+                //'index_number' => 'required|unique:profiles',
+                'profile_photo' => 'mimes:jpg,png,jpeg|max:2048'
+            ],
+            // ['index_number.required'=>'You need to enter an index number.',
+            //     'profile_photo.required'=>'You need to upload a photo.',
+            //     'index_number.unique'=>'This index number already exists!',
+            // ]
+        );
+
+        //dd($request->dept_id);
+
+        if ($request->hasFile('profile_photo')) {
+            // saving the image
+            $myprofilephoto = time() .'-'. Auth::user()->name . '-'. 'Profile' . '.' . $request->profile_photo->extension();
+
+            //dd($myprofilephoto);
+
+            $request->profile_photo->move(public_path('image_uploads'), $myprofilephoto);
+        }
+
+        //dd($request->dept_id);
+
+
+        $profile = Profile::findOrFail($request->id);
+
+        //dd($profile);
+        
+        if ($request->profile_photo == null) {
+            $profile->level = $request['level'];
+            //dd($request->dept_id);
+            $profile->dept_id = $request['dept_id'];
+            $profile->semester = $request['semester'];
+            $profile->index_number = $request['index_number'];
+            $profile->save();
+        } else {
+            $profile->level = $request['level'];
+            //dd($request->dept_id);
+            $profile->dept_id = $request['dept_id'];
+            $profile->semester = $request['semester'];
+            $profile->index_number = $request['index_number'];
+            $profile->profile_photo = $myprofilephoto;
+            $profile->save();
+        }
+        
+       
+
+        if ($profile->save()) {
+            alert()->success(Auth::user()->name .' your profile has been updated.', 'Awesome')->persistent("Close this"); 
+        } else {
+            alert()->error('Something went wrong')->persistent("Close this");
+        }
+
+        return redirect('student/edit/profile');
     }
 
     /**

@@ -113,9 +113,10 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::get('/home', 'HomeController@studentHome')->name('student.home');
 
     Route::get('/profile', 'ProfileController@index')->name('student.profile');
-    Route::get('/edit/profile', 'ProfileController@editProfile')->name('student.edit.profile');
+    Route::get('/edit/profile', 'ProfileController@edit')->name('student.edit.profile');
     Route::get('/programmes', 'ProfileController@showProgramme')->name('student.programme');
     Route::post('/profile/update', 'ProfileController@store')->name('student.profile.update');
+    Route::post('/profile/edit/update', 'ProfileController@update')->name('student.profile.edit.update');
 
     Route::post('/access/course/registration', 'FeePaymentController@verifyFeeCode')->name('access.courses');
 

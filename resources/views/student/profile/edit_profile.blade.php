@@ -12,14 +12,15 @@
             <div class="bg-warning text-white card-header">Update Profile</div>
 
             <div class="card-body">
-                <form id="frm-update-profile" action="{{route('student.profile.update')}}" method="POST" enctype="multipart/form-data">
+                <form id="frm-update-profile" action="{{route('student.profile.edit.update')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{-- <p id="message"></p>
                     <p style="color:green" id="success"></p> --}}
 
+                    <input type="hidden" name="id" value="{{$profile->id}}">
                     <div class="col-md-4 offset-md-4 mb-4">
                         <img class="mb-2" height="200px" width="200px" src="{{asset('image_uploads/'.$profile->profile_photo)}}" alt="">
-                        <input type="file" name="profile_photo" id="profile_photo" required>
+                        <input type="file" name="profile_photo" id="profile_photo" value="">
                     </div>
 
                     <div class="row">
@@ -30,10 +31,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="dept_id">Department <small>(Click here to select)</small></label>
-                                <select class="form-control" name="dept_id" id="department_id_append" required>
+                                <select title="Department" class="form-control" name="dept_id" id="department_id_append" required>
                                     <option value="">Select Department</option>
                                     @foreach ($dept as $d)
-                                        <option {{old('dept_id',$profile->semester)== $d->id ? 'selected':''}} value="{{ $d->id }}"> {{ $d->dept_name }} </option>
+                                        <option {{old('dept_id',$profile->dept_id)== $d->id ? 'selected':''}} value="{{ $d->id }}"> {{ $d->dept_name }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -46,7 +47,7 @@
                             <select class="form-control" type="text" name="level" id="level" required>
                                 <option value="">Select Level</option>
                                 <option {{old('level',$profile->level)=="100"? 'selected':''}} value="100">100</option>
-                                <option {{old('level',$profile->level)=="200"? 'selected':''}}value="200">200</option>
+                                <option {{old('level',$profile->level)=="200"? 'selected':''}} value="200">200</option>
                             </select>
                         </div>
                         {{-- <div class="col-sm-6">
@@ -84,7 +85,7 @@
     <script type="application/javascript">
         //showProgrammes();
 
-        $("#frm-update-profile #department_id_append").on('change',function(e){
+        /* $("#frm-update-profile #department_id_append").on('change',function(e){
             var dept_id = $(this).val();
             var programme = $('#programme_id_append')
             $(programme).empty();
@@ -97,7 +98,7 @@
                     }))
                 })
             })
-        })
+        }) */
 
         // $('#frm-update-profile').on('submit', function (e) {
         //     e.preventDefault();
