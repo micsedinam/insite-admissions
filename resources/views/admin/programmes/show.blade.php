@@ -33,18 +33,15 @@
         </div>
     </div>
 </div>
+@section('script')
 <script>
     $(document).ready(function() {
-        $('#prog_table').DataTable( {
-            responsive: true,
-            dom: 'lBfrtip',
+        $('#prog_table').DataTable({
+            dom: 'Bfrtip',
             buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5',
-                'print'
+                'copy', 'excel', 'pdf'
             ]
-        } );
-    } );
+        });
+    });
 </script>
+@endsection

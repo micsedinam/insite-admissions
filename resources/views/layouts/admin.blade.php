@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admissions Portal | IMC</title>
+    <title>IMC | Portal</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('sbadmin-assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -21,7 +21,9 @@
     <link href="{{asset('sbadmin-assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
     <!-- Datatbales CSS -->
-    <link href="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    {{-- <link href="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sb-1.3.4/sp-2.0.2/datatables.min.css"/>
+ 
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -152,11 +154,17 @@
     <script src="{{asset('sbadmin-assets/js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{asset('sbadmin-assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    {{-- <script src="{{asset('sbadmin-assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script> --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sb-1.3.4/sp-2.0.2/datatables.min.js"></script>
+
 
     <!-- Page level custom scripts -->
     <script src="{{asset('sbadmin-assets/js/demo/datatables-demo.js')}}"></script>
+
+    @yield('script')
 
 </body>
 

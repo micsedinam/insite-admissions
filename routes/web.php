@@ -106,6 +106,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     //Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
     //Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
 
+    Route::get('/course/list', 'CourseRegistrationController@studentCourseList')->name('course.list');
+
 });
 
 //Continuing Student

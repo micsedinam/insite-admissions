@@ -155,4 +155,15 @@ class CourseRegistrationController extends Controller
     //     dd($sem, $lvl, $usr);
     //     return view('layouts.student', compact('sem', 'lvl', 'usr'));
     // }
+    public function studentCourseList()
+    {
+        $course_list = DB::table('course_registrations')
+            ->join('users', 'course_registrations.user_id', '=', 'users.id')
+            ->select('users.name', 'course_registrations.index_number', 'course_registrations.course_code', 'course_registrations.semester', 'course_registrations.level')
+            ->get();
+
+        //dd($course_list);
+
+        return view('admin.courses.course_list', compact('course_list'));
+    }
 }
