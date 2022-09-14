@@ -35,16 +35,11 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#courses_table').DataTable( {
-            responsive: true,
-            dom: 'lBfrtip',
+        $('#course_table').DataTable({
+            dom: 'Bfrtip',
             buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5',
-                'print'
+                'copy', 'excel', 'pdf', 'print'
             ]
-        } );
-    } );
+        });
+    });
 </script>

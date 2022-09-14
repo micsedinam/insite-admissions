@@ -17,7 +17,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Course Code</label>
-                                <input class="form-control" type="text" name="course_code" id="" placeholder="Kindly enter course code to retrieve registered applicants">
+                                <input class="form-control" type="text" name="course_code" id="" placeholder="Kindly enter course code">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -41,7 +41,7 @@
     </div>
 
     
-    {{-- <div class="col-md-12">
+    <div class="col-md-12">
         <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title" align="center">All Registered Students Course List</h5>
@@ -73,7 +73,7 @@
     
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 
 {{-- <script type="application/javascript">

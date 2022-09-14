@@ -107,6 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     //Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
 
     Route::get('/course/list', 'CourseRegistrationController@studentCourseList')->name('course.list');
+    Route::post('/course/list', 'CourseRegistrationController@retrieveCourseList')->name('retrieve.course.list');
 
 });
 

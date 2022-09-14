@@ -67,8 +67,8 @@
 
     function showCourses()
     {
-        var data = $('#frm-create-courses').serialize();
-        console.log(data);
+        var data = $('#frm-create-course').serialize();
+        //console.log(data);
         $.get("{{route('courses.list')}}", data, function (data) {
             $('#add-courses').empty().append(data);
         });

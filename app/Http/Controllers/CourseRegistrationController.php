@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourseRegistration;
 use App\Models\Courses;
+use App\Models\Department;
 use App\Models\Profile;
 use App\Models\Registered;
 use Illuminate\Http\Request;
@@ -124,6 +125,8 @@ class CourseRegistrationController extends Controller
                     'level' => $request['level'],
                     'semester' => $request['semester'],
                     'index_number' => $request['index_number'],
+                    'created_at' =>  date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ];                 
             }
 
@@ -162,8 +165,29 @@ class CourseRegistrationController extends Controller
             ->select('users.name', 'course_registrations.index_number', 'course_registrations.course_code', 'course_registrations.semester', 'course_registrations.level')
             ->get();
 
+        $dept = Department::all();
+
         //dd($course_list);
 
-        return view('admin.courses.course_list', compact('course_list'));
+        return view('admin.courses.course_list', compact('dept'));
+    }
+
+    public function retrieveCourseList(Request $request)
+    {
+        //dd($request->all());
+
+        $dept = Department::all();
+
+        $course_list = DB::table('course_registrations')
+            ->join('users', 'course_registrations.user_id', '=', 'users.id')
+            ->join('courses', 'course_registrations.course_code', '=', 'courses.course_code')
+            ->where('courses.dept_id', '=', $request->dept_id)
+            ->where('course_registrations.course_code', '=', $request->course_code)
+            ->select('users.name', 'course_registrations.index_number', 'course_registrations.course_code', 'course_registrations.semester', 'course_registrations.level')
+            ->get();
+
+        //dd($course_list);
+
+        return view('admin.courses.course_list_result', compact('course_list', 'dept'));
     }
 }
