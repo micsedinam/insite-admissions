@@ -109,6 +109,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/course/list', 'CourseRegistrationController@studentCourseList')->name('course.list');
     Route::post('/course/list', 'CourseRegistrationController@retrieveCourseList')->name('retrieve.course.list');
 
+    Route::get('/results', 'ResultController@index')->name('results.index');
+    Route::post('/add/results', 'ResultController@importResult')->name('results.import');
+    Route::get('/list/results', 'ResultController@showResultInformation')->name('results.list');
+
 });
 
 //Continuing Student

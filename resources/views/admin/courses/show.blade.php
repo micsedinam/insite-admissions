@@ -35,7 +35,7 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#course_table').DataTable({
+        $('#courses_table').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'excel', 'pdf', 'print'

@@ -119,6 +119,38 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
+        Result
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('/admin/results')}}">
+            <i class="fas fa-fw fa-poll-h"></i>
+            <span>Upload Semester Results</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Transcript
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/generate/code')}}">
+            <i class="fas fa-fw fa-poll"></i>
+            <span>Generate Transcript</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         Admin Management
     </div>
 

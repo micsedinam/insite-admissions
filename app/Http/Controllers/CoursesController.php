@@ -29,13 +29,9 @@ class CoursesController extends Controller
 
     public function showCourseInformation()
     {
-        $course = $this->CourseInformation();
+        $course = Courses::all();
+
         return view('admin.courses.show', compact('course'));
 
-    }
-
-    public function CourseInformation()
-    {
-        return Courses::all();
     }
 }
