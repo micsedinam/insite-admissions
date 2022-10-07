@@ -112,6 +112,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/results', 'ResultController@index')->name('results.index');
     Route::post('/add/results', 'ResultController@importResult')->name('results.import');
     Route::get('/list/results', 'ResultController@showResultInformation')->name('results.list');
+    Route::get('/generate/transcript', function() { return view('admin.transcripts.generate'); })->name('transcript.index');
+    Route::post('/get/transcript', 'ResultController@getTranscript')->name('get.transcript');
 
 });
 

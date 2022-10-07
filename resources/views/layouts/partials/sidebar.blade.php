@@ -140,7 +140,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/generate/code')}}">
+        <a class="nav-link" href="{{url('admin/generate/transcript')}}">
             <i class="fas fa-fw fa-poll"></i>
             <span>Generate Transcript</span>
         </a>

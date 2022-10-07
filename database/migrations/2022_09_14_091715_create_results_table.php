@@ -18,10 +18,12 @@ class CreateResultsTable extends Migration
             $table->string('index_number');
             $table->string('course_code');
             $table->string('semester');
+            $table->integer('dept_id')->unsigned();
             $table->string('level');
             $table->string('score');
             $table->timestamps();
             $table->foreign('index_number')->references('index_number')->on('profiles');
+            $table->foreign('dept_id')->references('id')->on('departments');
         });
     }
 

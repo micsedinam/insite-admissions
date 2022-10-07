@@ -13,6 +13,7 @@ class Result extends Model
         'level',
         'semester',
         'score',
+        'dept_id',
     ];
     protected $primaryKey = 'id';
     public $timestamps = true;

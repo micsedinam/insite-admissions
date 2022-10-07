@@ -16,13 +16,27 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts
     */
     public function model(array $row)
     {
-        return new Result([
-            'index_number' => $row['index_number'],
-            'course_code' => $row['course_code'],
-            'level' => $row['level'],
-            'semester' => $row['semester'],
-            'score' => $row['score'],
-        ]);
+        if ($row['department'] == "Journalism and Media Studies - English") {
+            return new Result([
+                'index_number' => $row['index_number'],
+                'course_code' => $row['course_code'],
+                'dept_id' => 1,
+                'level' => $row['level'],
+                'semester' => $row['semester'],
+                'score' => $row['score'],
+            ]);
+        } else {
+            return new Result([
+                'index_number' => $row['index_number'],
+                'course_code' => $row['course_code'],
+                'dept_id' => 0,
+                'level' => $row['level'],
+                'semester' => $row['semester'],
+                'score' => $row['score'],
+            ]);
+        }
+        
+        
 
     }
 
