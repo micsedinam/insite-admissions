@@ -20,7 +20,9 @@ class CreateResultsTable extends Migration
             $table->string('semester');
             $table->integer('dept_id')->unsigned();
             $table->string('level');
-            $table->string('score');
+            $table->string('continuous_assessment');
+            $table->string('exam_score');
+            $table->string('total_score');
             $table->timestamps();
             $table->foreign('index_number')->references('index_number')->on('profiles');
             $table->foreign('dept_id')->references('id')->on('departments');

@@ -80,8 +80,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/courses', 'CoursesController@index')->name('courses.index');
     Route::post('/addCourses', 'CoursesController@import')->name('courses.import');
     Route::get('/showCourses', 'CoursesController@showCourseInformation')->name('courses.list');
-    Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
-    Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
+    //Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
+    //Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
 
     Route::get('/programme', 'ProgrammeController@index')->name('programme.index');
     Route::post('/addProgramme', 'ProgrammeController@store')->name('programme.store');
@@ -114,6 +114,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/list/results', 'ResultController@showResultInformation')->name('results.list');
     Route::get('/generate/transcript', function() { return view('admin.transcripts.generate'); })->name('transcript.index');
     Route::post('/get/transcript', 'ResultController@getTranscript')->name('get.transcript');
+
+    Route::get('/cassessment', 'CAController@index')->name('ca.index');
+    Route::post('/addAssessment', 'CAController@store')->name('ca.store');
+    Route::get('/showAssessment', 'CAController@showCAInformation')->name('ca.list');
+    Route::get('/assessment/edit', 'CAController@editCA')->name('ca.edit');
+    Route::post('/assessment/update', 'CAController@updateCA')->name('ca.update');
 
 });
 
