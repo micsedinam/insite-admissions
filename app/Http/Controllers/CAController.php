@@ -2,15 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\AssessmentsImport;
 use App\Models\ContinuousAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CAController extends Controller
 {
     public function index()
     {
         return view('admin.assessment.add');
+    }
+
+    public function importAssessment(Request $request)
+    {
+        //Excel::import(new CoursesImport, 'users.xlsx');
+        Excel::import(new AssessmentsImport, $request->file('assessments')->store('temp'));
+
+        $message = "Assessments imported successfully.";
+
+        alert()->success($message, 'All good!')->persistent();
+
+        return redirect()->back();
+        
+        //return redirect('/')->with('success', 'All good!');
     }
 
     public function Store(Request $request)
@@ -98,16 +114,16 @@ class CAController extends Controller
         }
     }
 
-    public function showDepartmentInformation()
+    public function showCAInformation()
     {
-        $dept = $this->DeptInformation();
-        return view('admin.department.show', compact('dept'));
+        $ca = $this->CAInformation();
+        return view('admin.assessment.show', compact('ca'));
 
     }
 
-    public function DeptInformation()
+    public function CAInformation()
     {
-        return Department::all();
+        return ContinuousAssessment::all();
     }
 
     public function editDept(Request $request)

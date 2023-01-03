@@ -12,43 +12,69 @@
             <div class="bg-info text-white card-header">Add Student Continuous Assessment</div>
 
             <div class="card-body">
-                <form id="frm-create" action="{{route('ca.store')}}" method="POST">
-                    {{ csrf_field() }}
-                    <p id="message"></p>
-                    <p style="color:green" id="success"></p>
-
-                    <div class="form-group">
-                        <label class="label-control">Index Number</label>
-                        <input class="form-control" id="index_number" name="index_number" required>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="single-tab" data-toggle="tab" data-target="#single" type="button" role="tab" aria-controls="single" aria-selected="true">Single</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="bulk-tab" data-toggle="tab" data-target="#bulk" type="button" role="tab" aria-controls="bulk" aria-selected="false">Bulk Upload</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="single" role="tabpanel" aria-labelledby="single-tab">
+                        <form id="frm-create" action="{{route('ca.store')}}" method="POST">
+                            {{ csrf_field() }}
+                            <p id="message"></p>
+                            <p style="color:green" id="success"></p>
+        
+                            <div class="form-group">
+                                <label class="label-control">Index Number</label>
+                                <input class="form-control" id="index_number" name="index_number" required>
+                            </div>
+        
+                            <div class="form-group">
+                                <label class="label-control">Course Code</label>
+                                <input class="form-control" id="course_code" name="course_code" required>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="assessment_type">Select Assessment Type</label>
+                                <select class="form-control" name="assessment_type" id="assessment_type" required>
+                                    <option value="">Select Option</option>
+                                    <option value="quiz1">Quiz One</option>
+                                    <option value="quiz2">Quiz Two</option>
+                                    <option value="assessment1">Assessment One</option>
+                                    <option value="assessment2">Assessment Two</option>
+                                    <option value="assessment3">Assessment Three</option>
+                                </select>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label class="label-control">Assessment Score</label>
+                                <input class="form-control" id="assessment_score" name="assessment_score" required>
+                            </div>
+                            
+                            
+                            <p class="name_error_text"></p>
+                            </label><br>
+                            <button type="submit" class="btn btn-outline-secondary btn-block">Add Assessment</button>
+                        </form>
                     </div>
-
-                    <div class="form-group">
-                        <label class="label-control">Course Code</label>
-                        <input class="form-control" id="course_code" name="course_code" required>
+                    <div class="tab-pane fade" id="bulk" role="tabpanel" aria-labelledby="bulk-tab">
+                        <form id="frm-create-result" action="{{route('ca.import')}}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <p id="message"></p>
+                            <p style="color:green" id="success"></p>
+                        
+                            <label class="label-control">Upload Continuous Assessment</label>
+                            <input type="file" class="form-control" id="assessments" name="assessments">
+                            
+                            <p class="name_error_text"></p>
+                            </label><br>
+                            <button type="submit" class="btn btn-outline-secondary btn-block">Import Continuous Assessment</button>
+                        </form>
                     </div>
-
-                    <div class="form-group">
-                        <label for="assessment_type">Select Assessment Type</label>
-                        <select class="form-control" name="assessment_type" id="assessment_type" required>
-                            <option value="">Select Option</option>
-                            <option value="quiz1">Quiz One</option>
-                            <option value="quiz2">Quiz Two</option>
-                            <option value="assessment1">Assessment One</option>
-                            <option value="assessment2">Assessment Two</option>
-                            <option value="assessment3">Assessment Three</option>
-                        </select>
-                    </div>
-                
-                    <div class="form-group">
-                        <label class="label-control">Assessment Score</label>
-                        <input class="form-control" id="assessment_score" name="assessment_score" required>
-                    </div>
-                    
-                    
-                    <p class="name_error_text"></p>
-                    </label><br>
-                    <button type="submit" class="btn btn-outline-secondary btn-block">Add Assessment</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -95,7 +121,7 @@
         var data = $('#frm-create-ca').serialize();
         console.log(data);
         $.get("{{route('ca.list')}}", data, function (data) {
-            $('#add-dept').empty().append(data);
+            $('#add-ca').empty().append(data);
         });
     }
 

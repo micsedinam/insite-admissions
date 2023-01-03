@@ -120,6 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/showAssessment', 'CAController@showCAInformation')->name('ca.list');
     Route::get('/assessment/edit', 'CAController@editCA')->name('ca.edit');
     Route::post('/assessment/update', 'CAController@updateCA')->name('ca.update');
+    Route::post('/import/assessment', 'CAController@importAssessment')->name('ca.import');
 
 });
 
