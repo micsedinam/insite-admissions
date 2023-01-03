@@ -54,12 +54,12 @@
     </div>
 </div>
 <br>
-<div id="add-dept">
+<div id="add-ca">
 
 </div>
 
 <script type="application/javascript">
-    showDepartments();
+    showAssessments();
 
     $('#frm-create-ca').on('submit', function (e) {
         e.preventDefault();
@@ -90,11 +90,11 @@
         });
     });
 
-    function showDepartments()
+    function showAssessments()
     {
-        var data = $('#frm-create-dept').serialize();
+        var data = $('#frm-create-ca').serialize();
         console.log(data);
-        $.get("{{route('department.list')}}", data, function (data) {
+        $.get("{{route('ca.list')}}", data, function (data) {
             $('#add-dept').empty().append(data);
         });
     }
