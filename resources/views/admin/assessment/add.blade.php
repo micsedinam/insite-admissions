@@ -163,7 +163,7 @@
             showAssessments(data.index_number);
             $('#show-assessment').modal('hide');
             swal({
-                title: "Good job!",
+                title: "Great!",
                 text: "Assessment updated successfully!",
                 icon: "success",
             });
