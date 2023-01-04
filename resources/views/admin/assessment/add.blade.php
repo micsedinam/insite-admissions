@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('admin.department.edit')
+@include('admin.assessment.edit')
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
@@ -22,36 +22,49 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="single" role="tabpanel" aria-labelledby="single-tab">
-                        <form id="frm-create" action="{{route('ca.store')}}" method="POST">
+                        <form id="frm-create-ca" action="{{route('ca.store')}}" method="POST">
                             {{ csrf_field() }}
                             <p id="message"></p>
                             <p style="color:green" id="success"></p>
         
                             <div class="form-group">
                                 <label class="label-control">Index Number</label>
-                                <input class="form-control" id="index_number" name="index_number" required>
+                                <input class="form-control" id="index_number" name="index_number">
                             </div>
         
                             <div class="form-group">
                                 <label class="label-control">Course Code</label>
-                                <input class="form-control" id="course_code" name="course_code" required>
+                                <input class="form-control" id="course_code" name="course_code">
                             </div>
         
                             <div class="form-group">
-                                <label for="assessment_type">Select Assessment Type</label>
-                                <select class="form-control" name="assessment_type" id="assessment_type" required>
-                                    <option value="">Select Option</option>
-                                    <option value="quiz1">Quiz One</option>
-                                    <option value="quiz2">Quiz Two</option>
-                                    <option value="assessment1">Assessment One</option>
-                                    <option value="assessment2">Assessment Two</option>
-                                    <option value="assessment3">Assessment Three</option>
-                                </select>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="label-control">Quiz One</label>
+                                        <input class="form-control" id="quiz1" name="quiz1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="label-control">Quiz Two</label>
+                                        <input class="form-control" id="quiz2" name="quiz2">
+                                    </div>
+                                </div> 
                             </div>
-                        
+        
                             <div class="form-group">
-                                <label class="label-control">Assessment Score</label>
-                                <input class="form-control" id="assessment_score" name="assessment_score" required>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="label-control">Assessment One</label>
+                                        <input class="form-control" id="assessment1" name="assessment1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label-control">Assessment Two</label>
+                                        <input class="form-control" id="assessment2" name="assessment2">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="label-control">Assessment Three</label>
+                                        <input class="form-control" id="assessment3" name="assessment3">
+                                    </div>
+                                </div> 
                             </div>
                             
                             
@@ -119,29 +132,36 @@
     function showAssessments()
     {
         var data = $('#frm-create-ca').serialize();
-        console.log(data);
+        //console.log(data);
         $.get("{{route('ca.list')}}", data, function (data) {
             $('#add-ca').empty().append(data);
         });
     }
 
-    $(document).on('click', '.edit-dept', function (e) {
-        $('#show-dept').modal('show');
+    $(document).on('click', '.edit-ca', function (e) {
+        $('#show-assessment').modal('show');
         var id = $(this).val();
-        $.get("{{route('department.edit')}}", {id:id}, function (data) {
-            console.log(data)
-            $('#dept_id_edit').val(data.id);
-            $('#dept_name_edit').val(data.dept_name);
+        $.get("{{route('ca.edit')}}", {id:id}, function (data) {
+            //console.log(data)
+            $('#ca_id_edit').val(data.id);
+            $('#index_number_edit').val(data.index_number);
+            $('#course_code_edit').val(data.course_code);
+            $('#quiz1_edit').val(data.quiz1);
+            $('#quiz2_edit').val(data.quiz2);
+            $('#assessment1_edit').val(data.assessment1);
+            $('#assessment2_edit').val(data.assessment2);
+            $('#assessment3_edit').val(data.assessment3);
         });
     });
-    $('.btn-update-dept').on('click', function (e) {
+
+    $('.btn-update-ca').on('click', function (e) {
         e.preventDefault();
-        var data = $('#frm-update-dept').serialize();
-        $.post("{{route('department.update')}}", data, function (data) {
-            showDepartments(data.dept_name);
-            $('#show-dept').modal('hide');
+        var data = $('#frm-update-ca').serialize();
+        $.post("{{route('ca.update')}}", data, function (data) {
+            showAssessments(data.index_number);
+            $('#show-assessment').modal('hide');
             swal('SUCCESS',
-                'Department updated successfully',
+                'Assessment updated successfully',
                 'success');
         }).fail(function (data,status,error) {
             console.log(data);
