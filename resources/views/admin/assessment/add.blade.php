@@ -14,7 +14,7 @@
             <div class="card-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="single-tab" data-toggle="tab" data-target="#single" type="button" role="tab" aria-controls="single" aria-selected="true">Single</button>
+                      <button class="nav-link active" id="single-tab" data-toggle="tab" data-target="#single" type="button" role="tab" aria-controls="single" aria-selected="true">Single Entry</button>
                     </li>
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="bulk-tab" data-toggle="tab" data-target="#bulk" type="button" role="tab" aria-controls="bulk" aria-selected="false">Bulk Upload</button>
@@ -107,9 +107,11 @@
         $.post(url, data,function (data) {
             showAssessments(data.id);
             console.log(data);
-            swal('SUCCESS',
-                'Assessment saved successfully',
-                'success');
+            swal({
+                title: "Good job!",
+                text: "Assessment saved successfully!",
+                icon: "success",
+            });
             $('#frm-create-ca').trigger('reset');
         }).fail(function (data,status,error) {
             console.log(data);
@@ -160,9 +162,11 @@
         $.post("{{route('ca.update')}}", data, function (data) {
             showAssessments(data.index_number);
             $('#show-assessment').modal('hide');
-            swal('SUCCESS',
-                'Assessment updated successfully',
-                'success');
+            swal({
+                title: "Good job!",
+                text: "Assessment updated successfully!",
+                icon: "success",
+            });
         }).fail(function (data,status,error) {
             console.log(data);
             var response = $.parseJSON(data.responseText)
