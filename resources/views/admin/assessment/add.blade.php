@@ -23,10 +23,9 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="single" role="tabpanel" aria-labelledby="single-tab">
                         <form id="frm-create-ca" action="{{route('ca.store')}}" method="POST">
+
                             {{ csrf_field() }}
-                            <p id="message"></p>
-                            <p style="color:green" id="success"></p>
-        
+                            
                             <div class="form-group">
                                 <label class="label-control">Index Number</label>
                                 <input class="form-control" id="index_number" name="index_number">
@@ -67,8 +66,6 @@
                                 </div> 
                             </div>
                             
-                            
-                            <p class="name_error_text"></p>
                             </label><br>
                             <button type="submit" class="btn btn-outline-secondary btn-block">Add Assessment</button>
                         </form>

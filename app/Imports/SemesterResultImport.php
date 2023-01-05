@@ -23,7 +23,9 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts
                 'dept_id' => 1,
                 'level' => $row['level'],
                 'semester' => $row['semester'],
-                'score' => $row['score'],
+                'continuous_assessment' => $row['continuous_assessment'],
+                'exam_score' => $row['exam_score'],
+                'total_score' => $row['total_score'],
             ]);
         } else {
             return new Result([
@@ -32,7 +34,9 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts
                 'dept_id' => 0,
                 'level' => $row['level'],
                 'semester' => $row['semester'],
-                'score' => $row['score'],
+                'continuous_assessment' => $row['continuous_assessment'],
+                'exam_score' => $row['exam_score'],
+                'total_score' => $row['total_score'],
             ]);
         }
         
