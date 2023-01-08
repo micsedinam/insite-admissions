@@ -19,7 +19,7 @@ class ResultController extends Controller
     public function importResult(Request $request)
     {
 
-        Excel::import(new SemesterResultImport, $request->file('result')->store('temp'));
+        Excel::import(new SemesterResultImport, $request->file('results')->store('temp'));
 
         $message = "Results imported successfully.";
 

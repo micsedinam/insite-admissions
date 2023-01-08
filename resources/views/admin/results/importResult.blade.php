@@ -16,7 +16,7 @@
                     {{ csrf_field() }}
                 
                     <label class="label-control">Upload Semester Results</label>
-                    <input type="file" class="form-control" id="result" name="result">
+                    <input type="file" class="form-control" id="results" name="results">
                     
                     </label><br>
                     <button type="submit" class="btn btn-outline-secondary btn-block">Import Semester Results</button>
