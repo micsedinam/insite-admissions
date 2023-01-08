@@ -14,13 +14,10 @@
             <div class="card-body">
                 <form id="frm-create-result" action="{{route('results.import')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <p id="message"></p>
-                    <p style="color:green" id="success"></p>
                 
                     <label class="label-control">Upload Semester Results</label>
-                    <input type="file" class="form-control" id="results" name="results">
+                    <input type="file" class="form-control" id="result" name="result">
                     
-                    <p class="name_error_text"></p>
                     </label><br>
                     <button type="submit" class="btn btn-outline-secondary btn-block">Import Semester Results</button>
                 </form>

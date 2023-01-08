@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Imports\SemesterResultImport;
-use App\Models\Courses;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use UxWeb\SweetAlert\SweetAlert;
 
 class ResultController extends Controller
 {
@@ -18,8 +18,8 @@ class ResultController extends Controller
 
     public function importResult(Request $request)
     {
-        //Excel::import(new CoursesImport, 'users.xlsx');
-        Excel::import(new SemesterResultImport, $request->file('results')->store('temp'));
+
+        Excel::import(new SemesterResultImport, $request->file('result')->store('temp'));
 
         $message = "Results imported successfully.";
 
@@ -27,7 +27,6 @@ class ResultController extends Controller
 
         return redirect()->back();
         
-        //return redirect('/')->with('success', 'All good!');
     }
 
     public function showResultInformation()

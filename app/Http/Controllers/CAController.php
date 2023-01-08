@@ -18,7 +18,7 @@ class CAController extends Controller
 
     public function importAssessment(Request $request)
     {
-        //Excel::import(new CoursesImport, 'users.xlsx');
+        
         Excel::import(new AssessmentsImport, $request->file('assessments')->store('temp'));
 
         $message = "Assessments imported successfully.";

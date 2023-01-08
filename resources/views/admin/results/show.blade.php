@@ -9,7 +9,9 @@
                     <th>Course Code</th>
                     <th>Level</th>
                     <th>Semester</th>
-                    <th>Score</th>
+                    <th>Assessment</th>
+                    <th>Exam</th>
+                    <th>Total</th>
                     <th>Grade</th>
                     {{-- <th>Action</th> --}}
                 </tr>
@@ -21,11 +23,13 @@
                         <td>{{$item->course_code}}</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->semester}}</td>
-                        <td>{{$item->score}}</td>
+                        <td>{{$item->continuous_assessment}}</td>
+                        <td>{{$item->exam_score}}</td>
+                        <td>{{$item->total_score}}</td>
                         <td>
                             @php
                                 //Calculate the grade
-                                $score = $item->score;
+                                $score = $item->total_score;
                                 switch ($score) {
                                     case $score >=80 || $score==100:
                                         echo "A";

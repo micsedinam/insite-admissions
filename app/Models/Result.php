@@ -12,8 +12,9 @@ class Result extends Model
         'course_code',
         'level',
         'semester',
-        'countinuous_assessment',
-        'totalscore',
+        'continuous_assessment',
+        'exam_score',
+        'total_score',
         'dept_id',
     ];
     protected $primaryKey = 'id';
