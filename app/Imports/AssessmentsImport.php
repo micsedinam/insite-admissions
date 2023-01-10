@@ -3,11 +3,12 @@
 namespace App\Imports;
 
 use App\Models\ContinuousAssessment;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class AssessmentsImport implements ToModel, WithHeadingRow, WithBatchInserts
+class AssessmentsImport implements ToModel, WithHeadingRow, WithBatchInserts, SkipsEmptyRows
 {
     /**
     * @param array $row

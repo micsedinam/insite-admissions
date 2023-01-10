@@ -3,11 +3,12 @@
 namespace App\Imports;
 
 use App\Models\Result;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts
+class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts, SkipsEmptyRows
 {
     /**
     * @param array $row
