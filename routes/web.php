@@ -114,6 +114,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/list/results', 'ResultController@showResultInformation')->name('results.list');
     Route::get('/generate/transcript', function() { return view('admin.transcripts.generate'); })->name('transcript.index');
     Route::post('/get/transcript', 'ResultController@getTranscript')->name('get.transcript');
+    
+    
+    Route::get('/student/results', 'StudentResultController@index')->name('student.results.index');
+    Route::get('/student/profiles', 'StudentResultController@showIndexNumbers')->name('show.index.numbers');
+    Route::post('/student/results/add', 'StudentResultController@createStudentResult')->name('student.results.add');
 
     Route::get('/cassessment', 'CAController@index')->name('ca.index');
     Route::post('/addAssessment', 'CAController@store')->name('ca.store');
@@ -121,6 +126,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/assessment/edit', 'CAController@editCA')->name('ca.edit');
     Route::post('/assessment/update', 'CAController@updateCA')->name('ca.update');
     Route::post('/import/assessment', 'CAController@importAssessment')->name('ca.import');
+
 
 });
 
