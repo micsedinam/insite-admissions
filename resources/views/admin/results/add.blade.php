@@ -170,11 +170,11 @@
                 'Student Result Added successfully',
                 'success');
             $('.loader').hide()
+            $("#course_code").val('')
             $("#dept_id_append").val('').trigger('change')
             $("#index_number_append").val('').trigger('change')
             $("#level").val('').trigger('change')
             $("#semester").val('').trigger('change')
-            $("#course_code").val('')
             $("#first_quiz").val('')
             $("#second_quiz").val('')
             $("#first_assessment").val('')
@@ -199,17 +199,24 @@
 
     });
 
-    $('#add-district-copy').on('click', function (e) {
+    $('#add-result-copy').on('click', function (e) {
         $('.loader').show()
         e.preventDefault();
-        var data = $('#frm-create-district').serialize();
-        $.post("", data, function (data) {
-            showDistrictInfo(data.name);
+        var data = $('#frm-create-result').serialize();
+        $.post("{{route('student.results.add')}}", data, function (data) {
+            //showDistrictInfo(data.name);
             swal('SUCCESS',
-                'District Added successfully',
+                'Student Result Added successfully',
                 'success');
             $('.loader').hide()
-            $("#district_add").val('')
+            $("#course_code").val('')
+            $("#first_quiz").val('')
+            $("#second_quiz").val('')
+            $("#first_assessment").val('')
+            $("#second_assessment").val('')
+            $("#third_assessment").val('')
+            $("#theory_exam").val('')
+            $("#practical_exam").val('')
         }).fail(function (data,status,error) {
             console.log(data);
             var response = $.parseJSON(data.responseText)
