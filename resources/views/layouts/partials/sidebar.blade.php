@@ -134,6 +134,7 @@
                 {{-- <h6 class="collapse-header">Courses Section:</h6> --}}
                 <a class="collapse-item" href="{{url('admin/cassessment')}}">Continuous Assessment</a>
                 <a class="collapse-item" href="{{url('admin/results')}}">Upload Semester Results</a>
+                <a class="collapse-item" href="{{url('admin/student/results')}}">Semester Results - SE</a>
             </div>
         </div>
     </li>
