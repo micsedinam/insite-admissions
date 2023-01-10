@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.loader')
 {{-- @include('admin.department.edit') --}}
 <div class="row justify-content-center">
     <div class="col-md-8">
@@ -82,6 +83,8 @@
                         </div>
                     </div>
 
+                    <div class="loader"></div>
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -137,6 +140,7 @@
 </div>
 
 <script type="application/javascript">
+    $('.loader').hide()
     //showDistrictInfo();
 
     $("#frm-create-result #dept_id_append").on('change',function(e){
@@ -152,7 +156,6 @@
                     value : profiles.index_number,
                     text  : profiles.index_number.toUpperCase()
                 }))
-
             })
         })
     });
