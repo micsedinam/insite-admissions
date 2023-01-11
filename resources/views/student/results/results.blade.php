@@ -21,7 +21,7 @@
             <div class="bg-warning text-white card-header">Check Results</div>
 
             <div class="card-body">
-                <form id="frm-check-results" action="{{route('student.profile.update')}}" method="POST" enctype="multipart/form-data">
+                <form id="frm-check-results" action="{{route('results.check')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="row mb-4">

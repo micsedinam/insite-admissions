@@ -152,6 +152,8 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::get('/registered', 'CourseRegistrationController@Registered')->name('registered');
 
     Route::get('/results', 'MyResultsController@index')->name('results.index');
+    Route::post('/results/check', 'MyResultsController@check')->name('results.check');
+    Route::get('/results/view', 'MyResultsController@check')->name('results.view');
 
 });
 
