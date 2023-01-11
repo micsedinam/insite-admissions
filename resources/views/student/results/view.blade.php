@@ -50,9 +50,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            {{-- <div class="col-md-4">
-                                <h5 class="text-dark"><strong>Academic Year:</strong> 2022/2023 </h5>
-                            </div> --}}
                             <div class="col-md-6">
                                 <h5 class="text-dark"><strong>Level:</strong> {{$level}} </h5>
                             </div>
