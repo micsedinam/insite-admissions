@@ -50,14 +50,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <h5 class="text-dark"><strong>Academic Year:</strong> 2022/2023 </h5>
-                            </div>
-                            <div class="col-md-2">
-                                <h5 class="text-dark"><strong>Level:</strong> {{$details->level}} </h5>
+                            </div> --}}
+                            <div class="col-md-6">
+                                <h5 class="text-dark"><strong>Level:</strong> {{$level}} </h5>
                             </div>
                             <div class="col-md-6">
-                                @if ( $details->semester == 1)
+                                @if ( $semester == 1)
                                     <h5 class="text-dark"><strong>Semester:</strong> First</h5>
                                 @else
                                     <h5 class="text-dark"><strong>Semester:</strong> Second</h5>

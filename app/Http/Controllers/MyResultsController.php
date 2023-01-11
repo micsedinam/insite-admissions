@@ -20,6 +20,9 @@ class MyResultsController extends Controller
         //dd($request->all());
         $auth_user_id = Auth::id();
 
+        $level = $request->level;
+        $semester = $request->semester;
+
         $details = DB::table('profiles')
                 ->join('users', 'users.id', '=', 'profiles.user_id')
                 ->join('departments', 'departments.id', '=', 'profiles.dept_id')
@@ -64,6 +67,6 @@ class MyResultsController extends Controller
         //dd($results, $details);
 
 
-        return view('student.results.view', compact('results', 'details'));
+        return view('student.results.view', compact('results', 'details', 'level', 'semester'));
     }
 }
