@@ -13,7 +13,7 @@
                     <th>Exam</th>
                     <th>Total</th>
                     <th>Grade</th>
-                    {{-- <th>Action</th> --}}
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,13 +23,13 @@
                         <td>{{$item->course_code}}</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->semester}}</td>
-                        <td>{{$item->continuous_assessment}}</td>
-                        <td>{{$item->exam_score}}</td>
-                        <td>{{$item->total_score}}</td>
+                        <td>{{$item->first_quiz + $item->second_quiz + $item->first_assessment + $item->second_assessment + $item->third_assessment}}</td>
+                        <td>{{$item->theory_exam + $item->practical_exam}}</td>
+                        <td>{{$item->total_marks}}</td>
                         <td>
                             @php
                                 //Calculate the grade
-                                $score = $item->total_score;
+                                $score = $item->total_marks;
                                 switch ($score) {
                                     case $score >=80 || $score==100:
                                         echo "A";
@@ -58,12 +58,12 @@
                                 }
                             @endphp
                         </td>
-                        {{-- <td>
+                        <td>
                             <div class="btn-group">
-                                <button class="btn btn-primary edit-dept" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button>
-                                <button class="btn btn-danger del-activity" value="{{$a->activity_id}}"><i class="fa fa-window-close" title="Delete"></i></button>
+                                <button class="btn btn-primary edit-result" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button>
+                                {{-- <button class="btn btn-danger del-activity" value="{{$a->activity_id}}"><i class="fa fa-window-close" title="Delete"></i></button> --}}
                             </div>
-                        </td> --}}
+                        </td>
                     </tr>
                 @endforeach
             </table>

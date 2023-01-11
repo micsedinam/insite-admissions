@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
+@include('admin.results.edit')
 @include('layouts.loader')
-{{-- @include('admin.department.edit') --}}
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
@@ -24,7 +24,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="dept" class="label-control">Department</label>
-                                <select name="dept_id" id="dept_id_append" class="form-control custom-select">
+                                <select name="dept_id" id="dept_id_append" class="form-control">
                                     <option value="">Select Department</option>
                                     @foreach($dept as $key => $dept)
                                         <option value="{{$dept->id}}"}}>{{strtoupper($dept->dept_name)}}</option>
@@ -35,11 +35,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="index_number" class="label-control">Index Number</label>
-                                <select name="index_number" id="index_number_append" class="form-control custom-select">
+                                <select name="index_number" id="index_number_append" class="form-control">
                                     <option value="">Select Department First</option>
-                                    {{--  @foreach($division as $key =>$div)
-                                        <option value="{{$div->division_id}}"}}>{{$div->name}}</option>
-                                    @endforeach  --}}
                                 </select>
                             </div>
                         </div>
@@ -123,7 +120,7 @@
                         
                     <div class="form-row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block" id="add-result-clear"><i class="fas fa-plus-circle"></i> Add Student Results</button>
+                            <button type="submit" class="btn btn-success btn-block" id="add-result-clear"><i class="fas fa-plus-circle"></i> Add Student Results</button>
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-primary btn-block" id="add-result-copy"><i class="fas fa-plus-circle"></i> Add Student Results & Copy</button>
@@ -141,7 +138,7 @@
 
 <script type="application/javascript">
     $('.loader').hide()
-    //showDistrictInfo();
+    showResults();
 
     $("#frm-create-result #dept_id_append").on('change',function(e){
         var dept_id = $(this).val();
@@ -165,7 +162,7 @@
         e.preventDefault();
         var data = $('#frm-create-result').serialize();
         $.post("{{route('student.results.add')}}", data, function (data) {
-            //showDistrictInfo(data.name);
+            showResults(data.index_number);
             swal('SUCCESS',
                 'Student Result Added successfully',
                 'success');
@@ -204,7 +201,7 @@
         e.preventDefault();
         var data = $('#frm-create-result').serialize();
         $.post("{{route('student.results.add')}}", data, function (data) {
-            //showDistrictInfo(data.name);
+            showResults(data.index_number);
             swal('SUCCESS',
                 'Student Result Added successfully',
                 'success');
@@ -237,34 +234,44 @@
 
     });
 
-    /*
-    function showDistrictInfo()
+    function showResults()
     {
-        var data = $('#frm-create-district').serialize();
-        console.log(data);
-        $.get("", data, function (data) {
-            $('#add-district').empty().append(data);
+        var data = $('#frm-create-result').serialize();
+        //console.log(data);
+        $.get("{{route('student.results.show')}}", data, function (data) {
+            $('#add-results').empty().append(data);
         });
     }
-    $(document).on('click', '.edit-district', function (e) {
-        $('#show-district').modal('show');
+
+    $(document).on('click', '.edit-result', function (e) {
+        $('#show-result').modal('show');
         var id = $(this).val();
-        $.get("", {district_id:id}, function (data) {
+        $.get("{{route('student.results.edit')}}", {id:id}, function (data) {
             console.log(data)
-            $('#district_id_edit').val(data.district_id);
-            $('#dis_name_edit').val(data.name);
-            $('#division_id_edit').val(data.division_id);
-            $('#region_id_edit').val(data.region_id);
+            $('#result_id_edit').val(data.id);
+            $('#dept_id_edit').val(data.dept_id);
+            $('#course_code_edit').val(data.course_code);
+            $('#level_edit').val(data.level);
+            $('#semester_edit').val(data.semester);
+            $('#index_number_edit').val(data.index_number);
+            $('#first_quiz_edit').val(data.first_quiz);
+            $('#second_quiz_edit').val(data.second_quiz);
+            $('#first_assessment_edit').val(data.first_assessment);
+            $('#second_assessment_edit').val(data.second_assessment);
+            $('#third_assessment_edit').val(data.third_assessment);
+            $('#theory_exam_edit').val(data.theory_exam);
+            $('#practical_exam_edit').val(data.practical_exam);
         });
     });
-    $('.btn-update-district').on('click', function (e) {
+
+    $('.btn-update-result').on('click', function (e) {
         e.preventDefault();
-        var data = $('#frm-update-district').serialize();
-        $.post("", data, function (data) {
-            showDistrictInfo(data.name);
-            $('#show-district').modal('hide');
+        var data = $('#frm-update-result').serialize();
+        $.post("{{route('student.results.update')}}", data, function (data) {
+            showResults(data.index_number);
+            $('#show-result').modal('hide');
             swal('SUCCESS',
-                'District updated successfully',
+                'Student Result updated successfully',
                 'success');
         }).fail(function (data,status,error) {
             console.log(data);
@@ -277,14 +284,10 @@
                     color: "#FEFAE3",
                     button: "OK",
                 });
-
             });
-
-
         });
-
-    });*/
-    // $(".select2").select2();
+    });
+    //$(".select2").select2();
 
 
 </script>

@@ -119,6 +119,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/student/results', 'StudentResultController@index')->name('student.results.index');
     Route::get('/student/profiles', 'StudentResultController@showIndexNumbers')->name('show.index.numbers');
     Route::post('/student/results/add', 'StudentResultController@createStudentResult')->name('student.results.add');
+    Route::get('/student/results/show', 'StudentResultController@showStudentResultInformation')->name('student.results.show');
+    Route::get('/student/results/edit', 'StudentResultController@editStudentResult')->name('student.results.edit');
+    Route::post('/student/results/update', 'StudentResultController@updateStudentResult')->name('student.results.update');
 
     Route::get('/cassessment', 'CAController@index')->name('ca.index');
     Route::post('/addAssessment', 'CAController@store')->name('ca.store');
@@ -147,6 +150,8 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::get('/export/courses', 'CourseRegistrationController@Export')->name('export.courses');
     Route::post('/register/courses', 'CourseRegistrationController@Store')->name('register.courses');
     Route::get('/registered', 'CourseRegistrationController@Registered')->name('registered');
+
+    Route::get('/results', 'MyResultsController@index')->name('results.index');
 
 });
 
