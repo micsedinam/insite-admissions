@@ -24,6 +24,8 @@
                 <form id="frm-check-results" action="{{route('results.check')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
+                    <input type="hidden" name="user_id" value="{{Auth::id()}}">
+
                     <div class="row mb-4">
                         <div class="col-md-6">
                             <label class="control-label" for="level">Level</label>

@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use UxWeb\SweetAlert\SweetAlert;
 
 class MyResultsController extends Controller
 {
@@ -18,18 +19,17 @@ class MyResultsController extends Controller
     public function check(Request $request)
     {
         //dd($request->all());
-        $auth_user_id = Auth::id();
 
         $level = $request->level;
         $semester = $request->semester;
 
-        $details = DB::table('profiles')
-                ->join('users', 'users.id', '=', 'profiles.user_id')
+        $details = DB::table('users')
+                ->join('profiles', 'users.id', '=', 'profiles.user_id')
                 ->join('departments', 'departments.id', '=', 'profiles.dept_id')
-                ->where('profiles.user_id', Auth::id())
+                ->where('profiles.user_id', $request->user_id)
                 ->select('name', 'dept_name', 'profile_photo', 'index_number', 'level', 'semester')
                 ->first();
-        
+
         $results = DB::select(
             "SELECT
                 student_results.course_code, 
@@ -60,14 +60,29 @@ class MyResultsController extends Controller
                 student_results.`level` = $request->level AND
                 student_results.semester = $request->semester AND
                 `profiles`.index_number = student_results.index_number AND
-                `profiles`.user_id = $auth_user_id
-            GROUP BY
-	            student_results.course_code"
+                `profiles`.user_id = $request->user_id AND
+                student_results.dept_id = courses.dept_id"
         );
-        
-        //dd($results, $details);
 
+        if ($details == NULL) {
+            
+            $message = "Kindly update your profile in order to access results." ."\n". "If challenge persists, contact your administrator.";
 
-        return view('student.results.view', compact('results', 'details', 'level', 'semester'));
+            alert()->error($message, 'Sorry!')->persistent();
+
+            return redirect()->back();
+
+        } elseif ($results == NULL) {
+
+            $message = "Your results are not available at the moment. Kindly check back later";
+
+            alert()->info($message, 'Hi there!')->persistent();
+
+            return redirect()->back();
+
+        } else {
+    
+            return view('student.results.view', compact('results', 'details', 'level', 'semester'));
+        }
     }
 }
