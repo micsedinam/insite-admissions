@@ -19,6 +19,12 @@
                     <div class="form-group">
                         <label for="course_code" class="label-control">Course Code</label>
                         <input type="text" class="form-control" name="course_code" id="course_code">
+                        {{-- <select name="course_code" id="course_code" class="form-control">
+                            <option value="">Select Department</option>
+                            @foreach($dept as $key => $dept)
+                                <option value="{{$dept->id}}"}}>{{strtoupper($dept->dept_name)}}</option>
+                            @endforeach
+                        </select> --}}
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -27,7 +33,7 @@
                                 <select name="dept_id" id="dept_id_append" class="form-control">
                                     <option value="">Select Department</option>
                                     @foreach($dept as $key => $dept)
-                                        <option value="{{$dept->id}}"}}>{{strtoupper($dept->dept_name)}}</option>
+                                        <option value="{{$dept->id}}">{{strtoupper($dept->dept_name)}}</option>
                                     @endforeach
                                 </select>
                             </div>

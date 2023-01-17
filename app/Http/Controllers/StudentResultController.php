@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
 use App\Models\Department;
 use App\Models\Profile;
 use App\Models\StudentResult;
@@ -13,8 +14,9 @@ class StudentResultController extends Controller
     {
         $dept = Department::all();
         $index_number = Profile::all();
+        $course = Courses::all();
 
-        return view('admin.results.add', compact('dept', 'index_number'));
+        return view('admin.results.add', compact('dept', 'index_number', 'course'));
     }
 
     public function showIndexNumbers(Request $request)

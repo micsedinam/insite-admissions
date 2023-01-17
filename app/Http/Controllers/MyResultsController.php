@@ -60,8 +60,9 @@ class MyResultsController extends Controller
                 student_results.`level` = $request->level AND
                 student_results.semester = $request->semester AND
                 `profiles`.index_number = student_results.index_number AND
-                `profiles`.user_id = $auth_user_id AND
-                student_results.dept_id = courses.dept_id"
+                `profiles`.user_id = $auth_user_id
+            GROUP BY
+	            student_results.course_code"
         );
         
         //dd($results, $details);

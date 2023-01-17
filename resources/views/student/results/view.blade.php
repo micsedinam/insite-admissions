@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{$details->name}}'s Level {{$details->level}} Semester {{$details->semester}} Courses</title>
+  <title>{{$details->name}}'s Level {{$details->level}} Semester {{$details->semester}} Results</title>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
