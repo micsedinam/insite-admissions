@@ -89,7 +89,7 @@ class FeePaymentController extends Controller
     {
         $feecode= FeePayment::where(['code' => $request['code']])
             ->first();
-            //dd($feecode);
+        //dd($feecode);
         
         if ($feecode === null) {
             $message = "Fee verification number does not exist! Kindly contact the Administrator.";
@@ -100,7 +100,7 @@ class FeePaymentController extends Controller
         }
 
         $index_number = Profile::where(['index_number' => $feecode['index_number']])->first();
-        //dd($index_number)
+        //dd($index_number);
 
         if ($index_number == null) {
             $message = "Wrong Information'";
