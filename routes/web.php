@@ -69,7 +69,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/admin-register', function () {
         return view('auth.admin-register');
     })->name('admin.register');
+    Route::get('/password-reset', function () {
+        return view('auth.admin-reset-password');
+    })->name('admin.user.reset');
     Route::post('/admin-register/create', 'Auth\AdminRegisterController@create')->name('admin.register.store');
+    Route::post('/admin-password/reset', 'Auth\AdminRegisterController@resetPassword')->name('admin.reset.password');
 
     Route::get('/department', 'DepartmentController@index')->name('department.index');
     Route::post('/addDepartment', 'DepartmentController@store')->name('department.store');

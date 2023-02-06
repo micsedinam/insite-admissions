@@ -165,10 +165,19 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/admin-register')}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFifth"
+        aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span>
         </a>
+        <div id="collapseFifth" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Courses Section:</h6> --}}
+                {{-- <a class="collapse-item" href="{{url('admin/cassessment')}}">Continuous Assessment</a> --}}
+                <a class="collapse-item" href="{{url('admin/admin-register')}}">Add Users</a>
+                <a class="collapse-item" href="{{url('admin/password-reset')}}">Reset Password</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->
