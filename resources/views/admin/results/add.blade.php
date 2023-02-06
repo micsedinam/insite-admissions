@@ -293,6 +293,32 @@
             });
         });
     });
+
+    $(document).on('click', '.del-result', function (e) {
+        var id = $(this).val();
+        var validate = confirm("Are you sure you want to delete this result entry?");
+        if (validate === true) {
+            $.post("{{route('student.results.delete')}}", {id: id}, function (data) {
+                showResults(data.index_number);
+                swal('Deleted',
+                    'Selected result has been deleted successfully',
+                    'success');
+
+            }).fail(function (data) {
+                console.log(data);
+                var responseJSON = data.responseJSON;
+                var response = '';
+                for (var key in responseJSON) {
+                    if (responseJSON.hasOwnProperty(key)) {
+                        response += "\n" + responseJSON[key] + "\n";
+                    }
+                }
+                swal('ERROR',
+                    response,
+                    'error');
+            })
+        }else{swal('Cancelled',"Result entry not deleted");}
+    })
     //$(".select2").select2();
 
 

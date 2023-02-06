@@ -59,10 +59,8 @@
                             @endphp
                         </td>
                         <td>
-                            <div class="btn-group">
-                                <button class="btn btn-primary edit-result" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button>
-                                {{-- <button class="btn btn-danger del-activity" value="{{$a->activity_id}}"><i class="fa fa-window-close" title="Delete"></i></button> --}}
-                            </div>
+                            <button class="btn btn-primary edit-result mr-2" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button>
+                            <button class="btn btn-danger del-result" value="{{$item->id}}"><i class="fa fa-trash" title="Delete"></i></button>
                         </td>
                     </tr>
                 @endforeach

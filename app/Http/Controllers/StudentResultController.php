@@ -113,4 +113,12 @@ class StudentResultController extends Controller
         }
     }
 
+    public function deleteResult(Request $request)
+    {
+        if($request->ajax())
+        {
+            StudentResult::destroy($request->id);
+        }
+    }
+
 }

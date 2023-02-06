@@ -126,6 +126,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/student/results/show', 'StudentResultController@showStudentResultInformation')->name('student.results.show');
     Route::get('/student/results/edit', 'StudentResultController@editStudentResult')->name('student.results.edit');
     Route::post('/student/results/update', 'StudentResultController@updateStudentResult')->name('student.results.update');
+    Route::post('/student/results/delete', 'StudentResultController@deleteResult')->name('student.results.delete');
 
     Route::get('/cassessment', 'CAController@index')->name('ca.index');
     Route::post('/addAssessment', 'CAController@store')->name('ca.store');
