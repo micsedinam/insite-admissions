@@ -96,13 +96,6 @@ class AdminRegisterController extends Controller
 
         //dd($user);
 
-        $reset = User::find($user->id);
-
-        //dd($reset);
-
-        $reset->password = Hash::make($new_pass);
-
-        //dd($reset->password);
 
         if ($user == NULL) {
             
@@ -112,7 +105,18 @@ class AdminRegisterController extends Controller
 
             return redirect()->back();
 
-        } elseif ($reset->save()) {
+        }
+
+        $reset = User::find($user->id);
+
+        //dd($reset);
+
+        $reset->password = Hash::make($new_pass);
+
+        //dd($reset->password);
+        
+        if ($reset->save()) {
+
 
             $message = $reset->name."'s new password is: ".$new_pass;
 
