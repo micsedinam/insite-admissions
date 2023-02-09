@@ -94,6 +94,11 @@
                                         Edit Profile
                                     </a>
                                 @endif 
+
+                                <a class="dropdown-item" href="{{route("user.password.change")}}">
+                                    <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Change Password
+                                </a>
                                 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"

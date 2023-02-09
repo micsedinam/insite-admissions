@@ -30,32 +30,29 @@
                             @php
                                 //Calculate the grade
                                 $score = $item->total_marks;
-                                switch ($score) {
-                                    case $score >=80 || $score==100:
+                                if ($score == 0) {
+                                    echo "IC";
+                                } else {
+                                    if ($score >= 80 || $score == 100) {
                                         echo "A";
-                                        break;
-                                    case $score >=75:
+                                    }elseif ($score >= 75) {
                                         echo "B+";
-                                        break;
-                                    case $score >=70:
+                                    }elseif ($score >= 70) {
                                         echo "B";
-                                        break;
-                                    case $score >=65:
-                                        echo "C+";
-                                        break;
-                                    case $score >=60:
+                                    }elseif ($score >= 65) {
+                                            echo "C+";
+                                    }elseif ($score >= 60) {
                                         echo "C";
-                                        break;
-                                    case $score >=55:
+                                    }elseif ($score >= 55) {
                                         echo "D+";
-                                        break;
-                                    case $score >=50:
+                                    }elseif ($score >= 50) {
                                         echo "D";
-                                        break;
-                                    case $score <49 || $score==0:
+                                    }elseif ($score = 49) {
                                         echo "E";
-                                        break;
+                                    }
                                 }
+                                
+                                
                             @endphp
                         </td>
                         <td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -70,5 +71,25 @@ class RegisterController extends Controller
             'is_admin' => $data['is_admin'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $this->validate($request, 
+            [
+            'password' => 'required'|'string'|'min:6'|'confirmed'
+            ],
+            ['password.confirmed'=>'Your password entries need to be same .']
+        );
+
+        dd($request->all());
+
+        if ($request->ajax()) {
+
+
+            return response()->json(Department::create($request->all()));
+        } else {
+            return response()->json(['error' => 'Something went wrong!'], 422);
+        }
     }
 }

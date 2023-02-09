@@ -141,186 +141,187 @@
 <div id="add-results">
 
 </div>
+@endsection
+@section('script')
+    <script type="application/javascript">
+        $('.loader').hide()
+        showResults();
 
-<script type="application/javascript">
-    $('.loader').hide()
-    showResults();
-
-    $("#frm-create-result #dept_id_append").on('change',function(e){
-        var dept_id = $(this).val();
-        var index_number = $('#index_number_append')
-        $(index_number).empty();
-        $(index_number).append("<option>Select Value</option>");
-        $('.loader').show()
-        $.get("{{route('show.index.numbers')}}",{dept_id:dept_id}, function(data){
-            $('.loader').hide()
-            $.each(data,function (i,profiles) {
-                $(index_number).append($("<option/>", {
-                    value : profiles.index_number,
-                    text  : profiles.index_number.toUpperCase()
-                }))
+        $("#frm-create-result #dept_id_append").on('change',function(e){
+            var dept_id = $(this).val();
+            var index_number = $('#index_number_append')
+            $(index_number).empty();
+            $(index_number).append("<option>Select Value</option>");
+            $('.loader').show()
+            $.get("{{route('show.index.numbers')}}",{dept_id:dept_id}, function(data){
+                $('.loader').hide()
+                $.each(data,function (i,profiles) {
+                    $(index_number).append($("<option/>", {
+                        value : profiles.index_number,
+                        text  : profiles.index_number.toUpperCase()
+                    }))
+                })
             })
-        })
-    });
-    
-    $('#add-result-clear').on('click', function (e) {
-        $('.loader').show()
-        e.preventDefault();
-        var data = $('#frm-create-result').serialize();
-        $.post("{{route('student.results.add')}}", data, function (data) {
-            showResults(data.index_number);
-            swal('SUCCESS',
-                'Student Result Added successfully',
-                'success');
-            $('.loader').hide()
-            $("#course_code").val('')
-            $("#dept_id_append").val('').trigger('change')
-            $("#index_number_append").val('').trigger('change')
-            $("#level").val('').trigger('change')
-            $("#semester").val('').trigger('change')
-            $("#first_quiz").val('')
-            $("#second_quiz").val('')
-            $("#first_assessment").val('')
-            $("#second_assessment").val('')
-            $("#third_assessment").val('')
-            $("#theory_exam").val('')
-            $("#practical_exam").val('')
-        }).fail(function (data,status,error) {
-            console.log(data);
-            var response = $.parseJSON(data.responseText)
-            $('.loader').hide()
-            $.each(response.errors, function(key, value){
-                swal({
-                    title: "ooops!",
-                    text: value,
-                    icon: "error",
-                    color: "#FEFAE3",
-                    button: "OK",
-                });
-            });
         });
-
-    });
-
-    $('#add-result-copy').on('click', function (e) {
-        $('.loader').show()
-        e.preventDefault();
-        var data = $('#frm-create-result').serialize();
-        $.post("{{route('student.results.add')}}", data, function (data) {
-            showResults(data.index_number);
-            swal('SUCCESS',
-                'Student Result Added successfully',
-                'success');
-            $('.loader').hide()
-            $("#course_code").val('')
-            $("#first_quiz").val('')
-            $("#second_quiz").val('')
-            $("#first_assessment").val('')
-            $("#second_assessment").val('')
-            $("#third_assessment").val('')
-            $("#theory_exam").val('')
-            $("#practical_exam").val('')
-        }).fail(function (data,status,error) {
-            console.log(data);
-            var response = $.parseJSON(data.responseText)
-            $('.loader').hide()
-            $.each(response.errors, function(key, value){
-                swal({
-                    title: "ooops!",
-                    text: value,
-                    icon: "error",
-                    color: "#FEFAE3",
-                    button: "OK",
-                });
-
-            });
-
-
-        });
-
-    });
-
-    function showResults()
-    {
-        var data = $('#frm-create-result').serialize();
-        //console.log(data);
-        $.get("{{route('student.results.show')}}", data, function (data) {
-            $('#add-results').empty().append(data);
-        });
-    }
-
-    $(document).on('click', '.edit-result', function (e) {
-        $('#show-result').modal('show');
-        var id = $(this).val();
-        $.get("{{route('student.results.edit')}}", {id:id}, function (data) {
-            console.log(data)
-            $('#result_id_edit').val(data.id);
-            $('#dept_id_edit').val(data.dept_id);
-            $('#course_code_edit').val(data.course_code);
-            $('#level_edit').val(data.level);
-            $('#semester_edit').val(data.semester);
-            $('#index_number_edit').val(data.index_number);
-            $('#first_quiz_edit').val(data.first_quiz);
-            $('#second_quiz_edit').val(data.second_quiz);
-            $('#first_assessment_edit').val(data.first_assessment);
-            $('#second_assessment_edit').val(data.second_assessment);
-            $('#third_assessment_edit').val(data.third_assessment);
-            $('#theory_exam_edit').val(data.theory_exam);
-            $('#practical_exam_edit').val(data.practical_exam);
-        });
-    });
-
-    $('.btn-update-result').on('click', function (e) {
-        e.preventDefault();
-        var data = $('#frm-update-result').serialize();
-        $.post("{{route('student.results.update')}}", data, function (data) {
-            showResults(data.index_number);
-            $('#show-result').modal('hide');
-            swal('SUCCESS',
-                'Student Result updated successfully',
-                'success');
-        }).fail(function (data,status,error) {
-            console.log(data);
-            var response = $.parseJSON(data.responseText)
-            $.each(response.errors, function(key, value){
-                swal({
-                    title: "ooops!",
-                    text: value,
-                    icon: "error",
-                    color: "#FEFAE3",
-                    button: "OK",
-                });
-            });
-        });
-    });
-
-    $(document).on('click', '.del-result', function (e) {
-        var id = $(this).val();
-        var validate = confirm("Are you sure you want to delete this result entry?");
-        if (validate === true) {
-            $.post("{{route('student.results.delete')}}", {id: id}, function (data) {
+        
+        $('#add-result-clear').on('click', function (e) {
+            $('.loader').show()
+            e.preventDefault();
+            var data = $('#frm-create-result').serialize();
+            $.post("{{route('student.results.add')}}", data, function (data) {
                 showResults(data.index_number);
-                swal('Deleted',
-                    'Selected result has been deleted successfully',
+                swal('SUCCESS',
+                    'Student Result Added successfully',
                     'success');
-
-            }).fail(function (data) {
+                $('.loader').hide()
+                $("#course_code").val('')
+                $("#dept_id_append").val('').trigger('change')
+                $("#index_number_append").val('').trigger('change')
+                $("#level").val('').trigger('change')
+                $("#semester").val('').trigger('change')
+                $("#first_quiz").val('')
+                $("#second_quiz").val('')
+                $("#first_assessment").val('')
+                $("#second_assessment").val('')
+                $("#third_assessment").val('')
+                $("#theory_exam").val('')
+                $("#practical_exam").val('')
+            }).fail(function (data,status,error) {
                 console.log(data);
-                var responseJSON = data.responseJSON;
-                var response = '';
-                for (var key in responseJSON) {
-                    if (responseJSON.hasOwnProperty(key)) {
-                        response += "\n" + responseJSON[key] + "\n";
+                var response = $.parseJSON(data.responseText)
+                $('.loader').hide()
+                $.each(response.errors, function(key, value){
+                    swal({
+                        title: "ooops!",
+                        text: value,
+                        icon: "error",
+                        color: "#FEFAE3",
+                        button: "OK",
+                    });
+                });
+            });
+
+        });
+
+        $('#add-result-copy').on('click', function (e) {
+            $('.loader').show()
+            e.preventDefault();
+            var data = $('#frm-create-result').serialize();
+            $.post("{{route('student.results.add')}}", data, function (data) {
+                showResults(data.index_number);
+                swal('SUCCESS',
+                    'Student Result Added successfully',
+                    'success');
+                $('.loader').hide()
+                $("#course_code").val('')
+                $("#first_quiz").val('')
+                $("#second_quiz").val('')
+                $("#first_assessment").val('')
+                $("#second_assessment").val('')
+                $("#third_assessment").val('')
+                $("#theory_exam").val('')
+                $("#practical_exam").val('')
+            }).fail(function (data,status,error) {
+                console.log(data);
+                var response = $.parseJSON(data.responseText)
+                $('.loader').hide()
+                $.each(response.errors, function(key, value){
+                    swal({
+                        title: "ooops!",
+                        text: value,
+                        icon: "error",
+                        color: "#FEFAE3",
+                        button: "OK",
+                    });
+
+                });
+
+
+            });
+
+        });
+
+        function showResults()
+        {
+            var data = $('#frm-create-result').serialize();
+            //console.log(data);
+            $.get("{{route('student.results.show')}}", data, function (data) {
+                $('#add-results').empty().append(data);
+            });
+        }
+
+        $(document).on('click', '.edit-result', function (e) {
+            $('#show-result').modal('show');
+            var id = $(this).val();
+            $.get("{{route('student.results.edit')}}", {id:id}, function (data) {
+                console.log(data)
+                $('#result_id_edit').val(data.id);
+                $('#dept_id_edit').val(data.dept_id);
+                $('#course_code_edit').val(data.course_code);
+                $('#level_edit').val(data.level);
+                $('#semester_edit').val(data.semester);
+                $('#index_number_edit').val(data.index_number);
+                $('#first_quiz_edit').val(data.first_quiz);
+                $('#second_quiz_edit').val(data.second_quiz);
+                $('#first_assessment_edit').val(data.first_assessment);
+                $('#second_assessment_edit').val(data.second_assessment);
+                $('#third_assessment_edit').val(data.third_assessment);
+                $('#theory_exam_edit').val(data.theory_exam);
+                $('#practical_exam_edit').val(data.practical_exam);
+            });
+        });
+
+        $('.btn-update-result').on('click', function (e) {
+            e.preventDefault();
+            var data = $('#frm-update-result').serialize();
+            $.post("{{route('student.results.update')}}", data, function (data) {
+                showResults(data.index_number);
+                $('#show-result').modal('hide');
+                swal('SUCCESS',
+                    'Student Result updated successfully',
+                    'success');
+            }).fail(function (data,status,error) {
+                console.log(data);
+                var response = $.parseJSON(data.responseText)
+                $.each(response.errors, function(key, value){
+                    swal({
+                        title: "ooops!",
+                        text: value,
+                        icon: "error",
+                        color: "#FEFAE3",
+                        button: "OK",
+                    });
+                });
+            });
+        });
+
+        $(document).on('click', '.del-result', function (e) {
+            var id = $(this).val();
+            var validate = confirm("Are you sure you want to delete this result entry?");
+            if (validate === true) {
+                $.post("{{route('student.results.delete')}}", {id: id}, function (data) {
+                    showResults(data.index_number);
+                    swal('Deleted',
+                        'Selected result has been deleted successfully',
+                        'success');
+
+                }).fail(function (data) {
+                    console.log(data);
+                    var responseJSON = data.responseJSON;
+                    var response = '';
+                    for (var key in responseJSON) {
+                        if (responseJSON.hasOwnProperty(key)) {
+                            response += "\n" + responseJSON[key] + "\n";
+                        }
                     }
-                }
-                swal('ERROR',
-                    response,
-                    'error');
-            })
-        }else{swal('Cancelled',"Result entry not deleted");}
-    })
-    //$(".select2").select2();
+                    swal('ERROR',
+                        response,
+                        'error');
+                })
+            }else{swal('Cancelled',"Result entry not deleted");}
+        })
+        //$(".select2").select2();
 
 
-</script>
+    </script>
 @endsection
