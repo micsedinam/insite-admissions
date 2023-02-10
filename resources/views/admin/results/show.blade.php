@@ -51,8 +51,6 @@
                                         echo "E";
                                     }
                                 }
-                                
-                                
                             @endphp
                         </td>
                         <td>
