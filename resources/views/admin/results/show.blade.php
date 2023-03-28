@@ -6,12 +6,13 @@
                 <thead>
                 <tr>
                     <th>Index Number</th>
-                    <th>Course Code</th>
+                    {{-- <th>Course Code</th> --}}
+                    <th>Course Title</th>
                     <th>Level</th>
                     <th>Semester</th>
                     <th>Assessment</th>
                     <th>Exam</th>
-                    <th>Total</th>
+                    {{-- <th>Total</th> --}}
                     <th>Grade</th>
                     <th>Action</th>
                 </tr>
@@ -20,12 +21,13 @@
                 @foreach($result as $item)
                     <tr>
                         <td>{{$item->index_number}}</td>
-                        <td>{{$item->course_code}}</td>
+                        {{-- <td>{{$item->course_code}}</td> --}}
+                        <td>{{$item->course_title}}</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->semester}}</td>
                         <td>{{$item->first_quiz + $item->second_quiz + $item->first_assessment + $item->second_assessment + $item->third_assessment}}</td>
                         <td>{{$item->theory_exam + $item->practical_exam}}</td>
-                        <td>{{$item->total_marks}}</td>
+                        {{-- <td>{{$item->total_marks}}</td> --}}
                         <td>
                             @php
                                 //Calculate the grade

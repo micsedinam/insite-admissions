@@ -31,7 +31,11 @@ class ResultController extends Controller
 
     public function showResultInformation()
     {
-        $result = Result::all();
+        $result = DB::table('student_results')
+                ->join('courses', 'student_results.course_code', 'courses.course_code')
+                ->select('student_results.*', 'courses.course_title')
+                ->groupBy('student_results.id')
+                ->get();
 
         return view('admin.results.show', compact('result'));
 
@@ -77,18 +81,18 @@ class ResultController extends Controller
                 courses.course_code, 
                 courses.course_title,
                 courses.credit_hours,
-                results.index_number, 
-                results.course_code, 
-                results.semester, 
-                results.`level`, 
-                results.score
+                student_results.index_number, 
+                student_results.course_code, 
+                student_results.semester, 
+                student_results.`level`, 
+                student_results.total_marks
             FROM
-                results,
+                student_results,
                 courses
             WHERE
-                results.index_number = '$request->index_number' AND
-                results.course_code = courses.course_code AND
-                results.dept_id = courses.dept_id"
+                student_results.index_number = '$request->index_number' AND
+                student_results.course_code = courses.course_code AND
+                student_results.dept_id = courses.dept_id"
         );
         //dd($trans);
 

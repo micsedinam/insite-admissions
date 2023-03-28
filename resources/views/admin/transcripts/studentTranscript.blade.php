@@ -100,32 +100,34 @@
                                     @foreach ($trans as $course)
                                         @if ($course->level == 100 && $course->semester == 1)
                                             <?php 
-                                                //$name = "Bobby";
+
                                                 //Calculate the grade
-                                                $score = $course->score;
-                                                switch ($weight = $score) {
-                                                    case $score >=80 || $score==100:
+                                                $score = $course->total_marks;
+                                                //dd($score);
+                                                switch ($weight = $score) 
+                                                {
+                                                    case $score >= 80 || $score == 100:
                                                         $weight = 4.0;
                                                         break;
-                                                    case $score >=75:
+                                                    case $score >= 75:
                                                         $weight =  3.5;
                                                         break;
-                                                    case $score >=70:
+                                                    case $score >= 70:
                                                         $weight =  3.0;
                                                         break;
-                                                    case $score >=65:
+                                                    case $score >= 65:
                                                         $weight =  2.5;
                                                         break;
-                                                    case $score >=60:
+                                                    case $score >= 60:
                                                         $weight =  2.0;
                                                         break;
-                                                    case $score >=55:
+                                                    case $score >= 55:
                                                         $weight =  1.5;
                                                         break;
-                                                    case $score >=50:
+                                                    case $score >= 50:
                                                         $weight =  1.0;
                                                         break;
-                                                    case $score <49 || $score==0:
+                                                    case $score < 49 || $score == 0:
                                                         $weight =  0;
                                                         break;
                                                 }
@@ -143,7 +145,7 @@
                                                 <td>
                                                     @php
                                                         //Calculate the grade
-                                                        $score = $course->score;
+                                                        $score = $course->total_marks;
                                                         switch ($score) {
                                                             case $score >=80 || $score==100:
                                                                 echo "A";
@@ -226,28 +228,128 @@
                                     <th>Grade Point</th>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $totalgp = 0.0;
+                                        $totalcdthr = 0;
+                                    @endphp
                                     @foreach ($trans as $course)
                                         @if ($course->level == 100 && $course->semester == 2)
-                                            <tr>
+                                            <?php 
+
+                                                //Calculate the grade
+                                                $score = $course->total_marks;
+                                                //dd($score);
+                                                switch ($weight = $score) 
+                                                {
+                                                    case $score >= 80 || $score == 100:
+                                                        $weight = 4.0;
+                                                        break;
+                                                    case $score >= 75:
+                                                        $weight =  3.5;
+                                                        break;
+                                                    case $score >= 70:
+                                                        $weight =  3.0;
+                                                        break;
+                                                    case $score >= 65:
+                                                        $weight =  2.5;
+                                                        break;
+                                                    case $score >= 60:
+                                                        $weight =  2.0;
+                                                        break;
+                                                    case $score >= 55:
+                                                        $weight =  1.5;
+                                                        break;
+                                                    case $score >= 50:
+                                                        $weight =  1.0;
+                                                        break;
+                                                    case $score < 49 || $score == 0:
+                                                        $weight =  0;
+                                                        break;
+                                                }
+                                            ?>
+                                            <tr class="record">
                                                 <td>{{ $course->course_code }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $course->course_title }}</td>
+                                                <td class="sem1 creditHour" id="creditHour">
+                                                    <?php
+                                                        $credithour = $course->credit_hours;
+                                                        $totalcdthr += $credithour;
+                                                        echo $credithour;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        //Calculate the grade
+                                                        $score = $course->total_marks;
+                                                        switch ($score) {
+                                                            case $score >=80 || $score==100:
+                                                                echo "A";
+                                                                break;
+                                                            case $score >=75:
+                                                                echo "B+";
+                                                                break;
+                                                            case $score >=70:
+                                                                echo "B";
+                                                                break;
+                                                            case $score >=65:
+                                                                echo "C+";
+                                                                break;
+                                                            case $score >=60:
+                                                                echo "C";
+                                                                break;
+                                                            case $score >=55:
+                                                                echo "D+";
+                                                                break;
+                                                            case $score >=50:
+                                                                echo "D";
+                                                                break;
+                                                            case $score <49 || $score==0:
+                                                                echo "E";
+                                                                break;
+                                                        }
+                                                    @endphp
+                                                </td>
+                                                
+                                                <td class="weight" id="weight">
+                                                    @php
+                                                        echo $weight;
+                                                    @endphp
+                                                </td>
+                                                <td class="" id="gp-{{ $course->course_code }}" >
+                                                @php
+                                                    $gradepoint = $weight * $course->credit_hours;
+                                                    $totalgp += $gradepoint;
+                                                    echo $gradepoint;
+                                                @endphp
+                                                </td>
                                             </tr>
                                         @endif
                                     @endforeach
                                     <tr>
                                         <td></td>
                                         <td><strong>Total Credit Hours:</strong></td>
-                                        <td><strong></strong></td>
+                                        <td><strong class="totalsem1">
+                                            @php
+                                                echo $totalcdthr;
+                                            @endphp    
+                                        </strong></td>
                                         <td></td>
                                         <td><strong>Total Grade Point:</strong></td>
-                                        <td><strong></strong></td>
+                                        <td><strong class="totalgpa"> 
+                                            @php
+                                                echo $totalgp;
+                                            @endphp 
+                                        </strong></td>
                                     </tr>
                                 </tbody>
                             </table>
+                                @php
+                                    $semestergpa = $totalgp/$totalcdthr;
+                                    echo "Semseter GPA: ". $semestergpa;
+                                @endphp
+                            <br>
+                            <hr>
+                            <br>
                         </div>
                         <br>
                         <br>

@@ -66,7 +66,7 @@
     {
         var data = $('#frm-create-result').serialize();
         //console.log(data);
-        $.get("{{route('results.list')}}", data, function (data) {
+        $.get("{{route('student.results.show')}}", data, function (data) {
             $('#add-results').empty().append(data);
         });
     }

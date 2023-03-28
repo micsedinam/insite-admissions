@@ -13,12 +13,12 @@
             <div class="bg-info text-white card-header">Add Semester Results</div>
 
             <div class="card-body">
-                <form id="frm-create-result" class="form-horizontal" action="" method="post">
+                <form id="frm-create-result" class="form-horizontal" action="{{route('student.results.add')}}" method="POST">
                     @csrf
 
                     <div class="form-group">
                         <label for="course_code" class="label-control">Course Code</label>
-                        <input type="text" class="form-control" name="course_code" id="course_code">
+                        <input type="text" class="form-control" name="course_code" id="course_code" value="{{ old('course_code') }}">
                         {{-- <select name="course_code" id="course_code" class="form-control">
                             <option value="">Select Department</option>
                             @foreach($dept as $key => $dept)
@@ -41,7 +41,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="index_number" class="label-control">Index Number</label>
-                                <select name="index_number" id="index_number_append" class="form-control">
+                                <select name="index_number" id="index_number_append" class="form-control" value="{{ old('index_number') }}">
                                     <option value="">Select Department First</option>
                                 </select>
                             </div>
@@ -52,7 +52,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name" class="label-control">Level</label>
-                                <select name="level" id="level" class="form-control">
+                                <select name="level" id="level" class="form-control" value="{{ old('level') }}">
                                     <option value="">Select Level</option>
                                     <option value="100">100</option>
                                     <option value="200">200</option>
@@ -62,7 +62,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name" class="label-control">Semseter</label>
-                                <select name="semester" id="semester" class="form-control">
+                                <select name="semester" id="semester" class="form-control select_location">
                                     <option value="">Select Semseter</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -75,13 +75,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="first_quiz" class="label-control">First Quiz</label>
-                                <input type="text" class="form-control" name="first_quiz" id="first_quiz">
+                                <input type="text" class="form-control" name="first_quiz" id="first_quiz" value="{{ old('first_quiz') }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="second_quiz" class="label-control">Second Quiz</label>
-                                <input type="text" class="form-control" name="second_quiz" id="second_quiz">
+                                <input type="text" class="form-control" name="second_quiz" id="second_quiz" value="{{ old('second_quiz') }}">
                             </div>
                         </div>
                     </div>
@@ -92,19 +92,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="first_assessment" class="label-control">First Assessment</label>
-                                <input type="text" class="form-control" name="first_assessment" id="first_assessment"> 
+                                <input type="text" class="form-control" name="first_assessment" id="first_assessment" value="{{ old('first_assessment') }}"> 
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="second_assessment" class="label-control">Second Assessment</label>
-                                <input type="text" class="form-control" name="second_assessment" id="second_assessment">
+                                <input type="text" class="form-control" name="second_assessment" id="second_assessment" value="{{ old('second_assessment') }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="third_assessment" class="label-control">Third Assessment</label>
-                                <input type="text" class="form-control" name="third_assessment" id="third_assessment">
+                                <input type="text" class="form-control" name="third_assessment" id="third_assessment" value="{{ old('third_assessment') }}">
                             </div>
                         </div>
                     </div>
@@ -113,13 +113,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="theory_exam" class="label-control">Exam (Theory)</label>
-                                <input type="text" class="form-control" name="theory_exam" id="theory_exam">
+                                <input type="text" class="form-control" name="theory_exam" id="theory_exam" value="{{ old('theory_exam') }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="practical_exam" class="label-control">Exam (Practical)</label>
-                                <input type="text" class="form-control" name="practical_exam" id="practical_exam">
+                                <input type="text" class="form-control" name="practical_exam" id="practical_exam" value="{{ old('practical_exam') }}">
                             </div>
                         </div>
                     </div>
@@ -128,9 +128,9 @@
                         <div class="col">
                             <button type="submit" class="btn btn-success btn-block" id="add-result-clear"><i class="fas fa-plus-circle"></i> Add Student Results</button>
                         </div>
-                        <div class="col">
+                        {{-- <div class="col">
                             <button type="submit" class="btn btn-primary btn-block" id="add-result-copy"><i class="fas fa-plus-circle"></i> Add Student Results & Copy</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </form>
             </div>
@@ -163,8 +163,78 @@
                 })
             })
         });
-        
-        $('#add-result-clear').on('click', function (e) {
+
+        /* $('#frm-create-result').on('submit', function (e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            var url = $(this).attr('action');
+            $.post(url, data,function (data) {
+                showResults(data.id);
+                console.log(data);
+                swal('SUCCESS',
+                    'Department saved successfully',
+                    'success');
+                $('#frm-create-dept').trigger('reset');
+            }).fail(function (data,status,error) {
+                console.log(data);
+                var response = $.parseJSON(data.responseText)
+                var possible_keys = Object.keys(response.errors);
+                possible_keys.forEach((key)=>{
+                    $.each(response.errors[key], function(key, value){
+                        swal({
+                            title: "Ooops!",
+                            text: value,
+                            icon: "error",
+                            color: "#FEFAE3",
+                            button: "OK",
+                        });
+                    });
+                });
+            });
+        });
+         */
+        /* $('#add-result-clear').on('click', function (e) {
+            $('.loader').show()
+            e.preventDefault();
+            var data = $('#frm-create-result').serialize();
+            $ .post("{{route('student.results.add')}}", data, function (data) {
+                showResults(data.index_number);
+                swal(
+                    'SUCCESS',
+                    'Student Result Added successfully',
+                    'success'
+                );
+                $('.loader').hide();
+                $("#course_code").val('');
+                $("#dept_id_append").val('').trigger('change');
+                $("#index_number_append").val('').trigger('change');
+                $("#level").val('').trigger('change');
+                $("#semester").val('').trigger('change');
+                $("#first_quiz").val('');
+                $("#second_quiz").val('');
+                $("#first_assessment").val('');
+                $("#second_assessment").val('');
+                $("#third_assessment").val('');
+                $("#theory_exam").val('');
+                $("#practical_exam").val('');
+            }).fail(function (data,status,error) {
+                console.log(data);
+                var response = $.parseJSON(data.responseText)
+                $('.loader').hide();
+                $.each(response.errors, function(key, value){
+                    swal({
+                        title: "ooops!",
+                        text: value,
+                        icon: "error",
+                        color: "#FEFAE3",
+                        button: "OK",
+                    });
+                });
+            });
+
+        }); */
+
+        /* $('#add-result-copy').on('click', function (e) {
             $('.loader').show()
             e.preventDefault();
             var data = $('#frm-create-result').serialize();
@@ -173,19 +243,15 @@
                 swal('SUCCESS',
                     'Student Result Added successfully',
                     'success');
-                $('.loader').hide()
-                $("#course_code").val('')
-                $("#dept_id_append").val('').trigger('change')
-                $("#index_number_append").val('').trigger('change')
-                $("#level").val('').trigger('change')
-                $("#semester").val('').trigger('change')
-                $("#first_quiz").val('')
-                $("#second_quiz").val('')
-                $("#first_assessment").val('')
-                $("#second_assessment").val('')
-                $("#third_assessment").val('')
-                $("#theory_exam").val('')
-                $("#practical_exam").val('')
+                $('.loader').hide();
+                $("#course_code").val('');
+                $("#first_quiz").val('');
+                $("#second_quiz").val('');
+                $("#first_assessment").val('');
+                $("#second_assessment").val('');
+                $("#third_assessment").val('');
+                $("#theory_exam").val('');
+                $("#practical_exam").val('');
             }).fail(function (data,status,error) {
                 console.log(data);
                 var response = $.parseJSON(data.responseText)
@@ -200,46 +266,7 @@
                     });
                 });
             });
-
-        });
-
-        $('#add-result-copy').on('click', function (e) {
-            $('.loader').show()
-            e.preventDefault();
-            var data = $('#frm-create-result').serialize();
-            $.post("{{route('student.results.add')}}", data, function (data) {
-                showResults(data.index_number);
-                swal('SUCCESS',
-                    'Student Result Added successfully',
-                    'success');
-                $('.loader').hide()
-                $("#course_code").val('')
-                $("#first_quiz").val('')
-                $("#second_quiz").val('')
-                $("#first_assessment").val('')
-                $("#second_assessment").val('')
-                $("#third_assessment").val('')
-                $("#theory_exam").val('')
-                $("#practical_exam").val('')
-            }).fail(function (data,status,error) {
-                console.log(data);
-                var response = $.parseJSON(data.responseText)
-                $('.loader').hide()
-                $.each(response.errors, function(key, value){
-                    swal({
-                        title: "ooops!",
-                        text: value,
-                        icon: "error",
-                        color: "#FEFAE3",
-                        button: "OK",
-                    });
-
-                });
-
-
-            });
-
-        });
+        }); */
 
         function showResults()
         {
@@ -301,10 +328,11 @@
             if (validate === true) {
                 $.post("{{route('student.results.delete')}}", {id: id}, function (data) {
                     showResults(data.index_number);
-                    swal('Deleted',
+                    swal(
+                        'Deleted',
                         'Selected result has been deleted successfully',
-                        'success');
-
+                        'success'
+                    );
                 }).fail(function (data) {
                     console.log(data);
                     var responseJSON = data.responseJSON;
