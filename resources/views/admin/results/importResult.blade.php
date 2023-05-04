@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+@include('admin.results.edit')
+@include('layouts.loader')
 {{-- @include('admin.department.edit') --}}
 <div class="row justify-content-center">
     <div class="col-md-8">
@@ -32,6 +34,24 @@
 
 <script type="application/javascript">
     showResults();
+    $('.loader').hide()
+
+    $("#frm-create-result #dept_id_append").on('change',function(e){
+        var dept_id = $(this).val();
+        var index_number = $('#index_number_append')
+        $(index_number).empty();
+        $(index_number).append("<option>Select Value</option>");
+        $('.loader').show()
+        $.get("{{route('show.index.numbers')}}",{dept_id:dept_id}, function(data){
+            $('.loader').hide()
+            $.each(data,function (i,profiles) {
+                $(index_number).append($("<option/>", {
+                    value : profiles.index_number,
+                    text  : profiles.index_number.toUpperCase()
+                }))
+            })
+        })
+    });
 
     /* $('#frm-create-dept').on('submit', function (e) {
         e.preventDefault();
