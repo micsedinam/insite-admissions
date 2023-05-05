@@ -157,10 +157,11 @@ class ProfileController extends Controller
         //dd($request->profile_photo);
         $request->validate( 
             [
-                'index_number' => 'required|unique:profiles|min:14|max:14',
+                //'index_number' => 'required|unique:profiles|min:14|max:14',
                 'profile_photo' => 'mimes:jpg,png,jpeg|max:2048'
             ],
-            ['index_number.required'=>'You need to enter an index number.',
+            [
+                //'index_number.required'=>'You need to enter an index number.',
                 'profile_photo.required'=>'You need to upload a photo.',
                 'index_number.unique'=>'This index number already exists!',
                 'index_number.min'=>'Your index number cannot be less than 14 characters Eg. IMC/BJ/19/0001',
