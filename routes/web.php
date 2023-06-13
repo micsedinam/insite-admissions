@@ -144,7 +144,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
     Route::get('/change-password', function () {
         return view('auth.user-reset-password');
     })->name('user.password.change');
-    Route::post('/password/change', 'Auth\RegisterController@changePassword')->name('reset.password');
+    Route::post('/password/change', 'Auth\ChangePasswordController@changePassword')->name('reset.password');
 
     Route::get('/profile', 'ProfileController@index')->name('student.profile');
     Route::get('/edit/profile', 'ProfileController@edit')->name('student.edit.profile');

@@ -7,13 +7,24 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-6">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="card mb-4">
                 <div class="card-header bg-info text-white">Change Password</div>
 
                 <div class="card-body">
-                    <form id="" method="POST" action="{{ route('reset.password') }}">
+                    <form id="frm-change-password" method="POST" action="{{ route('reset.password') }}">
                         @csrf
 
+                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                         <div class="form-group">
                             <label for="password" class="col-form-label text-md-right">Current Password</label>
                             <input id="oldpassword" type="password" class="form-control" name="oldpassword" required autocomplete="new-password">
@@ -48,7 +59,7 @@
             $.post(url, data,function (data) {
                 console.log(data);
                 swal('SUCCESS',
-                    'Password chnaged successfully',
+                    'Password changed successfully',
                     'success');
                 $('#frm-change-password').trigger('reset');
             }).fail(function (data,status,error) {
