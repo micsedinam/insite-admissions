@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('admin.results.edit')
+{{-- @include('admin.results.edit') --}}
 @include('layouts.loader')
 {{-- @include('admin.department.edit') --}}
 <div class="row justify-content-center">

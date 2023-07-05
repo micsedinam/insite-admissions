@@ -71,7 +71,8 @@
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'excel', 'pdf', 'print'
-            ]
+            ],
+            "pageLength": 15
         });
     });
 </script>
