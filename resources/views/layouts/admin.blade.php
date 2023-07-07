@@ -108,7 +108,7 @@
                     <!-- Page Heading -->
                     @yield('header')
 
-                    @include('sweet::alert')
+                    {{-- @include('sweet::alert') --}}
                     @include('flash-message')
 
                     @yield('content')
