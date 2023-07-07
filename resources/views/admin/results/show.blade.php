@@ -25,8 +25,8 @@
                         <td>{{$item->course_title}}</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->semester}}</td>
-                        <td>{{$item->first_quiz + $item->second_quiz + $item->first_assessment + $item->second_assessment + $item->third_assessment}}</td>
-                        <td>{{$item->theory_exam + $item->practical_exam}}</td>
+                        <td>{{(int)$item->first_quiz + (int)$item->second_quiz + (int)$item->first_assessment + (int)$item->second_assessment + (int)$item->third_assessment}}</td>
+                        <td>{{(int)$item->theory_exam + (int)$item->practical_exam}}</td>
                         {{-- <td>{{$item->total_marks}}</td> --}}
                         <td>
                             @php
