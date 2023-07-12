@@ -33,7 +33,7 @@
             $profile = App\Models\Profile::where('user_id', Auth::id())->first();
         @endphp
 
-        @if($registered == null)
+        @if($registered->semester != $profile->semester && $registered->user_id == $profile->user_id)
             <a class="nav-link register-course" href="#">
                 <i class="fas fa-fw fa-archive"></i>
                 <span>Register Courses</span>    
@@ -44,6 +44,12 @@
                 <span>My Courses</span>    
             </a>
         @endif
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('results.index')}}">
+            <i class="fas fa-fw fa-archive"></i>
+            <span>My Results</span>    
+        </a>
     </li>
 
     {{-- <li class="nav-item">

@@ -119,15 +119,24 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Result
+        Grading
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('/admin/results')}}">
-            <i class="fas fa-fw fa-poll-h"></i>
-            <span>Upload Semester Results</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-archive"></i>
+            <span>Student Results</span>
         </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Courses Section:</h6> --}}
+                {{-- <a class="collapse-item" href="{{url('admin/cassessment')}}">Continuous Assessment</a> --}}
+                <a class="collapse-item" href="{{url('admin/results')}}">Upload Semester Results</a>
+                <a class="collapse-item" href="{{url('admin/student/results')}}">Semester Results - SE</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->
@@ -140,7 +149,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/generate/code')}}">
+        <a class="nav-link" href="{{url('admin/generate/transcript')}}">
             <i class="fas fa-fw fa-poll"></i>
             <span>Generate Transcript</span>
         </a>
@@ -156,10 +165,19 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/admin-register')}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFifth"
+        aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span>
         </a>
+        <div id="collapseFifth" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Courses Section:</h6> --}}
+                {{-- <a class="collapse-item" href="{{url('admin/cassessment')}}">Continuous Assessment</a> --}}
+                <a class="collapse-item" href="{{url('admin/admin-register')}}">Add Users</a>
+                <a class="collapse-item" href="{{url('admin/password-reset')}}">Reset Password</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

@@ -25,7 +25,7 @@ class CourseRegistrationController extends Controller
         //$semester = $request['semester'];
         //dd($entries);
 
-        $profile = Profile::where('user_id', Auth::id())->select('dept_id', 'semester')->first();
+        $profile = Profile::where('user_id', Auth::id())->select('dept_id', 'semester', 'level')->first();
         //$level = Profile::where('user_id', $request['user_id'])->select('level')->get()->toArray();
 
         //dd($dept[0]['dept_id']);
@@ -47,6 +47,7 @@ class CourseRegistrationController extends Controller
                     ->where('profiles.user_id', Auth::id())
                     ->where('courses.dept_id', $profile->dept_id)
                     ->where('courses.semester', $profile->semester)
+                    ->where('courses.level', $profile->level)
                     ->select('courses.course_code', 'courses.course_title', 'courses.credit_hours')
                     ->get();
 
@@ -61,13 +62,13 @@ class CourseRegistrationController extends Controller
                         ->sum('credit_hours');
         
 
-        //dd($total_credit_hours);
+        //dd($total_credit_hours, $get_courses);
         return view('student.course_registration.course_list', compact('get_courses', 'total_credit_hours', 'details'));
     }
 
     public function Export(Request $request){
 
-        $profile = Profile::where('user_id', Auth::id())->select('dept_id', 'semester')->first();
+        $profile = Profile::where('user_id', Auth::id())->select('dept_id', 'semester', 'level')->first();
 
         $details = DB::table('profiles')
                     ->join('users', 'users.id', '=', 'profiles.user_id')
@@ -82,21 +83,25 @@ class CourseRegistrationController extends Controller
                     ->join('departments', 'departments.id', '=', 'profiles.dept_id')
                     ->where('profiles.user_id', Auth::id())
                     ->where('courses.dept_id', $profile->dept_id)
+                    ->where('courses.semester', $profile->semester)
+                    ->where('courses.level', $profile->level)
                     ->get();
 
         $total_credit_hours = DB::table('courses')
                         ->join('profiles', 'profiles.level', '=', 'courses.level')
                         ->where('profiles.user_id', Auth::id())
                         ->where('courses.dept_id', $profile->dept_id)
+                        ->where('courses.semester', $profile->semester)
+                        ->where('courses.level', $profile->level)
                         ->select('credit_hours')
                         ->sum('credit_hours');
         
    
-        if($request->get("export")==1){
+        /* if($request->get("export")==1){
            $pdf = Pdf::loadView('student.course_registration.export', compact('get_courses', 'total_credit_hours', 'details'));
            
            return $pdf->download(Auth::user()->name.'semester_courses.pdf');
-        }
+        } */
         //return redirect()->back();
         return view('student.course_registration.export', compact('get_courses', 'total_credit_hours', 'details'));
     }

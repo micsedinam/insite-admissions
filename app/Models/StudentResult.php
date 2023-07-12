@@ -4,17 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Result extends Model
+class StudentResult extends Model
 {
-    protected $table = 'results';
+    protected $table = 'student_results';
     protected $fillable = [
         'index_number',
         'course_code',
         'level',
         'semester',
-        'continuous_assessment',
-        'exam_score',
-        'total_score',
+        'first_quiz',
+        'second_quiz',
+        'first_assessment',
+        'second_assessment',
+        'third_assessment',
+        'theory_exam',
+        'practical_exam',
+        'total_marks',
         'dept_id',
     ];
     protected $primaryKey = 'id';

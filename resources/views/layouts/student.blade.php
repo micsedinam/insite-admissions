@@ -23,8 +23,8 @@
     <!-- Datatbales CSS -->
     <link href="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
-    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
 
@@ -94,6 +94,11 @@
                                         Edit Profile
                                     </a>
                                 @endif 
+
+                                <a class="dropdown-item" href="{{route("user.password.change")}}">
+                                    <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Change Password
+                                </a>
                                 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"

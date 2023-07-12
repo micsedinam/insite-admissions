@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        //UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
@@ -227,7 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        //'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],

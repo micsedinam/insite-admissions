@@ -1,69 +1,52 @@
 @extends('layouts.admin')
 
 @section('header')
-    <h1 class="h3 mb-4 text-gray-800">Results</h1>
+    <h1 class="h3 mb-4 text-gray-800">Generate Transcript</h1>
 @endsection
 
 @section('content')
-{{-- @include('admin.results.edit') --}}
-@include('layouts.loader')
-{{-- @include('admin.department.edit') --}}
+@include('admin.fees.edit')
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="bg-info text-white card-header">Add Semester Results</div>
+            <div class="bg-info text-white card-header">Generate Student Transcript</div>
 
             <div class="card-body">
-                <form id="frm-create-result" action="{{route('results.import')}}" method="POST" enctype="multipart/form-data">
+                <form id="frm-create-transcript" action="{{route('get.transcript')}}" method="POST">
                     {{ csrf_field() }}
+                    <p id="message"></p>
+                    <p style="color:green" id="success"></p>
                 
-                    <label class="label-control">Upload Semester Results</label>
-                    <input type="file" class="form-control" id="results" name="results">
+                    <label class="label-control">Index Number</label>
+                    <input class="form-control" id="index_number" name="index_number">
                     
+                    <p class="name_error_text"></p>
                     </label><br>
-                    <button type="submit" class="btn btn-outline-secondary btn-block">Import Semester Results</button>
+                    <button type="submit" class="btn btn-outline-secondary btn-block">Get Transcript</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 <br>
-<div id="add-results">
+<div id="gen-code">
 
 </div>
 
-<script type="application/javascript">
-    showResults();
-    $('.loader').hide()
+{{-- <script type="application/javascript">
+    showGeneratedList();
 
-    $("#frm-create-result #dept_id_append").on('change',function(e){
-        var dept_id = $(this).val();
-        var index_number = $('#index_number_append')
-        $(index_number).empty();
-        $(index_number).append("<option>Select Value</option>");
-        $('.loader').show()
-        $.get("{{route('show.index.numbers')}}",{dept_id:dept_id}, function(data){
-            $('.loader').hide()
-            $.each(data,function (i,profiles) {
-                $(index_number).append($("<option/>", {
-                    value : profiles.index_number,
-                    text  : profiles.index_number.toUpperCase()
-                }))
-            })
-        })
-    });
-
-    /* $('#frm-create-dept').on('submit', function (e) {
+    $('#frm-create-code').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
         var url = $(this).attr('action');
         $.post(url, data,function (data) {
-            showDepartments(data.id);
+            showGeneratedList(data.id);
             console.log(data);
             swal('SUCCESS',
-                'Department saved successfully',
+                'Code generated successfully',
                 'success');
-            $('#frm-create-dept').trigger('reset');
+            $('#frm-create-code').trigger('reset');
         }).fail(function (data,status,error) {
             console.log(data);
             var response = $.parseJSON(data.responseText)
@@ -80,18 +63,18 @@
                 });
             });
         });
-    }); */
+    });
 
-    function showResults()
+    function showGeneratedList()
     {
-        var data = $('#frm-create-result').serialize();
-        //console.log(data);
-        $.get("{{route('student.results.show')}}", data, function (data) {
-            $('#add-results').empty().append(data);
+        var data = $('#frm-create-code').serialize();
+        console.log(data);
+        $.get("{{route('code.list')}}", data, function (data) {
+            $('#gen-code').empty().append(data);
         });
     }
 
-    /* $(document).on('click', '.edit-dept', function (e) {
+    $(document).on('click', '.edit-dept', function (e) {
         $('#show-dept').modal('show');
         var id = $(this).val();
         $.get("{{route('department.edit')}}", {id:id}, function (data) {
@@ -125,8 +108,8 @@
                 });
             });
         });
-    }); */
+    });
 
 
-</script>
+</script> --}}
 @endsection

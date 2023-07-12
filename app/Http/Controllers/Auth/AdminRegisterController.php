@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use UxWeb\SweetAlert\SweetAlert;
 
 class AdminRegisterController extends Controller
 {
@@ -80,5 +82,55 @@ class AdminRegisterController extends Controller
         }
     
         return view('auth.admin-register');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        //dd($request->all());
+
+        $new_pass = Str::random(10);
+
+        //dd($new_pass);
+
+        $user = User::where('email', $request->email)->select('id')->first();
+
+        //dd($user);
+
+
+        if ($user == NULL) {
+            
+            $message = "Email does not exist. Kindly check and try again";
+
+            alert()->error($message, 'Sorry!')->persistent();
+
+            return redirect()->back();
+
+        }
+
+        $reset = User::find($user->id);
+
+        //dd($reset);
+
+        $reset->password = Hash::make($new_pass);
+
+        //dd($reset->password);
+        
+        if ($reset->save()) {
+
+
+            $message = $reset->name."'s new password is: ".$new_pass;
+
+            alert()->info($message, 'Hi there!')->persistent();
+
+            return redirect()->back();
+
+        } else {
+            
+            $message = "Nothing happened. Kindly contact technical support";
+
+            alert()->info($message, 'Hi there!')->persistent();
+
+            return redirect()->back();
+        }
     }
 }
