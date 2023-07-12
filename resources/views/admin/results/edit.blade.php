@@ -32,7 +32,7 @@
                                 <select name="index_number" id="index_number_edit" class="form-control">
                                     <option value="">Select Department First</option>
                                     @foreach($index_number as $key => $index_number)
-                                        <option value="{{$index_number->index_number}}"}}>{{$index_number->index_number}}</option>
+                                        <option value="{{$index_number->index_number}}">{{$index_number->index_number}}</option>
                                     @endforeach 
                                 </select>
                             </div>

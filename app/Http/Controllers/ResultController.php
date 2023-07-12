@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Imports\SemesterResultImport;
+use App\Models\Courses;
+use App\Models\Department;
+use App\Models\Profile;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +16,11 @@ class ResultController extends Controller
 {
     public function index()
     {
-        return view('admin.results.importResult');
+        $dept = Department::all();
+        $index_number = Profile::all();
+        $course = Courses::all();
+
+        return view('admin.results.importResult', compact('dept', 'index_number', 'course'));
     }
 
     public function importResult(Request $request)
