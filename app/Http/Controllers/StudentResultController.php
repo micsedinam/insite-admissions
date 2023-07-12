@@ -48,19 +48,21 @@ class StudentResultController extends Controller
 
         if ($assessment > 40) {
 
-            $message = "Continuous assessment cannot be greater than 40% of total score";
+            //$message = "Continuous assessment cannot be greater than 40% of total score";
 
-            alert()->error($message, 'Sorry!')->persistent();
+            //alert()->error($message, 'Sorry!')->persistent();
 
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()
+                ->with('error', 'Sorry!, Continuous assessment cannot be greater than 40% of total score');
 
         } elseif ($exam > 60) {
 
-            $message = "Exam score cannot be greater than 60% of total score";
+            //$message = "Exam score cannot be greater than 60% of total score";
 
-            alert()->error($message, 'Sorry!')->persistent();
+            //alert()->error($message, 'Sorry!')->persistent();
 
-            return redirect()->back()->withInput($request->all());
+            return redirect()->back()->withInput($request->all())
+                ->with('error', 'Sorry!, Exam score cannot be greater than 60% of total score');
 
         } else {
 
@@ -84,11 +86,11 @@ class StudentResultController extends Controller
 
             $student_result->save();
 
-            $message = "Record has been saved successfully";
+            //$message = "Record has been saved successfully";
 
-            alert()->success($message, 'Success!')->persistent();
+            //alert()->success($message, 'Success!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with('Record has been saved successfully');
 
         }
 

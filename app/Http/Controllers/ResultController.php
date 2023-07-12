@@ -21,11 +21,8 @@ class ResultController extends Controller
 
         Excel::import(new SemesterResultImport, $request->file('results')->store('temp'));
 
-        $message = "Results imported successfully.";
 
-        alert()->success($message, 'All good!')->persistent();
-
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Results imported successfully.');
         
     }
 
@@ -38,7 +35,6 @@ class ResultController extends Controller
                 ->get();
 
         return view('admin.results.show', compact('result'));
-
     }
 
     public function getTranscript(Request $request)
