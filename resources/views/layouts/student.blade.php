@@ -125,8 +125,13 @@
                     <!-- Page Heading -->
                     @yield('header')
 
+<<<<<<< HEAD
                     {{-- @include('sweet::alert') --}}
                     {{-- @include('flash-message') --}}
+=======
+                    @include('sweet::alert')
+                    @include('flash-message')
+>>>>>>> 3a737cf223b62f4950eafadecaed9c381d6900d3
 
                     @include('student.course_registration.verify')
                     @yield('content')

@@ -80,8 +80,8 @@
                                             <td>{{ $course->course_code }}</td>
                                             <td>{{ $course->course_title }}</td>
                                             <td>{{ $course->credit_hours }}</td>
-                                            <td>{{ $course->first_quiz + $course->second_quiz + $course->first_assessment + $course->second_assessment + $course->third_assessment }}</td>
-                                            <td>{{ $course->theory_exam + $course->practical_exam }}</td>
+                                            <td>{{ (int)$course->first_quiz + (int)$course->second_quiz + (int)$course->first_assessment + (int)$course->second_assessment + (int)$course->third_assessment }}</td>
+                                            <td>{{ (int)$course->theory_exam + (int)$course->practical_exam }}</td>
                                             <td>{{ $course->total_marks }}</td>
                                             <td>
                                                 @php
