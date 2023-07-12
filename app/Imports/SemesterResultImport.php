@@ -32,7 +32,7 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts,
                 'third_assessment' => $row['third_assessment'],
                 'theory_exam' => $row['theory_exam'],
                 'practical_exam' => $row['practical_exam'],
-                'total_score' => $row['total_score'],
+                'total_marks' => $row['total_marks'],
             ]);
         } elseif ($row['department'] == "Journalism and Media Studies - Akan") {
             return new StudentResult([
@@ -48,7 +48,7 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts,
                 'third_assessment' => $row['third_assessment'],
                 'theory_exam' => $row['theory_exam'],
                 'practical_exam' => $row['practical_exam'],
-                'total_score' => $row['total_score'],
+                'total_marks' => $row['total_marks'],
             ]);
         } elseif ($row['department'] == "TV & Film Production") {
             return new StudentResult([
@@ -64,7 +64,7 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts,
                 'third_assessment' => $row['third_assessment'],
                 'theory_exam' => $row['theory_exam'],
                 'practical_exam' => $row['practical_exam'],
-                'total_score' => $row['total_score'],
+                'total_marks' => $row['total_marks'],
             ]);
         } elseif ($row['department'] == "Sound Engineering") {
             return new StudentResult([
@@ -80,7 +80,7 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts,
                 'third_assessment' => $row['third_assessment'],
                 'theory_exam' => $row['theory_exam'],
                 'practical_exam' => $row['practical_exam'],
-                'total_score' => $row['total_score'],
+                'total_marks' => $row['total_marks'],
             ]);
         } else {
             return new StudentResult([
@@ -96,7 +96,7 @@ class SemesterResultImport implements ToModel, WithHeadingRow, WithBatchInserts,
                 'third_assessment' => $row['third_assessment'],
                 'theory_exam' => $row['theory_exam'],
                 'practical_exam' => $row['practical_exam'],
-                'total_score' => $row['total_score'],
+                'total_marks' => $row['total_marks'],
             ]);
         }
     }
