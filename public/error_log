@@ -1,0 +1,2 @@
+[24-Jan-2023 14:47:51 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.0.2". You are running 7.4.33. in /home/insiwdrk/portal.insitemediacollege.edu.gh/insite-admissions/vendor/composer/platform_check.php on line 24
+[24-Jan-2023 14:54:23 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.0.2". You are running 7.4.33. in /home/insiwdrk/portal.insitemediacollege.edu.gh/insite-admissions/vendor/composer/platform_check.php on line 24

@@ -18,12 +18,13 @@ class ResultController extends Controller
 
     public function importResult(Request $request)
     {
+        //dd($request->file('results'));
 
         Excel::import(new SemesterResultImport, $request->file('results')->store('temp'));
 
         $message = "Results imported successfully.";
 
-        alert()->success($message, 'All good!')->persistent();
+        //alert()->success($message, 'All good!')->persistent();
 
         return redirect()->back();
         
