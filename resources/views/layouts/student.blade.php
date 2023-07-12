@@ -126,10 +126,14 @@
                     @yield('header')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     {{-- @include('sweet::alert') --}}
                     {{-- @include('flash-message') --}}
 =======
                     @include('sweet::alert')
+=======
+                    {{-- @include('sweet::alert') --}}
+>>>>>>> 80673797d2fd45cf82123dc5c867ec45b8f57eb7
                     @include('flash-message')
 >>>>>>> 3a737cf223b62f4950eafadecaed9c381d6900d3
 

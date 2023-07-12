@@ -66,19 +66,19 @@ class MyResultsController extends Controller
 
         if ($details == NULL) {
             
-            $message = "Kindly update your profile in order to access results." ."\n". "If challenge persists, contact your administrator.";
+            //$message = "Kindly update your profile in order to access results." ."\n". "If challenge persists, contact your administrator.";
 
-            alert()->error($message, 'Sorry!')->persistent();
+            //alert()->error($message, 'Sorry!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with("Kindly update your profile in order to access results." ."\n". "If challenge persists, contact your administrator.");
 
         } elseif ($results == NULL) {
 
-            $message = "Your results are not available at the moment. Kindly check back later";
+            //$message = "Your results are not available at the moment. Kindly check back later";
 
-            alert()->info($message, 'Hi there!')->persistent();
+            //alert()->info($message, 'Hi there!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with("Your results are not available at the moment. Kindly check back later");
 
         } else {
     
