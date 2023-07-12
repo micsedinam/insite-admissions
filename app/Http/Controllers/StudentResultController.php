@@ -90,7 +90,7 @@ class StudentResultController extends Controller
 
             //alert()->success($message, 'Success!')->persistent();
 
-            return redirect()->back()->with('Record has been saved successfully');
+            return redirect()->back()->with("success", 'Record has been saved successfully');
 
         }
 

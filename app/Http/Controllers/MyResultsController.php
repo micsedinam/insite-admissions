@@ -70,7 +70,7 @@ class MyResultsController extends Controller
 
             //alert()->error($message, 'Sorry!')->persistent();
 
-            return redirect()->back()->with("Kindly update your profile in order to access results." ."\n". "If challenge persists, contact your administrator.");
+            return redirect()->back()->with("info", "Kindly update your profile in order to access results." ."\n". "If challenge persists, contact your administrator.");
 
         } elseif ($results == NULL) {
 
@@ -78,7 +78,7 @@ class MyResultsController extends Controller
 
             //alert()->info($message, 'Hi there!')->persistent();
 
-            return redirect()->back()->with("Your results are not available at the moment. Kindly check back later");
+            return redirect()->back()->with("info", "Your results are not available at the moment. Kindly check back later");
 
         } else {
     
