@@ -125,7 +125,7 @@
                     <!-- Page Heading -->
                     @yield('header')
 
-                    @include('sweet::alert')
+                    {{-- @include('sweet::alert') --}}
                     @include('flash-message')
 
                     @include('student.course_registration.verify')
