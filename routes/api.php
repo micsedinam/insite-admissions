@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\CourseRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/export/courses', 'CourseRegistrationController@Export')->name('export.courses');
+
+Route::get('test', 'CourseRegistrationController@test');

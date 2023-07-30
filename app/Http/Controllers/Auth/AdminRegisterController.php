@@ -76,12 +76,13 @@ class AdminRegisterController extends Controller
         );
 
         if ($register->save()) {
-            alert()->success($request['name'].' successfully saved.', 'Awesome')->persistent("Close this");
+            //alert()->success($request['name'].' successfully saved.', 'Awesome')->persistent("Close this");
+            return view('auth.admin-register')->with("success", $request['name'].' successfully saved.', 'Awesome');
         } else {
-            alert()->error($request['name'].' not saved.')->persistent("Close this");
+            //alert()->error($request['name'].' not saved.')->persistent("Close this");
+            return view('auth.admin-register')->with("success", $request['name'].' not saved.');
         }
     
-        return view('auth.admin-register');
     }
 
     public function resetPassword(Request $request)
@@ -99,11 +100,11 @@ class AdminRegisterController extends Controller
 
         if ($user == NULL) {
             
-            $message = "Email does not exist. Kindly check and try again";
+            //$message = "Email does not exist. Kindly check and try again";
 
-            alert()->error($message, 'Sorry!')->persistent();
+            //alert()->error($message, 'Sorry!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with('error', "Sorry!, Email does not exist. Kindly check and try again");
 
         }
 
@@ -118,19 +119,19 @@ class AdminRegisterController extends Controller
         if ($reset->save()) {
 
 
-            $message = $reset->name."'s new password is: ".$new_pass;
+            //$message = $reset->name."'s new password is: ".$new_pass;
 
-            alert()->info($message, 'Hi there!')->persistent();
+            //alert()->info($message, 'Hi there!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with('info','Hi there!'. $reset->name."'s new password is: ".$new_pass);
 
         } else {
             
-            $message = "Nothing happened. Kindly contact technical support";
+            //$message = "Nothing happened. Kindly contact technical support";
 
-            alert()->info($message, 'Hi there!')->persistent();
+            //alert()->info($message, 'Hi there!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with('info','Nothing happened. Kindly contact technical support');
         }
     }
 }

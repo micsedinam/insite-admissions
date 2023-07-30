@@ -33,16 +33,23 @@
             $profile = App\Models\Profile::where('user_id', Auth::id())->first();
         @endphp
 
-        @if($registered->semester != $profile->semester && $registered->user_id == $profile->user_id)
-            <a class="nav-link register-course" href="#">
+        @if ($registered == NULL && $profile == NULL)
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-archive"></i>
-                <span>Register Courses</span>    
+                <span>Not Available</span>    
             </a>
-        @elseif($registered->semester == $profile->semester && $registered->level == $profile->level && $registered->user_id == $profile->user_id)
-            <a class="nav-link" href="{{route('export.courses')}}">
-                <i class="fas fa-fw fa-archive"></i>
-                <span>My Courses</span>    
-            </a>
+        @else
+            {{-- @if($registered->semester != $profile->semester && $registered->user_id == $profile->user_id)
+                <a class="nav-link register-course" href="#">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>Register Courses</span>    
+                </a>
+            @elseif($registered->semester == $profile->semester && $registered->level == $profile->level && $registered->user_id == $profile->user_id)
+                <a class="nav-link" href="{{route('export.courses')}}">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>My Courses</span>    
+                </a>
+            @endif --}} 
         @endif
     </li>
     <li class="nav-item">

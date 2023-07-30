@@ -97,6 +97,7 @@ class CourseRegistrationController extends Controller
                         ->sum('credit_hours');
         
    
+        //return response()->json(['details' => $details], 200);
         /* if($request->get("export")==1){
            $pdf = Pdf::loadView('student.course_registration.export', compact('get_courses', 'total_credit_hours', 'details'));
            

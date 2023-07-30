@@ -88,12 +88,10 @@ class ProfileController extends Controller
         //$data->save();
 
         if ($data->save()) {
-            alert()->success(Auth::user()->name .' your profile has been updated.', 'Awesome')->persistent("Close this"); 
+            return redirect('student/edit/profile')->with("success", Auth::user()->name .' your profile has been updated.', 'Awesome'); 
         } else {
-            alert()->error('Something went wrong')->persistent("Close this");
+            return redirect('student/edit/profile')->with("error", 'Something went wrong');
         }
-
-        return redirect('student/edit/profile');
     
         /* if ($request->ajax()) {
 
@@ -207,12 +205,12 @@ class ProfileController extends Controller
        
 
         if ($profile->save()) {
-            alert()->success(Auth::user()->name .' your profile has been updated.', 'Awesome')->persistent("Close this"); 
+            return redirect('student/edit/profile')->with('success', Auth::user()->name .' your profile has been updated.', 'Awesome'); 
         } else {
-            alert()->error('Something went wrong')->persistent("Close this");
+            return redirect('student/edit/profile')->with('error','Something went wrong');
         }
 
-        return redirect('student/edit/profile');
+        ;
     }
 
     /**

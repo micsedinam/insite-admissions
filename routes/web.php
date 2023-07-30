@@ -140,6 +140,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 
 //Continuing Student
 Route::group(['prefix' => 'student', 'middleware' => 'is_admin'], function () {
+    
     Route::get('/home', 'HomeController@studentHome')->name('student.home');
     Route::get('/change-password', function () {
         return view('auth.user-reset-password');
