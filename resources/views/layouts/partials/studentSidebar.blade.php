@@ -28,7 +28,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        @php 
+        {{-- @php 
             $registered = App\Models\Registered::where('user_id', Auth::id())->first(); 
             $profile = App\Models\Profile::where('user_id', Auth::id())->first();
         @endphp
@@ -39,7 +39,7 @@
                 <span>Not Available</span>    
             </a>
         @else
-            {{-- @if($registered->semester != $profile->semester && $registered->user_id == $profile->user_id)
+            @if($registered->semester != $profile->semester && $registered->user_id == $profile->user_id)
                 <a class="nav-link register-course" href="#">
                     <i class="fas fa-fw fa-archive"></i>
                     <span>Register Courses</span>    
@@ -49,8 +49,13 @@
                     <i class="fas fa-fw fa-archive"></i>
                     <span>My Courses</span>    
                 </a>
-            @endif --}} 
-        @endif
+            @endif 
+        @endif --}}
+
+        <a class="nav-link register-course" href="#">
+            <i class="fas fa-fw fa-archive"></i>
+            <span>Register Courses</span>    
+        </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('results.index')}}">

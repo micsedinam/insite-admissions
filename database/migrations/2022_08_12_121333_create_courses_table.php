@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->integer('dept_id')->unsigned();
             $table->string('level');
             $table->string('semester');
+            $table->string('academic_year');
             $table->timestamps();
             $table->foreign('dept_id')->references('id')->on('departments');
         });

@@ -7,6 +7,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Code</th>
+                    <th>Level</th>
+                    <th>Semester</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -14,6 +16,8 @@
                     <tr>
                         <td>{{$item->index_number}}</td>
                         <td>{{$item->code}}</td>
+                        <td>{{$item->level}}</td>
+                        <td>{{$item->semester}}</td>
                         {{-- <td>
                             <div class="btn-group">
                                 <button class="btn btn-primary edit-dept" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button>

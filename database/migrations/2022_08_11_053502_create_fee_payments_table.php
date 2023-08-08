@@ -17,6 +17,8 @@ class CreateFeePaymentsTable extends Migration
             $table->increments('id');
             $table->string('index_number');
             $table->string('code');
+            $table->string('level');
+            $table->string('semester');
             $table->timestamps();
         });
     }

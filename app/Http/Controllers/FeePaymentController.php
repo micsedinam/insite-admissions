@@ -16,9 +16,16 @@ class FeePaymentController extends Controller
     public function Store(Request $request)
     {
         $this->validate($request, [
-            'index_number' => 'required|min:5|unique:fee_payments'],
-            ['index_number.required'=>'You need to enter an index number.',
-                'index_number.unique'=>"This index number already exists!"]
+            'index_number' => 'required|min:5|unique:fee_payments',
+            'level' => 'required',
+            'semester' => 'required'
+            ],
+            [
+                'index_number.required'=>'You need to enter an index number.',
+                'level.required'=>'You need to select a level.',
+                'semester.required'=>'You need to select a semester.',
+                'index_number.unique'=>"This index number already exists!"
+            ]
         );
 
         function code(
@@ -43,6 +50,8 @@ class FeePaymentController extends Controller
                 [
                     'index_number' => $request['index_number'],
                     'code' => $feecode,
+                    'level' => $request['level'],
+                    'semester' => $request['semester'],
                 ]
             );
             //dd($data);
@@ -94,23 +103,23 @@ class FeePaymentController extends Controller
         if ($feecode === null) {
             $message = "Fee verification number does not exist! Kindly contact the Administrator.";
 
-            alert()->error($message, 'Whoops!')->persistent();
+            //alert()->error($message, 'Whoops!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with('error', $message);
         }
 
         $index_number = Profile::where(['index_number' => $feecode['index_number']])->first();
         //dd($index_number);
 
         if ($index_number == null) {
-            $message = "Wrong Information'";
+            $message = "Add your index number to your profile'";
 
-            alert()->error($message, 'Whoops!')->persistent();
+            //alert()->error($message, 'Whoops!')->persistent();
 
-            return redirect()->back();
+            return redirect()->back()->with('error', $message);
         }
 
-        if ($feecode['code'] = $request['code'] && $feecode['index_number'] == $index_number['index_number']) {
+        if ($feecode['code'] = $request['code'] && $feecode['index_number'] == $index_number['index_number'] &&  $feecode['level'] == $index_number['level'] &&  $feecode['semester'] == $index_number['semester']) {
 
             return redirect('student/view/course/list');
 

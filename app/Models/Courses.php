@@ -14,6 +14,7 @@ class Courses extends Model
         'dept_id',
         'level',
         'semester',
+        'academic_year'
     ];
     protected $primaryKey = 'id';
     public $timestamps = true;

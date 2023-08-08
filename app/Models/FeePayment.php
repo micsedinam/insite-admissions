@@ -10,6 +10,8 @@ class FeePayment extends Model
     protected $fillable = [
         'code',
         'index_number',
+        'level',
+        'semester'
     ];
     protected $primaryKey = 'id';
     public $timestamps = true;

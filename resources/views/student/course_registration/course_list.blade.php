@@ -40,7 +40,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <h5 class="text-dark"><strong>Academic Year:</strong> 2022/2023 </h5>
+                            <h5 class="text-dark"><strong>Academic Year:</strong> 2023/2024 </h5>
                         </div>
                         <div class="col-md-4">
                             <h5 class="text-dark"><strong>Level:</strong> {{$details->level}} </h5>

@@ -3,11 +3,12 @@
 namespace App\Imports;
 
 use App\Models\Courses;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 
-class CoursesImport implements ToModel, WithHeadingRow, WithBatchInserts
+class CoursesImport implements ToModel, WithHeadingRow, WithBatchInserts, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -23,6 +24,7 @@ class CoursesImport implements ToModel, WithHeadingRow, WithBatchInserts
             'dept_id' => $row['dept_id'],
             'level' => $row['level'],
             'semester' => $row['semester'],
+            'academic_year' => $row['academic_year'],
         ]);
     }
 

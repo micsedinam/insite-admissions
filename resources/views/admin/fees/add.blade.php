@@ -17,8 +17,30 @@
                     <p id="message"></p>
                     <p style="color:green" id="success"></p>
                 
-                    <label class="label-control">Index Number</label>
-                    <input class="form-control" id="index_number" name="index_number">
+                    <div class="mb-4">
+                        <label class="label-control">Index Number</label>
+                        <input class="form-control" id="index_number" name="index_number" required>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="control-label" for="level">Level</label>
+                            <select class="form-control" type="text" name="level" id="level" required>
+                                <option value="">Select Level</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="control-label" for="semester">Semester</label>
+                            <select class="form-control" type="text" name="semester" id="semester" required>
+                                <option value="">Select Semester</option>
+                                <option value="1">First</option>
+                                <option value="2">Second</option>
+                            </select>
+                        </div>
+                    </div>
                     
                     <p class="name_error_text"></p>
                     </label><br>

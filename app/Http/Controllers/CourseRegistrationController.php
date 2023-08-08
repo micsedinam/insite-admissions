@@ -48,6 +48,7 @@ class CourseRegistrationController extends Controller
                     ->where('courses.dept_id', $profile->dept_id)
                     ->where('courses.semester', $profile->semester)
                     ->where('courses.level', $profile->level)
+                    ->where('courses.academic_year', "2023/2024")
                     ->select('courses.course_code', 'courses.course_title', 'courses.credit_hours')
                     ->get();
 
@@ -58,6 +59,7 @@ class CourseRegistrationController extends Controller
                         ->where('profiles.user_id', Auth::id())
                         ->where('courses.dept_id', $profile->dept_id)
                         ->where('courses.semester', $profile->semester)
+                        ->where('courses.academic_year', "2023/2024")
                         ->select('credit_hours')
                         ->sum('credit_hours');
         
@@ -85,6 +87,7 @@ class CourseRegistrationController extends Controller
                     ->where('courses.dept_id', $profile->dept_id)
                     ->where('courses.semester', $profile->semester)
                     ->where('courses.level', $profile->level)
+                    ->where('courses.academic_year', "2023/2024")
                     ->get();
 
         $total_credit_hours = DB::table('courses')
@@ -93,6 +96,7 @@ class CourseRegistrationController extends Controller
                         ->where('courses.dept_id', $profile->dept_id)
                         ->where('courses.semester', $profile->semester)
                         ->where('courses.level', $profile->level)
+                        ->where('courses.academic_year', "2023/2024")
                         ->select('credit_hours')
                         ->sum('credit_hours');
         
