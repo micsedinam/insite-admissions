@@ -182,6 +182,30 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Reports
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSixth"
+        aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-user"></i>
+            <span>User Data</span>
+        </a>
+        <div id="collapseSixth" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Courses Section:</h6> --}}
+                <a class="collapse-item" href="{{route('reports.all-users')}}">All Users</a>
+                {{-- <a class="collapse-item" href="{{route('reports.user.info')}}">Get User Info</a> --}}
+                {{-- <a class="collapse-item" href="{{url('admin/password-reset')}}">Reset Password</a> --}}
+            </div>
+        </div>
+    </li>
+    
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

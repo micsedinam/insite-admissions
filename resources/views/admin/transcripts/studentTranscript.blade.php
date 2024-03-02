@@ -210,8 +210,8 @@
                                 </tbody>
                             </table>
                                 @php
-                                    $semestergpa = $totalgp/$totalcdthr;
-                                    echo "Semseter GPA: ". $semestergpa;
+                                    //$semestergpa = $totalgp/$totalcdthr;
+                                    //echo "Semseter GPA: ". $semestergpa;
                                 @endphp
                             <br>
                             <hr>
@@ -344,8 +344,8 @@
                                 </tbody>
                             </table>
                                 @php
-                                    $semestergpa = $totalgp/$totalcdthr;
-                                    echo "Semseter GPA: ". $semestergpa;
+                                    //$semestergpa = $totalgp/$totalcdthr;
+                                    //echo "Semseter GPA: ". $semestergpa;
                                 @endphp
                             <br>
                             <hr>

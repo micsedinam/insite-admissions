@@ -135,6 +135,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::post('/assessment/update', 'CAController@updateCA')->name('ca.update');
     Route::post('/import/assessment', 'CAController@importAssessment')->name('ca.import');
 
+    //Reports
+    Route::get('/reports/all-users', 'ReportsController@AllUsers')->name('reports.all-users');
+    // Route::post('/reports/get_user', 'ReportsController@getUser')->name('reports.get.user');
+    // Route::get('/reports/get-user-info', 'ReportsController@getUser')->name('reports.user.info');
+
 
 });
 

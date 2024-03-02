@@ -19,7 +19,7 @@
     <link href="{{asset('sbadmin-assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
     <!-- Datatbales CSS -->
-    {{-- <link href="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"> --}}
+    <link href="{{asset('sbadmin-assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/r-2.3.0/sb-1.3.4/sp-2.0.2/datatables.min.css"/>
  
 
@@ -109,7 +109,9 @@
                     @yield('header')
 
                     {{-- @include('sweet::alert') --}}
-                    @include('flash-message')
+                    <div class="col-md-8 offset-md-2">
+                        @include('flash-message')
+                    </div>
 
                     @yield('content')
 

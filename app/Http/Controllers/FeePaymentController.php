@@ -15,6 +15,7 @@ class FeePaymentController extends Controller
 
     public function Store(Request $request)
     {
+        //Implement a function to be able to generate feecode for 4 semesters
         $this->validate($request, [
             'index_number' => 'required|min:5|unique:fee_payments',
             'level' => 'required',

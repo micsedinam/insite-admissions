@@ -155,7 +155,8 @@ class ReviewFormController extends Controller
             $review->status = $request['status'];
             $review->update();
             
-            alert()->success($request['status'].' successfully saved.', 'Awesome')->persistent("Close this");
+            //alert()->success($request['status'].' successfully saved.', 'Awesome')->persistent("Close this");
+            return view('admin.applications.status-edit', compact('review'))->with('success', $request['status'].' successfully saved.');
         } else {
             alert()->error($request['status'].' not saved.')->persistent("Close this");
         }
