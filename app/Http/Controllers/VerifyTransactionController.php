@@ -84,11 +84,12 @@ class VerifyTransactionController extends Controller
             );
 
             if ($payment->save()) {
-                alert()->success($fullname.' Payment is successful!', 'Awesome')->persistent("Close this");
+                //alert()->success($fullname.' Payment is successful!', 'Awesome')->persistent("Close this");
+                return redirect('user/form')->with('success', $fullname.' Payment is successful!');
             } else {
-                alert()->error($fullname.' Payment Failed')->persistent("Close this");
+                //alert()->error($fullname.' Payment Failed')->persistent("Close this");
+                return redirect('user/payment')->with('error', $fullname.' Payment Failed');
             }
-            return redirect('user/form');
             
         } else {
             header('404');
@@ -103,9 +104,9 @@ class VerifyTransactionController extends Controller
         if ($reference === null) {
             $message = "Reference number does not exist!. Start a 'New Application'";
 
-            alert()->error($message, 'Whoops!')->persistent();
-
-            return redirect()->back();
+            //alert()->error($message, 'Whoops!')->persistent();
+            
+            return redirect()->back()->with('error', $message);
         }
 
         if ($reference['reference'] = $request['reference'] && $reference['status'] == 'success') {
