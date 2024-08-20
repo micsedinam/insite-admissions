@@ -10,7 +10,7 @@ class ReportsController extends Controller
 {
     public function AllUsers()
     {
-        $allUsers = DB::table('users')
+        $allUsers = DB::table('profiles')
         ->join('users', 'users.id', '=', 'profiles.user_id')
         ->join('departments', 'departments.id', '=', 'profiles.dept_id')
         //->where('profiles.index_number', $request->index_number)
