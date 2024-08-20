@@ -10,7 +10,7 @@
                     <th>Credit Hours</th>
                     <th>Level</th>
                     <th>Semester</th>
-                    {{-- <th>Action</th> --}}
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,12 +21,12 @@
                         <td>{{$item->credit_hours}}</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->semester}}</td>
-                        {{-- <td>
+                        <td>
                             <div class="btn-group">
-                                <button class="btn btn-primary edit-dept" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button>
-                                <button class="btn btn-danger del-activity" value="{{$a->activity_id}}"><i class="fa fa-window-close" title="Delete"></i></button>
+                                {{-- <button class="btn btn-primary edit-dept" value="{{$item->id}}"><i class="fa fa-edit" title="Edit"></i></button> --}}
+                                <button class="btn btn-danger del-course" value="{{$item->id}}"><i class="fa fa-window-close" title="Delete"></i></button>
                             </div>
-                        </td> --}}
+                        </td>
                     </tr>
                 @endforeach
             </table>

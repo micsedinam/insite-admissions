@@ -14,7 +14,7 @@ class ReportsController extends Controller
         ->join('users', 'users.id', '=', 'profiles.user_id')
         ->join('departments', 'departments.id', '=', 'profiles.dept_id')
         //->where('profiles.index_number', $request->index_number)
-        ->select('name', 'email', 'dept_name', 'profile_photo', 'index_number', 'is_admin')
+        ->select('users.id AS id', 'name', 'email', 'dept_name', 'profile_photo', 'index_number', 'is_admin')
         ->get();
         
         return view('admin.reports.all_users', compact('allUsers'));

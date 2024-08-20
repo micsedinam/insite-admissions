@@ -134,4 +134,26 @@ class AdminRegisterController extends Controller
             return redirect()->back()->with('info','Nothing happened. Kindly contact technical support');
         }
     }
+
+    public function editUser(Request $request)
+    {
+        if ($request->ajax()) {
+            return response(User::find($request->id));
+        }
+    }
+
+    public function updateUser(Request $request)
+    {
+        $this->validate($request,
+            [
+                'is_admin' => 'required'
+            ],
+            [
+                'is_admin.required'=>'You need to select a user type.'
+            ]
+        );
+        if ($request->ajax()) {
+            return response(User::updateOrCreate(['id'=>$request->user_id], $request->all()));
+        }
+    }
 }

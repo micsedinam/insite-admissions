@@ -11,6 +11,7 @@
 |
 */
 
+use FontLib\Table\Type\post;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -74,6 +75,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     })->name('admin.user.reset');
     Route::post('/admin-register/create', 'Auth\AdminRegisterController@create')->name('admin.register.store');
     Route::post('/admin-password/reset', 'Auth\AdminRegisterController@resetPassword')->name('admin.reset.password');
+    Route::get('/user/edit', 'Auth\AdminRegisterController@editUser')->name('user.edit');
+    Route::post('/user/update', 'Auth\AdminRegisterController@updateUser')->name('user.update');
 
     Route::get('/department', 'DepartmentController@index')->name('department.index');
     Route::post('/addDepartment', 'DepartmentController@store')->name('department.store');
@@ -86,6 +89,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/showCourses', 'CoursesController@showCourseInformation')->name('courses.list');
     //Route::get('/department/edit', 'DepartmentController@editDept')->name('department.edit');
     //Route::post('/department/update', 'DepartmentController@updateDept')->name('department.update');
+    Route::post('/delete/course', 'CoursesController@deleteCourse')->name('delete.course');
 
     Route::get('/programme', 'ProgrammeController@index')->name('programme.index');
     Route::post('/addProgramme', 'ProgrammeController@store')->name('programme.store');

@@ -40,4 +40,12 @@ class CoursesController extends Controller
         return view('admin.courses.show', compact('course'));
 
     }
+
+    public function deleteCourse(Request $request)
+    {
+        if($request->ajax())
+        {
+            Courses::destroy($request->id);
+        }
+    }
 }

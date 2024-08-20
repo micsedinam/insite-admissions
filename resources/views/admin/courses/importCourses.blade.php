@@ -110,6 +110,36 @@
         });
     }); */
 
+    $(document).on('click', '.del-course', function (e) {
+        var id = $(this).val();
+        var validate = confirm("Are you sure you want to delete this Course?");
+        if (validate === true) {
+            $.post("{{route('delete.course')}}", {id: id}, function (data) {
+                //showActivityInfo(data.activity_name);
+                //$('#courses_table').DataTable().ajax.reload();
+                
+                swal('Deleted',
+                    'Selected Course has been deleted successfully',
+                    'success');
+                
+                location.reload(true);
+
+            }).fail(function (data) {
+                console.log(data);
+                var responseJSON = data.responseJSON;
+                var response = '';
+                for (var key in responseJSON) {
+                    if (responseJSON.hasOwnProperty(key)) {
+                        response += "\n" + responseJSON[key] + "\n";
+                    }
+                }
+                swal('ERROR',
+                    response,
+                    'error');
+            })
+        }else{swal('Cancelled',"Course not deleted");}
+    })
+
 
 </script>
 @endsection
