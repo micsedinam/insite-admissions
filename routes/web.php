@@ -142,7 +142,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     //Reports
     Route::get('/reports/all-users', 'ReportsController@AllUsers')->name('reports.all-users');
     // Route::post('/reports/get_user', 'ReportsController@getUser')->name('reports.get.user');
-    // Route::get('/reports/get-user-info', 'ReportsController@getUser')->name('reports.user.info');
+    Route::get('/reports/get-user-info', 'ReportsController@getUserInfo')->name('reports.user.info');
+    Route::get('/reports/get-user-date-range-filter', 'ReportsController@getDateRangeFilter')->name('reports.date.range.filter');
+    Route::post('/reports/users-range', 'ReportsController@getUsersByDateRange')->name('reports.users.date.range.filter');
 
 
 });

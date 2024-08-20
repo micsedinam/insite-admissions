@@ -198,6 +198,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Courses Section:</h6> --}}
                 <a class="collapse-item" href="{{route('reports.all-users')}}">All Users</a>
+                <a class="collapse-item" href="{{route('reports.date.range.filter')}}">Filter Users by Date Range</a>
                 {{-- <a class="collapse-item" href="{{route('reports.user.info')}}">Get User Info</a> --}}
                 {{-- <a class="collapse-item" href="{{url('admin/password-reset')}}">Reset Password</a> --}}
             </div>
