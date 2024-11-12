@@ -96,6 +96,13 @@ class VerifyTransactionController extends Controller
         } 
     }
 
+    public function formPurchasesList()
+    {
+        $form_purchases = AdmissionPayments::all();
+
+        return view('admin.applications.form_purchases', compact('form_purchases'));
+    }
+
     public function verifyReference(Request $request)
     {
         $reference = AdmissionPayments::where(['reference' => $request['reference']])

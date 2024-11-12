@@ -39,6 +39,7 @@
                 <a class="collapse-item" href="{{url('admin/applications')}}">Review Applications</a>
                 <a class="collapse-item" href="{{url('admin/status/change')}}">Status Update</a>
                 <a class="collapse-item" href="{{url('admin/reviewed/applications')}}">Reviewed Applications</a>
+                <a class="collapse-item" href="{{url('admin/form-purchases')}}">Form Purchases</a>
             </div>
         </div>
     </li>

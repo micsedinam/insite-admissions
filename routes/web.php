@@ -73,6 +73,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/password-reset', function () {
         return view('auth.admin-reset-password');
     })->name('admin.user.reset');
+
+    Route::get('/form-purchases', 'VerifyTransactionController@formPurchasesList')->name('admin.form.purchases');
+    
     Route::post('/admin-register/create', 'Auth\AdminRegisterController@create')->name('admin.register.store');
     Route::post('/admin-password/reset', 'Auth\AdminRegisterController@resetPassword')->name('admin.reset.password');
     Route::get('/user/edit', 'Auth\AdminRegisterController@editUser')->name('user.edit');
