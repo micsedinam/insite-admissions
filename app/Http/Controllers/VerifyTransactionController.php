@@ -33,8 +33,8 @@ class VerifyTransactionController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
 
-            "Authorization: Bearer sk_live_678b65baa6d321ca6f6af8bd7fa69fb9211f6526",
-            //"Authorization: Bearer sk_test_1e6a5e71a0b1c34ba58b836b0cb098025244d943",
+            //"Authorization: Bearer sk_live_678b65baa6d321ca6f6af8bd7fa69fb9211f6526",
+            "Authorization: Bearer sk_test_1e6a5e71a0b1c34ba58b836b0cb098025244d943",
             "Cache-Control: no-cache",
 
             ),
@@ -46,6 +46,8 @@ class VerifyTransactionController extends Controller
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
+
+        dd($err, $response);
 
         if ($err) {
             echo "cURL Error #:" . $err;

@@ -81,23 +81,23 @@
     </li> --}}
 
     <!-- Divider -->
-    {{-- <hr class="sidebar-divider">
+    <hr class="sidebar-divider my-0">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         Department Management
-    </div>
+    </div> --}}
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Student Services -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/department')}}">
-            <i class="fas fa-fw fa-archive"></i>
-            <span>Departments</span>
+        <a class="nav-link" href="https://forms.gle/8fxbkW3uqTFZvZXX7" target="_blank">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Student Services</span>
         </a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
