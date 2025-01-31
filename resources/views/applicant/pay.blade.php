@@ -48,8 +48,8 @@
     function payWithPaystack(e) {
     e.preventDefault();
     let handler = PaystackPop.setup({
-        //key: 'pk_live_94fa6f698b2f040da1fa3196fb2483977685634b', // Replace with your public key
-        key: 'pk_test_10a9a9834d71beefa55ad22603d90ccf143abb1f', // Replace with your public key
+        key: 'pk_live_94fa6f698b2f040da1fa3196fb2483977685634b', // Replace with your public key
+        //key: 'pk_test_10a9a9834d71beefa55ad22603d90ccf143abb1f', // Replace with your public key
         email: document.getElementById("email-address").value,
         firstname: document.getElementById("first-name").value,
         lastname: document.getElementById("last-name").value,
